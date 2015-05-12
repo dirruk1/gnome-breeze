@@ -17,6 +17,14 @@
   @else { box-shadow: $shadow1; }
 }
 
+@mixin _border($name, $radius: 2px, $width: 1px 1px 2px 1px, $image-width: 2 2 3 2 / 2px 2px 3px 2px, $prefix:borders) {
+  border-image: -gtk-scaled(url("#{$prefix}/#{$name}.png"),url("#{$prefix}/#{$name}@2.png")) $image-width stretch;
+  border-radius: $radius;
+  border-width: $width;
+  border-style: solid;
+  border-color: transparent;
+}
+
 // entries
 
 @function entry_focus_border($fc:$selected_bg_color) {

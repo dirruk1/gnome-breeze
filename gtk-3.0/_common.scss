@@ -1897,132 +1897,65 @@ column-header.button.dnd { // for treeview-like derive widgets
  **************/
 
 .scrollbar {
-  -GtkRange-slider-width: 16;
   -GtkRange-trough-border: 0;
   -GtkScrollbar-has-backward-stepper: false;
   -GtkScrollbar-has-forward-stepper: false;
-  -GtkScrollbar-min-slider-length: 64; // minimum size for the slider.
-                                       // sadly can't be in '.slider'
-                                       // where it belongs
+  -GtkRange-slider-width: 16;
+  -GtkScrollbar-min-slider-length: 64;
   -GtkRange-stepper-spacing: 0;
   -GtkRange-trough-under-steppers: 1;
 
-  $_slider_margin: 4px;
-  $_slider_fine_tune_margin: 4px;
+  .button { border: none; }
 
-  .button {
-    border: none;
-  }
-
-  &.overlay-indicator {
-    &:not(.dragging):not(.hovering) { // Overlay scrolling indicator
-      opacity: 0.4;
-
-      -GtkRange-slider-width: 5px;
-
-      .slider {
-        margin: 0;
-        background-color: $fg_color;
-        border: 1px solid if($variant==light, white, black);
-        background-clip: padding-box;
-      }
-
-      .trough {
-        border-style: none;
-        background-color: transparent;
-      }
-
-      // w/o the following margin tweaks the slider shrinks when hovering/dragging
-      &.vertical .slider {
-        margin-top: $_slider_margin - 1px;
-        margin-bottom: $_slider_margin - 1px;
-      }
-
-      &.horizontal .slider {
-        margin-left: $_slider_margin - 1px;
-        margin-right: $_slider_margin - 1px;
-      }
-
-    }
-
-    &.dragging,
-    &.hovering { opacity: 0.7; }
-  }
-
-  // trough coloring
-  .trough {
-    background-color: transparent;
-    border: none;
-
-    &:backdrop {
-      background-color: $backdrop_scrollbar_bg_color;
-      border-color: $backdrop_borders_color;
-    }
-  }
-
-  // slider coloring
-  .slider {
-    background-color: mix($fg_color, $bg_color, 60%);
-
-    &:hover { background-color: mix($fg_color, $bg_color, 80%); }
-
-    &:prelight:active { background-color: if($variant=='light', darken($selected_bg_color, 10%), lighten($selected_bg_color, 10%));}
-
-    &:backdrop { background-color: mix($backdrop_fg_color, $backdrop_bg_color, 40%); }
-
-    &:insensitive {
-      background-color: transparent;
-    }
-  }
+  // Overlay Scrollbars
+  &.dragging,                                                             // if this isn't set, the scrollbars don't update their size correctly
+  &.hovering { opacity: 0.998; }                                          // probably a gtk bug
+  &.overlay-indicator:not(.dragging):not(.hovering) { opacity: 0.999; }     //
 
 
-  // sizing
-  .slider {
-    border-radius: 100px;
-    margin: $_slider_margin;
-  }
+  &.overlay-indicator:not(.dragging):not(.hovering) {
+    -GtkRange-slider-width: 8px;
 
-  &.fine-tune .slider { margin: $_slider_fine_tune_margin; }
-
-  &.vertical {
-
-    .slider {
-      margin-left: 1px + $_slider_margin;
-
-      &:dir(rtl) {
-        margin-left: $_slider_margin;
-        margin-right: 1px + $_slider_margin;
-      }
-    }
-
-    &.fine-tune .slider {
-      margin-left: 1px + $_slider_fine_tune_margin;
-
-      &:dir(rtl) {
-        margin-left: $_slider_fine_tune_margin;
-        margin-right: 1px + $_slider_fine_tune_margin;
-      }
-    }
+    .slider { @include _border(scrollbar-slider-overlay, $prefix:assets, $radius: 0, $width: 5px 4px 5px 4px, $image-width: 6 4 6 4 / 6px 4px 6px 4px); }
+    &.horizontal .slider { @include _border(scrollbar-slider-overlay-horizontal, $prefix:assets, $radius: 0, $width: 4px 6px 4px 6px, $image-width: 4 6 4 6 / 4px 6px 4px 6px); }
 
     .trough {
-      border-left-style: solid;
-
-      &:dir(rtl) {
-        border-left-style: none;
-        border-right-style: solid;
-      }
+      border: none;
+      background: none;
     }
   }
+  // Normal Scrollbars / Overlay Scrollbars on Mouseover
+  &.trough {
+    @include _border(scrollbar-trough, $prefix:assets, $radius: 0, $width: 8px 8px 8px 8px, $image-width: 8 8 8 8 / 8px 8px 8px 8px);
 
-  &.horizontal {
+    &:dir(rtl) { @include _border(scrollbar-trough-rtl, $prefix:assets, $radius: 0, $width: 8px 8px 8px 8px, $image-width: 8 8 8 8 / 8px 8px 8px 8px); }
+    &.horizontal { @include _border(scrollbar-trough-horizontal, $prefix:assets, $radius: 0, $width: 8px 8px 8px 8px, $image-width: 8 8 8 8 / 8px 8px 8px 8px); }
+  }
+  &.slider {
+    @include _border(scrollbar-slider, $prefix:assets, $radius: 0, $width: 8px 8px 8px 8px, $image-width: 8 8 8 8 / 8px 8px 8px 8px);
 
-    .slider { margin-top: 1px + $_slider_margin; }
+    &:dir(rtl) { @include _border(scrollbar-slider-rtl, $prefix:assets, $radius: 0, $width: 8px 8px 8px 8px, $image-width: 8 8 8 8 / 8px 8px 8px 8px); }
 
-    &.fine-tune .slider { margin-top: 1px + $_slider_fine_tune_margin; }
+    &:hover, &:insensitive {
+      @include _border(scrollbar-slider-hover, $prefix:assets, $radius: 0, $width: 8px 8px 8px 8px, $image-width: 8 8 8 8 / 8px 8px 8px 8px);
 
-    .trough { border-top-style: solid; }
+      &:dir(rtl) { @include _border(scrollbar-slider-rtl-hover, $prefix:assets, $radius: 0, $width: 8px 8px 8px 8px, $image-width: 8 8 8 8 / 8px 8px 8px 8px); }
+    }
+    &:active {
+      @include _border(scrollbar-slider-active, $prefix:assets, $radius: 0, $width: 8px 8px 8px 8px, $image-width: 8 8 8 8 / 8px 8px 8px 8px);
+
+      &:dir(rtl) { @include _border(scrollbar-slider-rtl-active, $prefix:assets, $radius: 0, $width: 8px 8px 8px 8px, $image-width: 8 8 8 8 / 8px 8px 8px 8px); }
+    }
+
+    &.horizontal {
+      @include _border(scrollbar-slider-horizontal, $prefix:assets, $radius: 0, $width: 8px 8px 8px 8px, $image-width: 8 8 8 8 / 8px 8px 8px 8px);
+
+      &:hover, &:insensitive { @include _border(scrollbar-slider-horizontal-hover, $prefix:assets, $radius: 0, $width: 8px 8px 8px 8px, $image-width: 8 8 8 8 / 8px 8px 8px 8px); }
+      &:active { @include _border(scrollbar-slider-horizontal-active, $prefix:assets, $radius: 0, $width: 8px 8px 8px 8px, $image-width: 8 8 8 8 / 8px 8px 8px 8px); }
+    }
   }
 }
+
 
 .scrollbars-junction,
 .scrollbars-junction.frame { // the small square between two scrollbars
