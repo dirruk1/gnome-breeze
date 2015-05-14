@@ -1943,14 +1943,11 @@ column-header .titlebar .button.titlebutton,
   -GtkNotebook-initial-gap: 0;
   -GtkNotebook-arrow-spacing: 5;
   -GtkNotebook-tab-curvature: 0;
-  -GtkNotebook-tab-overlap: 0;
+  -GtkNotebook-tab-overlap: 3;
   -GtkNotebook-has-tab-gap: false;
   -GtkWidget-focus-padding: 0;
   -GtkWidget-focus-line-width: 0;
-  transition: all 200ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  padding: 6px; }
-  .notebook:backdrop {
-    background-color: #eff0f1; }
+  transition: all 200ms cubic-bezier(0.25, 0.46, 0.45, 0.94); }
   .notebook.frame {
     border: 1px solid #bdc3c7; }
     .notebook.frame.top {
@@ -1962,7 +1959,8 @@ column-header .titlebar .button.titlebutton,
     .notebook.frame.left {
       border-left-width: 0; }
   .notebook.header {
-    background-color: #eff0f1; }
+    background-color: #eff0f1;
+    padding-top: 4px; }
     .notebook.header.frame {
       border-style: solid;
       border-color: #bdc3c7; }
@@ -1979,8 +1977,8 @@ column-header .titlebar .button.titlebutton,
   .notebook tab {
     border-width: 1px;
     border-style: solid;
-    border-color: #bdc3c7;
-    background-color: #bdc3c7;
+    border-color: shade(#bdc3c7, 1.1);
+    background-color: shade(#bdc3c7, 1.1);
     outline-offset: 0;
     /* works for testnotebookdnd, but there's a superfluous border
        in gedit or web, commented out for now, needs gtk fixes
@@ -2023,23 +2021,45 @@ column-header .titlebar .button.titlebutton,
     .notebook tab.reorderable-page.left, .notebook tab.reorderable-page.right {
       border-bottom-width: 1px;
       border-top-width: 1px; }
-    .notebook tab.top:active, .notebook tab.top.active-page, .notebook tab.top:backdrop:active {
-      border-bottom-color: #eff0f1;
-      background-color: #eff0f1; }
-    .notebook tab.bottom:active, .notebook tab.bottom.active-page, .notebook tab.bottom:backdrop:active {
-      border-top-color: #eff0f1;
-      background-color: #eff0f1; }
-    .notebook tab.left:active, .notebook tab.left.active-page, .notebook tab.left:backdrop:active {
-      border-right-color: #eff0f1;
-      background-color: #eff0f1; }
-    .notebook tab.right:active, .notebook tab.right.active-page, .notebook tab.right:backdrop:active {
-      border-left-color: #eff0f1;
-      background-color: #eff0f1; }
-      .notebook tab.right:active:hover, .notebook tab.right:active.prelight-page, .notebook tab.right.active-page:hover, .notebook tab.right.active-page.prelight-page, .notebook tab.right:backdrop:active:hover, .notebook tab.right:backdrop:active.prelight-page {
-        border-color: #bdc3c7; }
+    .notebook tab.top {
+      border-radius: 3px 3px 0px 0px; }
+      .notebook tab.top:active, .notebook tab.top.active-page, .notebook tab.top:backdrop:active {
+        border-color: #bdc3c7;
+        border-bottom-color: #eff0f1;
+        background-color: #eff0f1; }
+        .notebook tab.top:active:hover, .notebook tab.top:active.prelight-page, .notebook tab.top.active-page:hover, .notebook tab.top.active-page.prelight-page, .notebook tab.top:backdrop:active:hover, .notebook tab.top:backdrop:active.prelight-page {
+          border-color: #bdc3c7;
+          border-bottom-color: #eff0f1; }
+    .notebook tab.bottom {
+      border-radius: 0px 0px 3px 3px; }
+      .notebook tab.bottom:active, .notebook tab.bottom.active-page, .notebook tab.bottom:backdrop:active {
+        border-color: #bdc3c7;
+        border-top-color: #eff0f1;
+        background-color: #eff0f1; }
+        .notebook tab.bottom:active:hover, .notebook tab.bottom:active.prelight-page, .notebook tab.bottom.active-page:hover, .notebook tab.bottom.active-page.prelight-page, .notebook tab.bottom:backdrop:active:hover, .notebook tab.bottom:backdrop:active.prelight-page {
+          border-color: #bdc3c7;
+          border-top-color: #eff0f1; }
+    .notebook tab.left {
+      border-radius: 3px 0px 0px 3px; }
+      .notebook tab.left:active, .notebook tab.left.active-page, .notebook tab.left:backdrop:active {
+        border-color: #bdc3c7;
+        border-right-color: #eff0f1;
+        background-color: #eff0f1; }
+        .notebook tab.left:active:hover, .notebook tab.left:active.prelight-page, .notebook tab.left.active-page:hover, .notebook tab.left.active-page.prelight-page, .notebook tab.left:backdrop:active:hover, .notebook tab.left:backdrop:active.prelight-page {
+          border-color: #bdc3c7;
+          border-right-color: #eff0f1; }
+    .notebook tab.right {
+      border-radius: 0px 3px 3px 0px; }
+      .notebook tab.right:active, .notebook tab.right.active-page, .notebook tab.right:backdrop:active {
+        border-color: #bdc3c7;
+        border-left-color: #eff0f1;
+        background-color: #eff0f1; }
+        .notebook tab.right:active:hover, .notebook tab.right:active.prelight-page, .notebook tab.right.active-page:hover, .notebook tab.right.active-page.prelight-page, .notebook tab.right:backdrop:active:hover, .notebook tab.right:backdrop:active.prelight-page {
+          border-color: #bdc3c7;
+          border-left-color: #eff0f1; }
     .notebook tab:hover, .notebook tab.prelight-page {
-      background-color: rgba(150, 205, 241, 0.3);
-      border-color: rgba(150, 205, 241, 0.3); }
+      background-color: rgba(150, 205, 241, 0.2);
+      border-color: rgba(150, 205, 241, 0.2); }
     .notebook tab.reorderable-page.top {
       border-color: transparent; }
       .notebook tab.reorderable-page.top:hover, .notebook tab.reorderable-page.top.prelight-page {
@@ -2118,7 +2138,6 @@ column-header .titlebar .button.titlebutton,
         background-color: transparent; }
     .notebook tab .label {
       padding: 0 2px;
-      font-weight: bold;
       color: #31363b; }
     .notebook tab .prelight-page .label, .notebook tab .label.prelight-page {
       color: #31363b; }

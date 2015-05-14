@@ -1669,15 +1669,14 @@ column-header.button.dnd { // for treeview-like derive widgets
   -GtkNotebook-initial-gap: 0;
   -GtkNotebook-arrow-spacing: 5;
   -GtkNotebook-tab-curvature: 0;
-  -GtkNotebook-tab-overlap: 0;
+  -GtkNotebook-tab-overlap: 3;
   -GtkNotebook-has-tab-gap: false;
   -GtkWidget-focus-padding: 0;
   -GtkWidget-focus-line-width: 0;
   transition: all 200ms $ease-out-quad;
-  padding: 6px;
-  &:backdrop {
-    background-color: $backdrop_bg_color;
-  }
+  //padding: 6px;
+  
+  
   &.frame {
     border: 1px solid $borders_color;
     // FIXME doesn't work
@@ -1691,6 +1690,7 @@ column-header.button.dnd { // for treeview-like derive widgets
     // FIXME: double borders in some case, can't fix it w/o a class tho
     // FIXME: doesn't work on dark var
     background-color: $bg_color;
+    padding-top: 4px;
 
     // this is the shading of the header behind the tabs
     &.frame {
@@ -1707,8 +1707,8 @@ column-header.button.dnd { // for treeview-like derive widgets
   tab {
     border-width: 1px;
     border-style: solid;
-    border-color: $borders_color;
-    background-color: $borders_color;
+    border-color: shade($borders_color,1.1);
+    background-color: shade($borders_color,1.1);
 
     outline-offset: 0;
 
@@ -1769,38 +1769,63 @@ column-header.button.dnd { // for treeview-like derive widgets
     }
     &.top {
       //padding-bottom: ($vt_vpadding -$tab_indicator_size);
+      border-radius: 3px 3px 0px 0px;
       &:active, &.active-page, &:backdrop:active {
+        border-color: $borders_color;
 		border-bottom-color: $bg_color;
 		background-color: $bg_color;
+		&:hover, &.prelight-page {
+			border-color: $borders_color;
+			border-bottom-color: $bg_color;
+			}
 		}
     }
     &.bottom {
+      border-radius: 0px 0px 3px 3px;
       &:active, &.active-page, &:backdrop:active {
+        border-color: $borders_color;
 		border-top-color: $bg_color;
 		background-color: $bg_color;
+		&:hover, &.prelight-page {
+			border-color: $borders_color;
+			border-top-color: $bg_color;
+			}
 		}
     }
     &.left {
+      border-radius: 3px 0px 0px 3px;
       &:active, &.active-page, &:backdrop:active {
+        border-color: $borders_color;
 		border-right-color: $bg_color;
 		background-color: $bg_color;
+		&:hover, &.prelight-page {
+			border-color: $borders_color;
+			border-right-color: $bg_color;
+			}
 		}
     }
     &.right {
+      border-radius: 0px 3px 3px 0px;
       &:active, &.active-page, &:backdrop:active {
+        border-color: $borders_color;
 		border-left-color: $bg_color;
 		background-color: $bg_color;
 		&:hover, &.prelight-page {
 			border-color: $borders_color;
+			border-left-color: $bg_color;
 			}
 		}
     }
 
     //here's the interesting stuff
     &:hover, &.prelight-page {
-      background-color: transparentize($hover_color, 0.7);
-      border-color: transparentize($hover_color, 0.7);
+      background-color: transparentize($hover_color, 0.8);
+      border-color: transparentize($hover_color, 0.8);
     }
+    
+ //   &:backdrop {
+//	  background-color: $borders_color;
+//	}
 
     @each $_tab, $_border in (top, bottom),
                              (bottom, top),
@@ -1832,7 +1857,6 @@ column-header.button.dnd { // for treeview-like derive widgets
     }
     .label { //tab text
       padding: 0 2px; // needed for a nicer focus ring
-      font-weight: bold;
       color: $fg_color;
 
     }
