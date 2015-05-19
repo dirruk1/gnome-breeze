@@ -1669,7 +1669,7 @@ column-header.button.dnd { // for treeview-like derive widgets
   -GtkNotebook-initial-gap: 0;
   -GtkNotebook-arrow-spacing: 5;
   -GtkNotebook-tab-curvature: 0;
-  -GtkNotebook-tab-overlap: 3;
+  -GtkNotebook-tab-overlap: 0;
   -GtkNotebook-has-tab-gap: false;
   -GtkWidget-focus-padding: 0;
   -GtkWidget-focus-line-width: 0;
@@ -1756,15 +1756,11 @@ column-header.button.dnd { // for treeview-like derive widgets
     }
     */
     &.reorderable-page {
+		background-color: $bg_color;
       &.top, &.bottom {
         padding-left: 12px;  // for a nicer close button
-        padding-right: 12px; // placement
-        border-left-width: 1px;
-        border-right-width: 1px;
-      }
-      &.left, &.right {
-        border-bottom-width: 1px;
-        border-top-width: 1px;
+        padding-right: 6px; // placement
+        padding-bottom: 8px;
       }
     }
     &.top {
@@ -1827,31 +1823,38 @@ column-header.button.dnd { // for treeview-like derive widgets
 //	  background-color: $borders_color;
 //	}
 
-    @each $_tab, $_border in (top, bottom),
-                             (bottom, top),
-                             (left, right),
-                             (right, left) {
+    @each $_tab, $_border, $_shadow1 in (top, right, -3px 0px 0px 0px),
+                             (bottom, right, -3px 0px 0px 0px),
+                             (left, bottom, 0px -3px 0px 0px),
+                             (right, bottom, 0px -3px 0px 0px) {
       &.reorderable-page.#{$_tab} {
-        border-color: transparent;
+      border-width: 3px;
+      border-style: solid;
+      border-color: $bg_color;
+      background-color: $bg_color;
+      border-#{$_border}-width: 1px;
+      border-#{$_border}-color: $borders_color;
+      box-shadow: inset #{$_shadow1} $bg_color;
         &:hover, &.prelight-page {
-          border-color: transparentize($borders_color,0.7);
-          border-#{$_border}-color: $borders_color;
-          background-color: transparentize($bg_color,0.8);
+          box-shadow: inset 0px -3px 0px 0px transparentize($selected_bg_color,0.7), inset $_shadow1 $bg_color;
         }
         &:active, &.active-page {
-          background-color: transparentize($bg_color,0.5);
-          border-color: transparentize($borders_color,0.5);
-          border-#{$_border}-color: $selected_bg_color;
-          &:hover { background-color: transparentize($bg_color,0.3); }
+          box-shadow: inset 0px -3px 0px 0px $selected_bg_color, inset $_shadow1 $bg_color;
+          &:hover { 
+			background-color: $bg_color;
+			border-color: $bg_color;
+			border-#{$_border}-color: $borders_color;
+			}
           &:backdrop {
-            border-color: $backdrop_borders_color;
-            background-color: $backdrop_bg_color;
-            border-#{$_border}-color: $selected_bg_color;
+            background-color: $bg_color;
+			border-color: $bg_color;
+			border-#{$_border}-color: $borders_color;
           }
         }
         &:backdrop {
-          border-color: transparent;
-          background-color: transparent;
+			background-color: $bg_color;
+			border-color: $bg_color;
+			border-#{$_border}-color: $borders_color;
         }
       }
     }
@@ -1871,41 +1874,50 @@ column-header.button.dnd { // for treeview-like derive widgets
       
     }
     .button { //tab close button
-      padding: 0;
+      padding: 6px;
       border: 1px solid transparent;
-      @extend %undecorated_button;
+      border-radius: 50%;
+      background-image: none;
+      background-color: $borders_color;
+      box-shadow: none;
       icon-shadow: none;
       transition: none;
-      color: transparentize($fg_color,0.7);
+      color: $bg_color;
       &:hover {
-        color:  $fg_color;
-        @include button(hover, $edge:none);
+        background-color:  $icon_red;
+        border-color: transparent;
         background-image: none;
         box-shadow: none;
       }
       &:active {
-        @include button(active, $edge:none);
+        color: $bg_color;
+        border-color: transparent;
+        background-image: none;
+        box-shadow: none;
       }
       &:backdrop {
-        color: transparentize($backdrop_fg_color,0.7);
+        color: $bg_color;
         border-color: transparent;
       }
-      & > GtkImage { // this is a hack which makes tabs grow
-        padding: 2px;
+      & > GtkImage { 
+        padding: 0px;
       }
+    }
+    .button .active-page, .button.active-page { //not working
+		background-color: $icon_red;
     }
   }
   &.arrow {
     color: $insensitive_fg_color;
-    &:hover { color: mix($fg_color, $insensitive_fg_color, 50%); }
-    &:active { color: $fg_color; }
+    &:hover { color: $hover_color; }
+    &:active { color: $selected_bg_color; }
     &:insensitive {
       color: transparentize($insensitive_fg_color,0.7);
     }
     &:backdrop {
-      color: transparentize($backdrop_fg_color,0.6);
+      color: $insensitive_fg_color;
       &:insensitive {
-        color: $backdrop_insensitive_color;
+        color: transparentize($insensitive_fg_color,0.7);
       }
     }
   }
@@ -1917,14 +1929,25 @@ column-header.button.dnd { // for treeview-like derive widgets
 
 .scrollbar {
   -GtkRange-trough-border: 0;
-  -GtkScrollbar-has-backward-stepper: false;
-  -GtkScrollbar-has-forward-stepper: false;
+  -GtkScrollbar-has-backward-stepper: true;
+  -GtkScrollbar-has-forward-stepper: true;
   -GtkRange-slider-width: 16;
   -GtkScrollbar-min-slider-length: 64;
-  -GtkRange-stepper-spacing: 0;
-  -GtkRange-trough-under-steppers: 1;
+  -GtkRange-stepper-spacing: 1;
+  -GtkRange-trough-under-steppers: 0;
 
-  .button { border: none; }
+  .button { 
+	border: none;
+	background-image:none;
+	background-color: transparent;
+	box-shadow: none; 
+	&:hover { 
+		color: $hover_color; 
+		background-image:none;
+		background-color: transparent;
+		}
+	&:insensitive { color: $insensitive_fg_color; }
+	}
 
   // Overlay Scrollbars
   &.dragging,                                                             // if this isn't set, the scrollbars don't update their size correctly
@@ -1934,6 +1957,8 @@ column-header.button.dnd { // for treeview-like derive widgets
 
   &.overlay-indicator:not(.dragging):not(.hovering) {
     -GtkRange-slider-width: 8px;
+    -GtkScrollbar-has-backward-stepper: false;
+	-GtkScrollbar-has-forward-stepper: false;
 
     .slider { @include _border(scrollbar-slider-overlay, $prefix:assets, $radius: 0, $width: 5px 4px 5px 4px, $image-width: 6 4 6 4 / 6px 4px 6px 4px); }
     &.horizontal .slider { @include _border(scrollbar-slider-overlay-horizontal, $prefix:assets, $radius: 0, $width: 4px 6px 4px 6px, $image-width: 4 6 4 6 / 4px 6px 4px 6px); }

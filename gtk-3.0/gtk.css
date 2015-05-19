@@ -2016,11 +2016,11 @@ column-header .titlebar .button.titlebutton,
     .notebook tab.reorderable-page.top, .notebook tab.reorderable-page.bottom {
       padding-left: 12px;
       padding-right: 12px;
-      border-left-width: 1px;
-      border-right-width: 1px; }
+      border-width: 1px solid #eff0f1;
+      border-left-color: #bdc3c7; }
     .notebook tab.reorderable-page.left, .notebook tab.reorderable-page.right {
-      border-bottom-width: 1px;
-      border-top-width: 1px; }
+      border-width: 1px solid #eff0f1;
+      border-bottom-color: #bdc3c7; }
     .notebook tab.top {
       border-radius: 3px 3px 0px 0px; }
       .notebook tab.top:active, .notebook tab.top.active-page, .notebook tab.top:backdrop:active {
@@ -2060,82 +2060,74 @@ column-header .titlebar .button.titlebutton,
     .notebook tab:hover, .notebook tab.prelight-page {
       background-color: rgba(150, 205, 241, 0.2);
       border-color: rgba(150, 205, 241, 0.2); }
-    .notebook tab.reorderable-page.top {
-      border-color: transparent; }
-      .notebook tab.reorderable-page.top:hover, .notebook tab.reorderable-page.top.prelight-page {
-        border-color: rgba(189, 195, 199, 0.3);
-        border-bottom-color: #bdc3c7;
-        background-color: rgba(239, 240, 241, 0.2); }
-      .notebook tab.reorderable-page.top:active, .notebook tab.reorderable-page.top.active-page {
-        background-color: rgba(239, 240, 241, 0.5);
-        border-color: rgba(189, 195, 199, 0.5);
-        border-bottom-color: #3daee9; }
-        .notebook tab.reorderable-page.top:active:hover, .notebook tab.reorderable-page.top.active-page:hover {
-          background-color: rgba(239, 240, 241, 0.7); }
-        .notebook tab.reorderable-page.top:active:backdrop, .notebook tab.reorderable-page.top.active-page:backdrop {
-          border-color: #c2c7cb;
-          background-color: #eff0f1;
-          border-bottom-color: #3daee9; }
-      .notebook tab.reorderable-page.top:backdrop {
-        border-color: transparent;
-        background-color: transparent; }
-    .notebook tab.reorderable-page.bottom {
-      border-color: transparent; }
-      .notebook tab.reorderable-page.bottom:hover, .notebook tab.reorderable-page.bottom.prelight-page {
-        border-color: rgba(189, 195, 199, 0.3);
-        border-top-color: #bdc3c7;
-        background-color: rgba(239, 240, 241, 0.2); }
-      .notebook tab.reorderable-page.bottom:active, .notebook tab.reorderable-page.bottom.active-page {
-        background-color: rgba(239, 240, 241, 0.5);
-        border-color: rgba(189, 195, 199, 0.5);
-        border-top-color: #3daee9; }
-        .notebook tab.reorderable-page.bottom:active:hover, .notebook tab.reorderable-page.bottom.active-page:hover {
-          background-color: rgba(239, 240, 241, 0.7); }
-        .notebook tab.reorderable-page.bottom:active:backdrop, .notebook tab.reorderable-page.bottom.active-page:backdrop {
-          border-color: #c2c7cb;
-          background-color: #eff0f1;
-          border-top-color: #3daee9; }
-      .notebook tab.reorderable-page.bottom:backdrop {
-        border-color: transparent;
-        background-color: transparent; }
-    .notebook tab.reorderable-page.left {
-      border-color: transparent; }
-      .notebook tab.reorderable-page.left:hover, .notebook tab.reorderable-page.left.prelight-page {
-        border-color: rgba(189, 195, 199, 0.3);
-        border-right-color: #bdc3c7;
-        background-color: rgba(239, 240, 241, 0.2); }
-      .notebook tab.reorderable-page.left:active, .notebook tab.reorderable-page.left.active-page {
-        background-color: rgba(239, 240, 241, 0.5);
-        border-color: rgba(189, 195, 199, 0.5);
+    .notebook tab.reorderable-page.top:hover, .notebook tab.reorderable-page.top.prelight-page {
+      box-shadow: inset 0px -2px 0px 0px #3daee9;
+      border-right-color: #bdc3c7;
+      background-color: rgba(239, 240, 241, 0.2); }
+    .notebook tab.reorderable-page.top:active, .notebook tab.reorderable-page.top.active-page {
+      background-color: rgba(239, 240, 241, 0.5);
+      border-color: rgba(189, 195, 199, 0.5);
+      border-right-color: #3daee9; }
+      .notebook tab.reorderable-page.top:active:hover, .notebook tab.reorderable-page.top.active-page:hover {
+        background-color: rgba(239, 240, 241, 0.7); }
+      .notebook tab.reorderable-page.top:active:backdrop, .notebook tab.reorderable-page.top.active-page:backdrop {
+        border-color: #c2c7cb;
+        background-color: #eff0f1;
         border-right-color: #3daee9; }
-        .notebook tab.reorderable-page.left:active:hover, .notebook tab.reorderable-page.left.active-page:hover {
-          background-color: rgba(239, 240, 241, 0.7); }
-        .notebook tab.reorderable-page.left:active:backdrop, .notebook tab.reorderable-page.left.active-page:backdrop {
-          border-color: #c2c7cb;
-          background-color: #eff0f1;
-          border-right-color: #3daee9; }
-      .notebook tab.reorderable-page.left:backdrop {
-        border-color: transparent;
-        background-color: transparent; }
-    .notebook tab.reorderable-page.right {
-      border-color: transparent; }
-      .notebook tab.reorderable-page.right:hover, .notebook tab.reorderable-page.right.prelight-page {
-        border-color: rgba(189, 195, 199, 0.3);
-        border-left-color: #bdc3c7;
-        background-color: rgba(239, 240, 241, 0.2); }
-      .notebook tab.reorderable-page.right:active, .notebook tab.reorderable-page.right.active-page {
-        background-color: rgba(239, 240, 241, 0.5);
-        border-color: rgba(189, 195, 199, 0.5);
-        border-left-color: #3daee9; }
-        .notebook tab.reorderable-page.right:active:hover, .notebook tab.reorderable-page.right.active-page:hover {
-          background-color: rgba(239, 240, 241, 0.7); }
-        .notebook tab.reorderable-page.right:active:backdrop, .notebook tab.reorderable-page.right.active-page:backdrop {
-          border-color: #c2c7cb;
-          background-color: #eff0f1;
-          border-left-color: #3daee9; }
-      .notebook tab.reorderable-page.right:backdrop {
-        border-color: transparent;
-        background-color: transparent; }
+    .notebook tab.reorderable-page.top:backdrop {
+      border-color: transparent;
+      background-color: transparent; }
+    .notebook tab.reorderable-page.bottom:hover, .notebook tab.reorderable-page.bottom.prelight-page {
+      box-shadow: inset 0px -2px 0px 0px #3daee9;
+      border-right-color: #bdc3c7;
+      background-color: rgba(239, 240, 241, 0.2); }
+    .notebook tab.reorderable-page.bottom:active, .notebook tab.reorderable-page.bottom.active-page {
+      background-color: rgba(239, 240, 241, 0.5);
+      border-color: rgba(189, 195, 199, 0.5);
+      border-right-color: #3daee9; }
+      .notebook tab.reorderable-page.bottom:active:hover, .notebook tab.reorderable-page.bottom.active-page:hover {
+        background-color: rgba(239, 240, 241, 0.7); }
+      .notebook tab.reorderable-page.bottom:active:backdrop, .notebook tab.reorderable-page.bottom.active-page:backdrop {
+        border-color: #c2c7cb;
+        background-color: #eff0f1;
+        border-right-color: #3daee9; }
+    .notebook tab.reorderable-page.bottom:backdrop {
+      border-color: transparent;
+      background-color: transparent; }
+    .notebook tab.reorderable-page.left:hover, .notebook tab.reorderable-page.left.prelight-page {
+      box-shadow: inset 0px -2px 0px 0px #3daee9;
+      border-bottom-color: #bdc3c7;
+      background-color: rgba(239, 240, 241, 0.2); }
+    .notebook tab.reorderable-page.left:active, .notebook tab.reorderable-page.left.active-page {
+      background-color: rgba(239, 240, 241, 0.5);
+      border-color: rgba(189, 195, 199, 0.5);
+      border-bottom-color: #3daee9; }
+      .notebook tab.reorderable-page.left:active:hover, .notebook tab.reorderable-page.left.active-page:hover {
+        background-color: rgba(239, 240, 241, 0.7); }
+      .notebook tab.reorderable-page.left:active:backdrop, .notebook tab.reorderable-page.left.active-page:backdrop {
+        border-color: #c2c7cb;
+        background-color: #eff0f1;
+        border-bottom-color: #3daee9; }
+    .notebook tab.reorderable-page.left:backdrop {
+      border-color: transparent;
+      background-color: transparent; }
+    .notebook tab.reorderable-page.right:hover, .notebook tab.reorderable-page.right.prelight-page {
+      box-shadow: inset 0px -2px 0px 0px #3daee9;
+      border-bottom-color: #bdc3c7;
+      background-color: rgba(239, 240, 241, 0.2); }
+    .notebook tab.reorderable-page.right:active, .notebook tab.reorderable-page.right.active-page {
+      background-color: rgba(239, 240, 241, 0.5);
+      border-color: rgba(189, 195, 199, 0.5);
+      border-bottom-color: #3daee9; }
+      .notebook tab.reorderable-page.right:active:hover, .notebook tab.reorderable-page.right.active-page:hover {
+        background-color: rgba(239, 240, 241, 0.7); }
+      .notebook tab.reorderable-page.right:active:backdrop, .notebook tab.reorderable-page.right.active-page:backdrop {
+        border-color: #c2c7cb;
+        background-color: #eff0f1;
+        border-bottom-color: #3daee9; }
+    .notebook tab.reorderable-page.right:backdrop {
+      border-color: transparent;
+      background-color: transparent; }
     .notebook tab .label {
       padding: 0 2px;
       color: #31363b; }
