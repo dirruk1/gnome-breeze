@@ -1563,14 +1563,14 @@ column-header.button.dnd { // for treeview-like derive widgets
 
 .menu {
   margin: 4px;
-  padding: 2px;
+  padding: 0px;
   background-color: $bg_color;
   border: 1px solid $borders_color; // adds borders in a non composited env
-  
-  .csd & { border: none; }  // axes borders in a composited env
+  border-radius: 3px;
+  .csd & { border: 1px solid $borders_color; }  // axes borders in a composited env
   .menuitem {
-    text-shadow: none;
-    padding: 4px;
+	text-shadow: none;
+    padding: 6px 4px;
     &:hover {
       color: $selected_fg_color;
       background-color: $selected_bg_color;
@@ -1580,13 +1580,14 @@ column-header.button.dnd { // for treeview-like derive widgets
       &:backdrop { color: $backdrop_insensitive_color; }
     }
     &:backdrop, &:backdrop:hover {
-      color: $backdrop_fg_color;
-      background-color: $backdrop_base_color;
+      color: $fg_color;
+      background-color: $bg_color;
     }
     //submenu indicators
     &.arrow { -gtk-icon-source: -gtk-icontheme('pan-end-symbolic'); }
     &.arrow:dir(rtl) {-gtk-icon-source:-gtk-icontheme('pan-end-symbolic-rtl'); }
   }
+  
   &.button { // overlow buttons
     @extend %undecorated_button;
     border-style: none;
@@ -3183,7 +3184,7 @@ GtkVolumeButton.button { padding: 8px; }
     border-radius: 0;
   }
   &.popup {
-    box-shadow: 0 2px 6px 1px rgba(0, 0, 0, 0.5)
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.1)
   }
   // server-side decorations as used by mutter
   &.ssd {
@@ -3192,7 +3193,7 @@ GtkVolumeButton.button { padding: 8px; }
   &.csd {
     &.popup {
       border-radius: 0;
-      box-shadow: 0 2px 6px 1px rgba(0, 0, 0, 0.5)
+      box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.1)
     }
     &.tooltip {
       border-radius: 5px;
