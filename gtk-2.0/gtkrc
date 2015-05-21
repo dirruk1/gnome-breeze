@@ -98,7 +98,7 @@ style "default"
 
 	engine "pixmap"
 	{
-
+	
 	# Check Buttons
 
 	image 
@@ -570,6 +570,8 @@ style "menu_item"
 	bg[PRELIGHT]	= @selected_bg_color
 	fg[PRELIGHT]	= @bg_color
 	text[PRELIGHT]	= @selected_fg_color
+
+	GtkMenuItem::toggle-spacing	= 10
 
 	engine "pixmap"
 	{
