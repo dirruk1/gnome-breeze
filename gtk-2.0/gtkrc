@@ -584,7 +584,7 @@ style "menu_item"
             recolorable     		= TRUE
             state 			= NORMAL
             shadow          		= OUT
-            overlay_file    		= "Others/null.png"
+            overlay_file    		= "Check-Radio/menucheck_unchecked.png"
             overlay_stretch 		= FALSE
         }
 	image 
@@ -593,7 +593,7 @@ style "menu_item"
             recolorable     		= TRUE
             state 			= PRELIGHT
             shadow          		= OUT
-            overlay_file    		= "Others/null.png"
+            overlay_file    		= "Check-Radio/menucheck_unchecked_prelight.png"
             overlay_stretch 		= FALSE
         }
 	image 
@@ -602,7 +602,7 @@ style "menu_item"
             recolorable     		= TRUE
             state 			= ACTIVE
             shadow          		= OUT
-            overlay_file    		= "Others/null.png"
+            overlay_file    		= "Check-Radio/menucheck.png"
             overlay_stretch 		= FALSE
         }
 	image 
@@ -658,7 +658,7 @@ style "menu_item"
             function        		= OPTION
             state 			= NORMAL
             shadow          		= OUT
-            overlay_file    		= "Others/null.png"
+            overlay_file    		= "Check-Radio/menuoption_unchecked.png"
             overlay_stretch 		= FALSE
         }
 	image 
@@ -666,7 +666,7 @@ style "menu_item"
             function        		= OPTION
             state 			= PRELIGHT
             shadow          		= OUT
-            overlay_file    		= "Others/null.png"
+            overlay_file    		= "Check-Radio/menuoption_unchecked_prelight.png"
             overlay_stretch 		= FALSE
         }
 	image 
@@ -674,7 +674,7 @@ style "menu_item"
             function        		= OPTION
             state 			= ACTIVE
             shadow          		= OUT
-            overlay_file    		= "Others/null.png"
+            overlay_file    		= "Check-Radio/menuoption.png"
             overlay_stretch 		= FALSE
         }
 	image 
