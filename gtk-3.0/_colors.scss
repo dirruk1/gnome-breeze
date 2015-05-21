@@ -2,20 +2,20 @@
 // it gets @if ed depending on $variant
 
 
-$base_color: if($variant == 'light', #fcfcfc, #292929);
-$text_color: if($variant == 'light', #31363b, white);
-$bg_color: if($variant == 'light', #eff0f1, #393f3f);
-$fg_color: if($variant == 'light', #31363b, #eeeeec);
+$base_color: if($variant == 'light', #fcfcfc, #232629);
+$text_color: if($variant == 'light', #31363b, #EEEFF0);
+$bg_color: if($variant == 'light', #eff0f1, #31363B);
+$fg_color: if($variant == 'light', #31363b, #EEEFF0);
 
-$selected_fg_color: #fcfcfc;
-$selected_bg_color: if($variant == 'light', #3daee9, darken(#4a90d9,20%));
+$selected_fg_color: if($variant == 'light', #fcfcfc, #EEEFF0);
+$selected_bg_color: if($variant == 'light', #3daee9, #3DADE8);
 $selected_borders_color: if($variant== 'light', darken($selected_bg_color, 30%), darken($selected_bg_color, 20%));
-$titlebar_bg_color: if($variant == 'light',#41484F , #eeeeec); // add to public 
-$titlebar_fg_color: if($variant == 'light', #fcfcfc, #eeeeec); // add to public
-$hover_color: #96CDF1;
+$titlebar_bg_color: if($variant == 'light',#31363B , #31363B); // add to public 
+$titlebar_fg_color: if($variant == 'light', #fcfcfc, #EEEFF0); // add to public
+$hover_color: if($variant == 'light', #93cee9, #3DADE8);
 
 // todo
-$borders_color: if($variant == 'light', #bdc3c7, darken($bg_color,12%));
+$borders_color: if($variant == 'light', #bdc3c7, #bdc3c7);
 $borders_edge: if($variant == 'light', white, transparentize($fg_color, 0.9));
 $link_color: if($variant == 'light', darken($selected_bg_color,10%), lighten($selected_bg_color,20%));
 $link_visited_color: if($variant == 'light', darken($selected_bg_color,20%), lighten($selected_bg_color,10%));

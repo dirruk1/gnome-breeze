@@ -1708,8 +1708,8 @@ column-header.button.dnd { // for treeview-like derive widgets
   tab {
     border-width: 1px;
     border-style: solid;
-    border-color: shade($borders_color,1.1);
-    background-color: shade($borders_color,1.1);
+    border-color: if($variant == 'light', shade($borders_color,1.1), transparentize($borders_color, 0.8));
+    background-color: if($variant == 'light', shade($borders_color,1.1), transparentize($borders_color, 0.8));
 
     outline-offset: 0;
 
@@ -1875,7 +1875,7 @@ column-header.button.dnd { // for treeview-like derive widgets
       
     }
     .button { //tab close button
-      padding: 6px;
+      padding: 0px;
       border: 1px solid transparent;
       border-radius: 50%;
       background-image: none;
@@ -2146,6 +2146,7 @@ $asset_suffix: if($variant=='dark', '-dark', '');
     icon-shadow: none;
     &:active, &:checked {
       -gtk-icon-source: -gtk-icontheme('#{$a}-checked-symbolic');
+      color: $selected_bg_color;
     }
     &:inconsistent {
       -gtk-icon-source: -gtk-icontheme('#{$a}-mixed-symbolic');
@@ -3220,7 +3221,7 @@ GtkVolumeButton.button { padding: 8px; }
   @extend .button.flat;
   @extend .image-button;
   //@include _button_text_shadow;
-  padding: 2px;
+  padding: 0px;
   &:backdrop { icon-shadow: none; }
    
   &.close {
