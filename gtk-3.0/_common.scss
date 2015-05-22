@@ -1562,7 +1562,6 @@ column-header.button.dnd { // for treeview-like derive widgets
 }
 
 .menu {
-  margin: 4px;
   padding: 0px;
   background-color: $bg_color;
   border: 1px solid $borders_color; // adds borders in a non composited env
@@ -1570,10 +1569,14 @@ column-header.button.dnd { // for treeview-like derive widgets
   .csd & { border: 1px solid $borders_color; }  // axes borders in a composited env
   .menuitem {
 	text-shadow: none;
-    padding: 6px 4px;
+    padding: 6px 6px;
     &:hover {
       color: $selected_fg_color;
       background-color: $selected_bg_color;
+      background-clip: padding-box;
+      border-style: solid;
+      border-width: 3px;
+      border-color: transparent;
     }
     &:insensitive {
       color: $insensitive_fg_color;

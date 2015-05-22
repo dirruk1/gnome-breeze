@@ -166,21 +166,21 @@ GtkTextView {
     background-image: none;
     color: #909396;
     border-color: #bdc3c7;
-    background-image: linear-gradient(to bottom, #e5e6e7);
+    background-color: #e5e6e7;
     box-shadow: none; }
   .entry:backdrop {
     background-color: #fcfcfc;
     background-image: none;
     color: #31363b;
-    border-color: #c2c7cb;
-    background-image: linear-gradient(to bottom, white);
+    border-color: #bdc3c7;
+    background-color: #fcfcfc;
     box-shadow: none; }
   .entry:backdrop:insensitive {
     background-color: #fcfcfc;
     background-image: none;
-    color: #c6cacd;
-    border-color: #c2c7cb;
-    background-image: linear-gradient(to bottom, #e5e6e7);
+    color: #909396;
+    border-color: #bdc3c7;
+    background-color: #e5e6e7;
     box-shadow: none; }
   .entry.progressbar {
     margin: 1px;
@@ -237,7 +237,7 @@ GtkTextView {
     background-image: none;
     color: #fcfcfc;
     border-color: rgba(0, 0, 0, 0.7);
-    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.5));
+    background-color: #31363B;
     background-clip: padding-box;
     box-shadow: none;
     text-shadow: none;
@@ -247,9 +247,9 @@ GtkTextView {
       background-image: none;
       color: #fcfcfc;
       border-color: #3daee9;
-      background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.5));
+      background-color: #31363B;
       background-clip: padding-box;
-      box-shadow: inset 0 0 0 1px #3daee9;
+      box-shadow: none;
       text-shadow: none;
       icon-shadow: none; }
     .osd .entry:backdrop {
@@ -257,7 +257,7 @@ GtkTextView {
       background-image: none;
       color: #fcfcfc;
       border-color: rgba(0, 0, 0, 0.7);
-      background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.5));
+      background-color: rgba(0, 0, 0, 0.7);
       background-clip: padding-box;
       box-shadow: none;
       text-shadow: none;
@@ -267,7 +267,7 @@ GtkTextView {
       background-image: none;
       color: #96999b;
       border-color: rgba(0, 0, 0, 0.7);
-      background-image: linear-gradient(to bottom, shade(#fcfcfc, 0.3));
+      background-color: shade(#fcfcfc, 0.3);
       background-clip: padding-box;
       box-shadow: none;
       text-shadow: none;
@@ -1847,7 +1847,6 @@ column-header .titlebar .button.titlebutton,
       box-shadow: none; }
 
 .menu {
-  margin: 4px;
   padding: 0px;
   background-color: #eff0f1;
   border: 1px solid #bdc3c7;
@@ -1856,10 +1855,14 @@ column-header .titlebar .button.titlebutton,
     border: 1px solid #bdc3c7; }
   .menu .menuitem {
     text-shadow: none;
-    padding: 6px 4px; }
+    padding: 6px 6px; }
     .menu .menuitem:hover {
       color: #fcfcfc;
-      background-color: #3daee9; }
+      background-color: #3daee9;
+      background-clip: padding-box;
+      border-style: solid;
+      border-width: 3px;
+      border-color: transparent; }
     .menu .menuitem:insensitive {
       color: #909396; }
       .menu .menuitem:insensitive:backdrop {

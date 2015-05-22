@@ -76,26 +76,26 @@
   @if $t==insensitive {
     color: $insensitive_fg_color;
     border-color: $borders_color;
-    background-image: linear-gradient(to bottom, $insensitive_bg_color);
+    background-color: $insensitive_bg_color;
     box-shadow: none;
 
   }
   @if $t==backdrop {
-    color: $backdrop_text_color;
-    border-color: $backdrop_borders_color;
-    background-image: linear-gradient(to bottom, $backdrop_base_color);
+    color: $text_color;
+    border-color: $borders_color;
+    background-color: $base_color;
     box-shadow: none;
   }
   @if $t==backdrop-insensitive {
-    color: $backdrop_insensitive_color;
-    border-color: $backdrop_borders_color;
-    background-image: linear-gradient(to bottom, $insensitive_bg_color);
+    color: $insensitive_fg_color;
+    border-color: $borders_color;
+    background-color: $insensitive_bg_color;
     box-shadow: none;
   }
   @if $t==osd {
     color: $osd_text_color;
     border-color: $osd_borders_color;
-    background-image: linear-gradient(to bottom, transparentize(opacify($osd_borders_color, 1), 0.5));
+    background-color: $osd_bg_color;
     background-clip: padding-box;
     box-shadow: none;
     text-shadow: none;
@@ -104,16 +104,16 @@
   @if $t==osd-focus {
     color: $osd_text_color;
     border-color: $selected_bg_color;
-    background-image: linear-gradient(to bottom, transparentize(opacify($osd_borders_color, 1), 0.5));
+    background-color: $osd_bg_color;
     background-clip: padding-box;
-    box-shadow: entry_focus_shadow($fc);
+    box-shadow: none;
     text-shadow: none;
     icon-shadow: none;
   }
   @if $t==osd-insensitive {
     color: $osd_insensitive_fg_color;
     border-color: $osd_borders_color;
-    background-image: linear-gradient(to bottom, $osd_insensitive_bg_color);
+    background-color: $osd_insensitive_bg_color;
     background-clip: padding-box;
     box-shadow: none;
     text-shadow: none;
@@ -122,7 +122,7 @@
   @if $t==osd-backdrop {
     color: $osd_text_color;
     border-color: $osd_borders_color;
-    background-image: linear-gradient(to bottom, transparentize(opacify($osd_borders_color, 1), 0.5));
+    background-color: $osd_borders_color;
     background-clip: padding-box;
     box-shadow: none;
     text-shadow: none;
