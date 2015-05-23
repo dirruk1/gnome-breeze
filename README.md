@@ -1,6 +1,6 @@
 # Gnome-breeze
 
-A GTK Theme Built to Match KDE's Breeze. GTK2 theme made by [sionicspectre](https://github.com/scionicspectre/BreezyGTK)
+A GTK Theme Built to Match KDE's Breeze. GTK2 theme made by [scionicspectre](https://github.com/scionicspectre/BreezyGTK)
 
 # Requirements
 
