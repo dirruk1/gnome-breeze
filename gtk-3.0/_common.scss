@@ -1060,7 +1060,7 @@ GtkComboBox {
   @extend %inset-bar;
   border-width: 0 1px 1px;
   padding: 3px;
-  border-radius: 0  0 5px 5px;
+  border-radius: 0  0 3px 3px;
 }
 .search-bar, .location-bar {
   @extend .toolbar;
@@ -1073,6 +1073,7 @@ GtkComboBox {
   border-style: solid;
   border-color: $borders_color;
   //$_bg: mix($bg_color, $borders_color, 70%);
+  text-shadow: none;
   background-color: $bg_color;
   //box-shadow: inset 0 2px 3px -1px mix($borders_color, $_bg, 60%),
   //            _widget_edge();
@@ -1202,54 +1203,52 @@ GtkComboBox {
   }
 
   &.selection-mode {
-    $_hc: mix($top_hilight,$selected_bg_color, 50%); // hilight color
-
+    
     color: $selected_fg_color;
-    text-shadow: 0 -1px transparentize(black, 0.5);
+    text-shadow: none;
     border-color: $selected_borders_color;
-    background-image: linear-gradient(to bottom,
-                                      lighten($selected_bg_color,5%),
-                                      $selected_bg_color);
-    box-shadow: inset 0 -1px mix($selected_borders_color, $selected_bg_color, 35%), //bottom shade
-                inset 0 1px $_hc;
+    background-image: none;
+    background-color: $titlebar_bg_color;
+    box-shadow: none;
 
     &:backdrop {
-      background-image: linear-gradient(to bottom, $selected_bg_color);
-      box-shadow: inset 0 1px mix($top_hilight, $selected_bg_color, 60%);
+      background-image: none;
+      background-color: $bg_color;
+      box-shadow: none;
     }
 
     .subtitle:link { @extend *:link:selected;  }
 
     .button {
-      @include button(normal, $selected_bg_color, $selected_fg_color, $_hc);
+      @include button(normal, $selected_bg_color, $selected_fg_color);
 
       &.flat { @include button(undecorated); }
 
-      &:hover { @include button(hover, $selected_bg_color, $selected_fg_color, $_hc); }
+      &:hover { @include button(hover, $selected_bg_color, $selected_fg_color); }
 
-      &:active, &:checked { @include button(active, $selected_bg_color, $selected_fg_color, $_hc); }
+      &:active, &:checked { @include button(active, $selected_bg_color, $selected_fg_color); }
 
       &:backdrop,
       &.flat:backdrop {
-        @include button(backdrop, $selected_bg_color, $selected_fg_color, $_hc);
+        @include button(backdrop, $selected_bg_color, $selected_fg_color);
         -gtk-image-effect: none;
         border-color: $selected_borders_color;
 
         &:active,
         &:checked {
-          @include button(backdrop-active, $selected_bg_color, $selected_fg_color, $_hc);
+          @include button(backdrop-active, $selected_bg_color, $selected_fg_color);
           border-color: $selected_borders_color;
         }
 
         &:insensitive {
-          @include button(backdrop-insensitive, $selected_bg_color, $selected_fg_color, $_hc);
+          @include button(backdrop-insensitive, $selected_bg_color, $selected_fg_color);
           border-color: $selected_borders_color;
         }
 
         &:insensitive:active,
         &:insensitive:checked {
           @include button(backdrop-insensitive-active, $selected_bg_color,
-                          $selected_fg_color, $_hc);
+                          $selected_fg_color);
           border-color: $selected_borders_color;
         }
       }
@@ -1261,37 +1260,37 @@ GtkComboBox {
       }
 
       &:insensitive {
-        @include button(insensitive, $selected_bg_color, $selected_fg_color, $_hc);
+        @include button(insensitive, $selected_bg_color, $selected_fg_color);
 
-        &:active, &:checked { @include button(insensitive-active, $selected_bg_color, $selected_fg_color, $_hc); }
+        &:active, &:checked { @include button(insensitive-active, $selected_bg_color, $selected_fg_color); }
       }
 
       &.suggested-action {
-        @include button(normal, $edge:$_hc);
+        @include button(normal);
         border-color: $selected_borders_color;
 
         &:hover {
-          @include button(hover, $edge:$_hc);
+          @include button(hover);
           border-color: $selected_borders_color;
         }
 
         &:active {
-          @include button(active, $edge:$_hc);
+          @include button(active);
           border-color: $selected_borders_color;
         }
 
         &:insensitive {
-          @include button(insensitive, $edge:$_hc);
+          @include button(insensitive);
           border-color: $selected_borders_color;
         }
 
         &:backdrop {
-          @include button(backdrop, $edge:$_hc);
+          @include button(backdrop);
           border-color: $selected_borders_color;
         }
 
         &:backdrop:insensitive {
-          @include button(backdrop-insensitive, $edge:$_hc);
+          @include button(backdrop-insensitive);
           border-color: $selected_borders_color;
         }
       }
@@ -1575,7 +1574,7 @@ column-header.button.dnd { // for treeview-like derive widgets
       background-color: $selected_bg_color;
       background-clip: padding-box;
       border-style: solid;
-      border-width: 2px 3px;
+      border-width: 2px;
       border-color: transparent;
     }
     &:insensitive {
@@ -1700,13 +1699,13 @@ column-header.button.dnd { // for treeview-like derive widgets
     &.frame {
       border-style: solid;
       border-color: $borders_color;
-      &.top { border-width: 0px 0px 0px 0px; }
-      &.bottom { border-width: 1px 0px 0px 0px; }
-      &.right { border-width: 0px 0px 0px 1px; }
-      &.left { border-width: 0px 1px 0px 0px; }
+      &.top { border-width: 0px; }
+      &.bottom { border-width: 0px; }
+      &.right { border-width: 0px; }
+      &.left { border-width: 0px; }
       &:backdrop { border-color: $borders_color; }
     }
-    &.top {
+    &.top {	
       box-shadow: inset 0 -1px $borders_color; // border
       
     }
@@ -3334,7 +3333,7 @@ GtkVolumeButton.button { padding: 8px; }
 
 .header-bar.selection-mode .button.titlebutton,
 .titlebar.selection-mode .button.titlebutton {
-  @include _button_text_shadow(white, $selected_bg_color);
+  text-shadow: none;
   &:backdrop { icon-shadow: none; }
 }
 
