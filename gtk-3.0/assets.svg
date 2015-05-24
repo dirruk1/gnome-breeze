@@ -408,9 +408,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.70710678"
-     inkscape:cx="32.084275"
-     inkscape:cy="760.28587"
+     inkscape:zoom="1.4142136"
+     inkscape:cx="266.91934"
+     inkscape:cy="793.23951"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -3609,7 +3609,7 @@
     </g>
     <g
        transform="translate(-249.87644,-916.44724)"
-       id="slider-vert-scale-has-marks-below-backdrop-6"
+       id="slider-vert-scale-has-marks-below-backdrop-dark"
        inkscape:label="#g5577">
       <use
          height="100%"
@@ -3780,7 +3780,7 @@
     </g>
     <g
        style="display:inline;fill:#96cdf1"
-       id="checkbox-checked-0"
+       id="checkbox-checked-dark"
        transform="translate(40.445762,-838.45478)"
        inkscape:label="#g4230">
       <g
@@ -4600,8 +4600,9 @@
          id="path4137-8" />
     </g>
     <g
-       id="g4683"
-       transform="translate(88.492004,-935.59099)">
+       id="checkbox-checked-hover-selectionmode"
+       transform="translate(88.492004,-935.59099)"
+       inkscape:label="#g4683">
       <rect
          style="opacity:0.75;fill:#31363b;fill-opacity:1;stroke:none;stroke-width:0.97560978;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
          id="rect4504"
