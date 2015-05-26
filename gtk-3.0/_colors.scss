@@ -15,7 +15,7 @@ $titlebar_fg_color: if($variant == 'light', #fcfcfc, #EEEFF0); // add to public
 $hover_color: if($variant == 'light', #93cee9, #3DADE8);
 
 // todo
-$borders_color: if($variant == 'light', #bdc3c7, #bdc3c7);
+$borders_color: if($variant == 'light', #bdc3c7, #696D71);
 $borders_edge: if($variant == 'light', white, transparentize($fg_color, 0.9));
 $link_color: if($variant == 'light', darken($selected_bg_color,10%), lighten($selected_bg_color,20%));
 $link_visited_color: if($variant == 'light', darken($selected_bg_color,20%), lighten($selected_bg_color,10%));

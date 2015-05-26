@@ -3860,7 +3860,7 @@ GtkInfoBar {
 .error {
   background-color: #31363B;
   color: #fcfcfc;
-  text-shadow: 0 1px #1998da;
+  text-shadow: none;
   border-color: #1998da; }
   .info .button, .info .header-bar .button.titlebutton, .header-bar .info .button.titlebutton,
   .info .titlebar .button.titlebutton,
