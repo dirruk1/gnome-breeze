@@ -177,7 +177,7 @@ GtkTextView { // This will get overridden by .view, needed by gedit line numbers
 
 %osd, .osd {
   color: $osd_fg_color;
-  border: none;
+  border: border 1px solid $bg_color;
   background-color: $osd_bg_color;
   background-clip: padding-box;
   outline-color: transparentize($osd_fg_color, 0.7);
@@ -490,6 +490,7 @@ $_dot_color: if($variant=='light', $selected_bg_color,
       box-shadow: none; //FIXME respect no edge on the button mixin
       text-shadow: none;
       icon-shadow: none;
+      font-weight: normal;
       &:hover {
         @include button(osd-hover);
         background-clip: padding-box;
@@ -2275,7 +2276,7 @@ GtkCheckButton.text-button, GtkRadioButton.text-button {
     //OSD sliders
     .osd & {
       @include button(osd);
-      background-color: lighten($osd_bg_color, 20%);
+      background-color: $titlebar_bg_color;
       &:hover { @include button(osd-hover); }
       &:active { @include button(osd-active); }
       &:backdrop { @include button(osd-backdrop); }
@@ -3239,7 +3240,7 @@ GtkVolumeButton.button { padding: 8px; }
   @extend .button.flat;
   @extend .image-button;
   //@include _button_text_shadow;
-  padding: 0px;
+  padding: 2px;
   &:backdrop { icon-shadow: none; }
    
   &.close {
