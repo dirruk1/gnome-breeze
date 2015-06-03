@@ -10,7 +10,7 @@ $fg_color: if($variant == 'light', #31363b, #EEEFF0);
 $selected_fg_color: if($variant == 'light', #fcfcfc, #EEEFF0);
 $selected_bg_color: if($variant == 'light', #3daee9, #3DADE8);
 $selected_borders_color: if($variant== 'light', $selected_bg_color, $selected_bg_color);
-$titlebar_bg_color: if($variant == 'light',#31363B , #31363B); // add to public 
+$titlebar_bg_color: if($variant == 'light',#475057 , #31363B); // add to public 
 $titlebar_fg_color: if($variant == 'light', #fcfcfc, #EEEFF0); // add to public
 $hover_color: if($variant == 'light', #93cee9, #3DADE8);
 

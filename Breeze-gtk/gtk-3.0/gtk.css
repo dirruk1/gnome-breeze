@@ -581,7 +581,8 @@ GtkTextView {
         border-color: #c2c7cb;
         background-image: linear-gradient(to bottom, #e5e6e7);
         text-shadow: none;
-        icon-shadow: none; }
+        icon-shadow: none;
+        box-shadow: inset 0 1px rgba(255, 255, 255, 0); }
         .button.suggested-action:backdrop:insensitive > .label, .button.suggested-action.flat:backdrop:insensitive > .label, .header-bar .suggested-action.titlebutton.button:backdrop:insensitive > .label,
         .titlebar .suggested-action.titlebutton.button:backdrop:insensitive > .label {
           color: inherit; }
@@ -694,7 +695,8 @@ GtkTextView {
         border-color: #c2c7cb;
         background-image: linear-gradient(to bottom, #e5e6e7);
         text-shadow: none;
-        icon-shadow: none; }
+        icon-shadow: none;
+        box-shadow: inset 0 1px rgba(255, 255, 255, 0); }
         .button.destructive-action:backdrop:insensitive > .label, .button.destructive-action.flat:backdrop:insensitive > .label, .header-bar .destructive-action.titlebutton.button:backdrop:insensitive > .label,
         .titlebar .destructive-action.titlebutton.button:backdrop:insensitive > .label {
           color: inherit; }
@@ -867,7 +869,8 @@ GtkTextView {
     border-color: #c2c7cb;
     background-image: linear-gradient(to bottom, #e5e6e7);
     text-shadow: none;
-    icon-shadow: none; }
+    icon-shadow: none;
+    box-shadow: inset 0 1px rgba(255, 255, 255, 0); }
     .inline-toolbar GtkToolButton > .button:backdrop:insensitive > .label {
       color: inherit; }
   .inline-toolbar GtkToolButton > .button:backdrop:insensitive:active, .inline-toolbar GtkToolButton > .button:backdrop:insensitive:checked {
@@ -1206,7 +1209,8 @@ GtkColorButton.button, .header-bar GtkColorButton.button.titlebutton,
     border-color: #c2c7cb;
     background-image: linear-gradient(to bottom, #e5e6e7);
     text-shadow: none;
-    icon-shadow: none; }
+    icon-shadow: none;
+    box-shadow: inset 0 1px rgba(255, 255, 255, 0); }
     .spinbutton.vertical .button:backdrop:insensitive > .label, .spinbutton.vertical:dir(rtl) .button:backdrop:insensitive > .label {
       color: inherit; }
 .spinbutton.vertical.entry, .spinbutton.vertical:dir(rtl).entry {
@@ -1295,7 +1299,7 @@ GtkComboBox {
   border-color: #3daee9;
   color: #fcfcfc;
   background-image: none;
-  background-color: #31363B;
+  background-color: #475057;
   box-shadow: none; }
   .titlebar:backdrop,
   .header-bar:backdrop {
@@ -1311,7 +1315,7 @@ GtkComboBox {
   .titlebar .button.titlebutton,
   .header-bar .button,
   .header-bar .button.titlebutton {
-    background-color: #31363B;
+    background-color: #475057;
     color: #fcfcfc;
     background-image: none;
     border-color: transparent;
@@ -1335,7 +1339,7 @@ GtkComboBox {
       color: #fcfcfc;
       border-color: #bdc3c7;
       background-image: linear-gradient(to bottom, #3daee9, shade(#3daee9, 0.8));
-      border-color: #31363B;
+      border-color: #475057;
       box-shadow: none; }
       .titlebar .button:active:hover, .titlebar .button:checked:hover,
       .header-bar .button:active:hover,
@@ -1343,7 +1347,7 @@ GtkComboBox {
         color: #31363b;
         border-color: #bdc3c7;
         background-image: linear-gradient(to bottom, #96CDF1, #86B7D7);
-        border-color: #31363B;
+        border-color: #475057;
         box-shadow: none; }
       .titlebar .button:active:backdrop, .titlebar .button:checked:backdrop,
       .header-bar .button:active:backdrop,
@@ -1359,12 +1363,12 @@ GtkComboBox {
         background-color: #3daee9; }
       .titlebar .button.suggested-action:insensitive,
       .header-bar .button.suggested-action:insensitive {
-        background-color: #31363B;
+        background-color: #475057;
         color: shade(#fcfcfc, 0.5); }
         .titlebar .button.suggested-action:insensitive:active, .titlebar .button.suggested-action:insensitive:checked,
         .header-bar .button.suggested-action:insensitive:active,
         .header-bar .button.suggested-action:insensitive:checked {
-          background-color: #31363B;
+          background-color: #475057;
           color: shade(#fcfcfc, 0.5); }
     .titlebar .button:backdrop,
     .header-bar .button:backdrop {
@@ -1393,14 +1397,14 @@ GtkComboBox {
       icon-shadow: none; }
     .titlebar .button:insensitive,
     .header-bar .button:insensitive {
-      background-color: #31363B;
+      background-color: #475057;
       color: shade(#fcfcfc, 0.5); }
       .titlebar .button:insensitive:active, .titlebar .button:insensitive:checked,
       .header-bar .button:insensitive:active,
       .header-bar .button:insensitive:checked {
-        color: #383c41;
-        border-color: #31363B;
-        background-image: linear-gradient(to bottom, #414448, #43464a); }
+        color: #3f454a;
+        border-color: #475057;
+        background-image: linear-gradient(to bottom, #545a60, #565c61); }
         .titlebar .button:insensitive:active > .label, .titlebar .button:insensitive:checked > .label,
         .header-bar .button:insensitive:active > .label,
         .header-bar .button:insensitive:checked > .label {
@@ -1432,7 +1436,7 @@ GtkComboBox {
     text-shadow: none;
     border-color: #3daee9;
     background-image: none;
-    background-color: #31363B;
+    background-color: #475057;
     box-shadow: none; }
     .titlebar.selection-mode:backdrop,
     .header-bar.selection-mode:backdrop {
@@ -1503,6 +1507,7 @@ GtkComboBox {
           background-image: linear-gradient(to bottom, #59b9eb);
           text-shadow: none;
           icon-shadow: none;
+          box-shadow: inset 0 1px rgba(255, 255, 255, 0);
           border-color: #3daee9; }
           .titlebar.selection-mode .button:backdrop:insensitive > .label, .titlebar.selection-mode .button.flat:backdrop:insensitive > .label,
           .titlebar.selection-mode .titlebutton.button:backdrop:insensitive > .label,
@@ -1617,6 +1622,7 @@ GtkComboBox {
           background-image: linear-gradient(to bottom, #e5e6e7);
           text-shadow: none;
           icon-shadow: none;
+          box-shadow: inset 0 1px rgba(255, 255, 255, 0);
           border-color: #3daee9; }
           .titlebar.selection-mode .button.suggested-action:backdrop:insensitive > .label,
           .header-bar.selection-mode .button.suggested-action:backdrop:insensitive > .label {
@@ -2954,7 +2960,7 @@ GtkCheckButton.text-button, GtkRadioButton.text-button {
       text-shadow: none;
       icon-shadow: none;
       font-weight: normal;
-      background-color: #31363B; }
+      background-color: #475057; }
       .osd .scale.slider:hover, .osd
       .scale.scale-has-marks-above.scale-has-marks-below.slider:hover, .osd
       .scale.vertical.scale-has-marks-above.scale-has-marks-below.slider:hover {
@@ -3479,6 +3485,7 @@ GtkPlacesSidebar.sidebar .view .separator:backdrop {
       background-image: linear-gradient(to bottom, #e5e6e7);
       text-shadow: none;
       icon-shadow: none;
+      box-shadow: inset 0 1px rgba(255, 255, 255, 0);
       border-color: #3daee9; }
       .list-row:selected .button:backdrop:insensitive > .label, .list-row:selected .button.flat:backdrop:insensitive > .label, .list-row:selected .header-bar .titlebutton.button:backdrop:insensitive > .label, .header-bar .list-row:selected .titlebutton.button:backdrop:insensitive > .label,
       .list-row:selected .titlebar .titlebutton.button:backdrop:insensitive > .label,
@@ -3693,7 +3700,8 @@ GtkCalendar {
       border-color: #c2c7cb;
       background-image: linear-gradient(to bottom, #e5e6e7);
       text-shadow: none;
-      icon-shadow: none; }
+      icon-shadow: none;
+      box-shadow: inset 0 1px rgba(255, 255, 255, 0); }
       .message-dialog.csd .dialog-action-area .button:backdrop:insensitive > .label {
         color: inherit; }
     .message-dialog.csd .dialog-action-area .button.suggested-action {
@@ -3721,11 +3729,12 @@ GtkCalendar {
           border-color: #c2c7cb;
           background-image: linear-gradient(to bottom, #e5e6e7);
           text-shadow: none;
-          icon-shadow: none; }
+          icon-shadow: none;
+          box-shadow: inset 0 1px rgba(255, 255, 255, 0); }
           .message-dialog.csd .dialog-action-area .button.suggested-action:backdrop:insensitive > .label {
             color: inherit; }
       .message-dialog.csd .dialog-action-area .button.suggested-action:insensitive {
-        background-color: #31363B;
+        background-color: #475057;
         color: shade(#fcfcfc, 0.5); }
     .message-dialog.csd .dialog-action-area .button.destructive-action {
       box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
@@ -3752,11 +3761,12 @@ GtkCalendar {
           border-color: #c2c7cb;
           background-image: linear-gradient(to bottom, #e5e6e7);
           text-shadow: none;
-          icon-shadow: none; }
+          icon-shadow: none;
+          box-shadow: inset 0 1px rgba(255, 255, 255, 0); }
           .message-dialog.csd .dialog-action-area .button.destructive-action:backdrop:insensitive > .label {
             color: inherit; }
       .message-dialog.csd .dialog-action-area .button.destructive-action:insensitive {
-        background-color: #31363B;
+        background-color: #475057;
         color: shade(#fcfcfc, 0.5); }
 GtkFileChooserDialog .search-bar {
   background-color: #eff0f1;
@@ -3845,7 +3855,7 @@ GtkInfoBar {
 .question,
 .warning,
 .error {
-  background-color: #31363B;
+  background-color: #475057;
   color: #fcfcfc;
   text-shadow: none;
   border-color: #1998da; }
@@ -3920,6 +3930,7 @@ GtkInfoBar {
         background-image: linear-gradient(to bottom, #59b9eb);
         text-shadow: none;
         icon-shadow: none;
+        box-shadow: inset 0 1px rgba(255, 255, 255, 0);
         border-color: #3daee9; }
         .info .button:backdrop:insensitive > .label,
         .question .button:backdrop:insensitive > .label,
@@ -4361,7 +4372,7 @@ these are pretty self explicative */
 @define-color icon_red #da4453;
 /*
 titlebar colors */
-@define-color titlebar_bg_color #31363B;
+@define-color titlebar_bg_color #475057;
 @define-color titlebar_fg_color #fcfcfc;
 @define-color hover_color #93cee9;
 /*
@@ -4371,8 +4382,8 @@ read if you used those and something break with a version upgrade you're on your
 @define-color wm_unfocused_title #bfc1c3;
 @define-color wm_highlight white;
 @define-color wm_borders_edge white;
-@define-color wm_bg_a #31363B;
-@define-color wm_bg_b #31363B;
+@define-color wm_bg_a #475057;
+@define-color wm_bg_b #475057;
 @define-color wm_shadow alpha(black, 0.35);
 @define-color wm_border alpha(black, 0.18);
 @define-color wm_button_hover_color_a shade(#eff0f1, 1.3);
