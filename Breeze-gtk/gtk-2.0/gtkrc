@@ -1,6 +1,10 @@
-# Breezy | ScionicSpectre
+# Author:       ScionicSpectre
+# Theme:        Breezy
+# Description:  Breeze theme for GTK+2.0
 
-gtk-color-scheme	= "base_color:#FCFCFC\nfg_color:#31363B\ntooltip_fg_color:#31363B\ntooltip_bg_color:#000000\nselected_bg_color:#3DAEE9\nselected_fg_color:#FFFFFF\ntext_color:#31363B\nbg_color:#EFF0F1\ninsensitive_fg_color:#bdc3c7"
+gtk-color-scheme = "bg_color:#EFF0F1\nselected_bg_color:#3DAEE9\nbase_color:#FCFCFC" # Background, base.
+gtk-color-scheme = "fg_color:#31363B\nselected_fg_color:#FFFFFF\ninsensitive_fg_color:#BDC3C7\ntext_color:#31363B" # Foreground, text.
+gtk-color-scheme = "tooltip_bg_color:#31363B\ntooltip_fg_color:#FCFCFC" # Tooltips.
 
 gtk-auto-mnemonics	= 1
 
