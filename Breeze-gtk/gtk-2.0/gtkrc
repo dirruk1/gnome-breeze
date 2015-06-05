@@ -56,7 +56,7 @@ style "default"
 	GtkStatusbar::shadow_type	= GTK_SHADOW_NONE
 	GtkSpinButton::shadow_type 	= GTK_SHADOW_NONE
 	GtkMenuBar::shadow-type		= GTK_SHADOW_NONE
-	GtkMenuBar::internal-padding	= 1
+	GtkMenuBar::internal-padding	= 3
 	GtkMenu::horizontal-padding	= 2
 	GtkMenu::vertical-padding	= 2
 
