@@ -1,0 +1,140 @@
+// //[ColorEffects:Disabled]
+$Disabled_Color:rgb(56,56,56);
+$Disabled_ColorAmount:0;
+$Disabled_ColorEffect:0;
+$Disabled_ContrastAmount:0.65;
+$Disabled_ContrastEffect:1;
+$Disabled_IntensityAmount:0.1;
+$Disabled_IntensityEffect:2;
+//
+// //[ColorEffects:Inactive]
+$Inactive_ChangeSelectionColor:true;
+$Inactive_Color:rgb(112,111,110);
+$Inactive_ColorAmount:0.025;
+$Inactive_ColorEffect:2;
+$Inactive_ContrastAmount:0.1;
+$Inactive_ContrastEffect:2;
+$Inactive_Enable:false;
+$Inactive_IntensityAmount:0;
+$Inactive_IntensityEffect:0;
+//
+// //[Colors:Button]
+// $Button_BackgroundAlternate:rgb(189,195,199);
+$Button_BackgroundNormal:rgb(239,240,241);
+$Button_DecorationFocus:rgb(61,174,233);
+$Button_DecorationHover:rgb(147,206,233);
+// $Button_ForegroundActive:rgb(61,174,233);
+// $Button_ForegroundInactive:rgb(127,140,141);
+// $Button_ForegroundLink:rgb(41,128,185);
+// $Button_ForegroundNegative:rgb(218,68,83);
+// $Button_ForegroundNeutral:rgb(246,116,0);
+$Button_ForegroundNormal:rgb(49,54,59);
+// $Button_ForegroundPositive:rgb(39,174,96);
+// $Button_ForegroundVisited:rgb(127,140,141);
+//
+// //[Colors:Selection]
+// $Selection_BackgroundAlternate:rgb(29,153,243);
+$Selection_BackgroundNormal:rgb(61,174,233);
+// $Selection_DecorationFocus:rgb(61,174,233);
+// $Selection_DecorationHover:rgb(147,206,233);
+// $Selection_ForegroundActive:rgb(252,252,252);
+// $Selection_ForegroundInactive:rgb(239,240,241);
+// $Selection_ForegroundLink:rgb(253,188,75);
+// $Selection_ForegroundNegative:rgb(218,68,83);
+// $Selection_ForegroundNeutral:rgb(246,116,0);
+$Selection_ForegroundNormal:rgb(239,240,241);
+// $Selection_ForegroundPositive:rgb(39,174,96);
+// $Selection_ForegroundVisited:rgb(189,195,199);
+//
+// //[Colors:Tooltip]
+// $Tooltip_BackgroundAlternate:rgb(77,77,77);
+$Tooltip_BackgroundNormal:rgb(49,54,59);
+// $Tooltip_DecorationFocus:rgb(61,174,233);
+// $Tooltip_DecorationHover:rgb(147,206,233);
+// $Tooltip_ForegroundActive:rgb(61,174,233);
+// $Tooltip_ForegroundInactive:rgb(189,195,199);
+// $Tooltip_ForegroundLink:rgb(41,128,185);
+// $Tooltip_ForegroundNegative:rgb(218,68,83);
+// $Tooltip_ForegroundNeutral:rgb(246,116,0);
+$Tooltip_ForegroundNormal:rgb(239,240,241);
+// $Tooltip_ForegroundPositive:rgb(39,174,96);
+// $Tooltip_ForegroundVisited:rgb(127,140,141);
+//
+// //[Colors:View]
+// $View_BackgroundAlternate:rgb(239,240,241);
+$View_BackgroundNormal:rgb(252,252,252);
+$View_DecorationFocus:rgb(61,174,233);
+$View_DecorationHover:rgb(147,206,233);
+// $View_ForegroundActive:rgb(61,174,233);
+// $View_ForegroundInactive:rgb(127,140,141);
+$View_ForegroundLink:rgb(41,128,185);
+$View_ForegroundNegative:rgb(218,68,83);
+$View_ForegroundNeutral:rgb(246,116,0);
+$View_ForegroundNormal:rgb(49,54,59);
+$View_ForegroundPositive:rgb(39,174,96);
+$View_ForegroundVisited:rgb(127,140,141);
+//
+// //[Colors:Window]
+// $Window_BackgroundAlternate:rgb(189,195,199);
+$Window_BackgroundNormal:rgb(239,240,241);
+// $Window_DecorationFocus:rgb(61,174,233);
+// $Window_DecorationHover:rgb(147,206,233);
+// $Window_ForegroundActive:rgb(61,174,233);
+// $Window_ForegroundInactive:rgb(127,140,141);
+// $Window_ForegroundLink:rgb(41,128,185);
+// $Window_ForegroundNegative:rgb(218,68,83);
+// $Window_ForegroundNeutral:rgb(246,116,0);
+$Window_ForegroundNormal:rgb(49,54,59);
+// $Window_ForegroundPositive:rgb(39,174,96);
+// $Window_ForegroundVisited:rgb(127,140,141);
+//
+// //[WM]
+$WM_activeBackground:rgb(71,80,87);
+// $WM_activeBlend:rgb(255,255,255);
+$WM_activeForeground:rgb(239,240,241);
+$WM_inactiveBackground:rgb(239,240,241);
+// $WM_inactiveBlend:rgb(75,71,67);
+$WM_inactiveForeground:rgb(189,195,199);
+
+//
+// Color maps for color effect functions
+//
+$Color: (
+  Disabled: $Disabled_Color,
+  Inactive: $Inactive_Color
+  );
+$ColorAmount: (
+  Disabled: $Disabled_ColorAmount,
+  Inactive: $Inactive_ColorAmount
+  );
+$ColorEffect: (
+  Disabled: $Disabled_ColorEffect,
+  Inactive: $Inactive_ColorEffect
+  );
+$ContrastAmount: (
+  Disabled: $Disabled_ContrastAmount,
+  Inactive: $Inactive_ContrastAmount
+  );
+$ContrastEffect: (
+  Disabled: $Disabled_ContrastEffect,
+  Inactive: $Inactive_ContrastEffect
+  );
+$IntensityAmount: (
+  Disabled: $Disabled_IntensityAmount,
+  Inactive: $Inactive_IntensityAmount
+  );
+$IntensityEffect: (
+  Disabled: $Disabled_IntensityEffect,
+  Inactive: $Inactive_IntensityEffect
+  );
+
+$r: 3px; // standard radius
+
+$borders_color: mix($Window_BackgroundNormal,$Window_ForegroundNormal, 75%);
+$link_color: $View_ForegroundLink;
+$link_visited_color: $View_ForegroundVisited;
+
+$warning_color: $View_ForegroundNeutral;
+$error_color: $View_ForegroundNegative;
+$success_color: $View_ForegroundPositive;
+$destructive_color: $error_color;

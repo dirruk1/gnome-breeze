@@ -1,0 +1,201 @@
+@function gtkalpha($c,$a) {
+  @return unquote("alpha(#{$c},#{$a})");
+}
+
+$ease-out-quad: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+
+* {
+  padding: 0;
+  -GtkToolButton-icon-spacing: 4;
+  -GtkTextView-error-underline-color: $error_color;
+
+  -GtkButton-child-displacement-x: 0;
+  -GtkButton-child-displacement-y: 0;
+
+  -GtkCheckButton-indicator-size: 20;
+  -GtkCheckMenuItem-indicator-size: 20;
+
+  // The size for scrollbars. The slider is 2px smaller, but we keep it
+  // up so that the whole area is sensitive to button presses for the
+  // slider. The stepper button is larger in both directions, the slider
+  // only in the width
+
+  -GtkScrolledWindow-scrollbar-spacing: 0;
+  -GtkScrolledWindow-scrollbars-within-bevel: 1;
+
+  -GtkToolItemGroup-expander-size: 11;
+  -GtkExpander-expander-size: 16;
+  -GtkTreeView-expander-size: 11;
+
+  -GtkTreeView-horizontal-separator: 4;
+
+  -GtkMenu-horizontal-padding: 0;
+  -GtkMenu-vertical-padding: 0;
+
+  -GtkWidget-link-color: $link_color;
+  -GtkWidget-visited-link-color: $link_visited_color;
+
+  -GtkWidget-focus-padding: 2;    // FIXME: do we still need these?
+  -GtkWidget-focus-line-width: 1; //
+
+  -GtkWidget-text-handle-width: 20;
+  -GtkWidget-text-handle-height: 20;
+
+  -GtkDialog-button-spacing: 4;
+  -GtkDialog-action-area-border: 0;
+
+  -GtkStatusbar-shadow-type: none;
+
+  outline-width: 0px;
+}
+
+
+/***************
+ * Base States *
+ ***************/
+
+.background {
+  color: fg_color(w);
+  background-color: bg_color(w);
+
+  &:backdrop {
+    text-shadow: none;
+    icon-shadow: none;
+    color: backdrop(fg_color(w));
+    background-color: backdrop(bg_color(w));
+  }
+}
+
+/*
+   These wildcard seems unavoidable, need to investigate.
+   Wildcards are bad and troublesome, use them with care,
+   or better, just don't.
+   Everytime a wildcard is used a kitten dies, painfully.
+*/
+
+*:insensitive {
+  -gtk-image-effect: dim;
+}
+
+.gtkstyle-fallback {
+  background-color: bg_color(w);
+  color: fg_color(w);
+  &:prelight {
+    background-color: lighten(bg_color(w), 10%);
+    color: fg_color(w);
+  }
+  &:active {
+    background-color: darken(bg_color(w), 10%);
+    color: fg_color(w);
+  }
+  &:insensitive {
+    background-color: insensitive(bg_color(w));
+    color: insensitive(fg_color(w));
+  }
+  &:selected {
+    background-color: selection(bg);
+    color: selection(fg);
+  }
+}
+
+.view {
+  color: fg_color(v);
+  background-color: bg_color(v);
+
+  &:backdrop {
+    color: backdrop(fg_color(v));
+    background-color: backdrop(bg_color(v));
+  }
+
+  &:selected {
+    border-radius: $r;
+    @extend %selected_items;
+  }
+}
+
+.rubberband {
+  border: 1px solid selection(bg);
+  background-color: transparentize(selection(bg),0.8);
+  &:backdrop {
+    border-color: backdrop(selection(bg));
+    background-color: backdrop(transparentize(selection(bg),0.8));
+  }
+}
+
+.label {
+  &.separator {
+    color: fg_color(w);
+    @extend .dim-label;
+    &:backdrop { color: backdrop(fg_color(w)); }
+  }
+  &:selected,
+  &:selected:focus,
+  &:selected:hover {
+    @extend %selected_items;
+  }
+  &:insensitive {
+    color: insensitive(fg_color(w));
+    &:backdrop { color: backdrop(insensitive(fg_color(w))); }
+  }
+}
+
+.dim-label {
+  opacity: 0.5;
+  text-shadow: none;
+}
+
+GtkAssistant {
+  .sidebar {
+    background-color: fg_color(v);
+    border-top: 1px solid border(normal);
+    &:dir(ltr) { border-right: 1px solid border(normal); }
+    &:dir(rtl) { border-left: 1px solid border(normal); }
+    &:backdrop {
+      background-color: backdrop(fg_color(v));
+      border-color: backdrop(border(normal));
+    }
+  }
+  &.csd .sidebar { border-top-style: none; }
+  .sidebar .label {
+    padding: 6px 12px;
+  }
+  .sidebar .label.highlight {
+    background-color: mix(bg_color(v), fg_color(v), 80%);
+  }
+}
+
+GtkTextView { // This will get overridden by .view, needed by gedit line numbers
+  background-color: mix(bg_color(w), bg_color(v), 50%);
+  &:backdrop { background-color: backdrop(mix(bg_color(w), bg_color(v), 50%)); }
+}
+
+.grid-child {
+  padding: 3px;
+  border-radius: $r;
+  &:selected {
+    @extend %selected_items;
+  }
+}
+
+%osd, .osd {
+  color: fg_color(w);
+  border: 1px solid bg_color(w);
+  background-color: bg_color(o);
+  background-clip: padding-box;
+  box-shadow: none;
+  text-shadow: none;
+  icon-shadow: none;
+  &:backdrop {
+    color: backdrop(fg_color(w));
+    background-color: backdrop(bg_color(o));
+  }
+}
+
+%selected_items {
+  background-color: selection(bg);
+  color: selection(fg);
+  &:backdrop {
+    background-color: backdrop(selection(bg, backdrop));
+    color: backdrop(fg_color(b));
+  }
+}

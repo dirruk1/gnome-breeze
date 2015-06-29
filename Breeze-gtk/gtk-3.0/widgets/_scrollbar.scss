@@ -1,0 +1,191 @@
+@mixin _border($name, $width: 1px 1px 2px 1px, $image-width: 2 2 3 2 / 2px 2px 3px 2px) {
+  border-image: -gtk-scaled(url("assets/#{$name}.png"),url("assets/#{$name}@2.png")) $image-width stretch;
+  border-width: $width;
+  border-style: solid;
+  border-color: transparent;
+}
+
+/**************
+ * Scrollbars *
+ **************/
+
+// .scrollbar {
+//  -GtkRange-trough-border: 0;
+//  -GtkScrollbar-has-backward-stepper: true;
+//  -GtkScrollbar-has-forward-stepper: true;
+//  -GtkRange-slider-width: 16;                             // Breeze scrollbars are wider but it doesn't seem like a good idea for overlay bars
+//  -GtkScrollbar-min-slider-length: 64;
+//  -GtkRange-stepper-spacing: 1;
+//  -GtkRange-trough-under-steppers: 0;
+//
+//  .button {
+//    @extend %undecorated_button;
+//    color: fg_color(b);
+// 	&:hover {
+//     @extend %undecorated_button;
+//  		color: border(hover);
+// 	}
+//  	&:insensitive {
+//      @extend %undecorated_button;
+//      color: insensitive(fg_color(b));
+//   }
+//    &:backdrop {
+//      @extend %undecorated_button;
+//      color: backdrop(fg_color(b));
+//      &:insensitive {
+//        @extend %undecorated_button;
+//        color: backdrop(insensitive(fg_color(b)));
+//      }
+//    }
+//  	}
+//
+//    // Overlay Scrollbars
+//    &.dragging,                                                             // if this isn't set, the scrollbars don't update their size correctly
+//    &.hovering { opacity: 0.998; }                                          // probably a gtk bug
+//    &.overlay-indicator:not(.dragging):not(.hovering) { opacity: 0.999; }     //
+//
+//
+//    &.overlay-indicator:not(.dragging):not(.hovering) {
+//     -GtkRange-slider-width: 8px;
+//     -GtkScrollbar-has-backward-stepper: false;
+//  	  -GtkScrollbar-has-forward-stepper: false;
+//
+//      .slider {
+//        margin: 2px;
+//        border: 2px solid transparent;
+//        border-radius: 2px;
+//        background-color: fg_color(s);
+//        &:backdrop { background-color: backdrop(fg_color(s)); }
+//      }
+//
+//      .trough {
+//        border: none;
+//        background: none;
+//      }
+//    }
+//    // Normal Scrollbars / Overlay Scrollbars on Mouseover
+//    &.trough {
+//      margin: 4px;
+//      border: 4px solid transparent;
+//      border-radius: 4px;
+//      background-color: bg_color(s);
+//      &:backdrop { background-color: backdrop(bg_color(s)); }
+//    }
+//    &.slider {
+//      margin: 4px;
+//      border: 4px solid transparent;
+//      border-radius: 4px;
+//      background-color: fg_color(s);
+//      &:hover { background-color: border(hover); }
+//      &:active { background-color: border(active);}
+//      &:insensitive { background-color: insensitive(fg_color(s)); }
+//      &:backdrop { background-color: backdrop(bg_color(s)); }
+//      &:backdrop:insensitive { background-color: backdrop(insensitive(fg_color(s))); }
+//    }
+//  }
+//
+//
+//  .scrollbars-junction,
+//  .scrollbars-junction.frame { // the small square between two scrollbars
+//    border-color: transparent;
+//    background-color: transparent;
+//    border-image: none;
+//  }
+
+.scrollbar {
+  -GtkRange-trough-border: 0;
+  -GtkScrollbar-has-backward-stepper: true;
+  -GtkScrollbar-has-forward-stepper: true;
+  -GtkRange-slider-width: 16;                             // Breeze scrollbars are wider but it doesn't seem like a good idea for overlay bars
+  -GtkScrollbar-min-slider-length: 64;
+  -GtkRange-stepper-spacing: 0;
+  -GtkRange-trough-under-steppers: 1;
+
+  .button {
+	@extend %undecorated_button;
+  color: fg_color(b);
+	&:hover {
+    @extend %undecorated_button;
+		color: border(hover);
+		}
+	&:insensitive { color: insensitive(fg_color(b)); }
+  &:backdrop {
+    @extend %undecorated_button;
+    color: backdrop(fg_color(b));
+    &:insensitive {color: backdrop(insensitive(fg_color(b)));}
+    @extend %undecorated_button;
+    }
+	}
+
+  // Overlay Scrollbars
+  &.dragging,                                                             // if this isn't set, the scrollbars don't update their size correctly
+  &.hovering { opacity: 0.998; }                                          // probably a gtk bug
+  &.overlay-indicator:not(.dragging):not(.hovering) { opacity: 0.999; }     //
+
+
+  &.overlay-indicator:not(.dragging):not(.hovering) {
+    -GtkRange-slider-width: 8px;
+    -GtkScrollbar-has-backward-stepper: false;
+	  -GtkScrollbar-has-forward-stepper: false;
+
+    .slider {
+      @include _border(scrollbar-slider-overlay, $width: 4px 4px 4px 4px, $image-width: 4 4 4 4 / 4px 4px 4px 4px);
+      &:backdrop {@include _border(scrollbar-slider-overlay-backdrop, $width: 4px 4px 4px 4px, $image-width: 4 4 4 4 / 4px 4px 4px 4px); }
+    }
+    &.horizontal .slider {
+      @include _border(scrollbar-slider-horizontal-overlay, $width: 4px 4px 4px 4px, $image-width: 4 4 4 6 / 4px 4px 4px 4px);
+      &:backdrop {@include _border(scrollbar-slider-horizontal-overlay-backdrop, $width: 4px 4px 4px 4px, $image-width: 4 4 4 6 / 4px 4px 4px 4px); }
+    }
+
+    .trough {
+      border: none;
+      background: none;
+    }
+  }
+  // Normal Scrollbars / Overlay Scrollbars on Mouseover
+  &.trough {
+    @include _border(scrollbar-trough, $width: 23px 8px 23px 8px, $image-width: 23 8 23 8 / 23px 8px 23px 8px);
+    &.horizontal { @include _border(scrollbar-trough-horizontal, $width: 8px 23px 8px 23px, $image-width: 8 23 8 23 / 8px 23px 8px 23px); }
+    &:backdrop {
+      @include _border(scrollbar-trough-backdrop, $width: 23px 8px 23px 8px, $image-width: 23 8 23 8 / 23px 8px 23px 8px);
+      &.horizontal { @include _border(scrollbar-trough-horizontal-backdrop, $width: 8px 23px 8px 23px, $image-width: 8 23 8 23 / 8px 23px 8px 23px); }
+    }
+  }
+  &.slider {
+    @include _border(scrollbar-slider, $width: 8px 8px 8px 8px, $image-width: 8 8 8 8 / 8px 8px 8px 8px);
+    &.horizontal { @include _border(scrollbar-slider-horizontal, $width: 8px 8px 8px 8px, $image-width: 8 8 8 8 / 8px 8px 8px 8px); }
+
+    &:hover {
+      @include _border(scrollbar-slider-hover, $width: 8px 8px 8px 8px, $image-width: 8 8 8 8 / 8px 8px 8px 8px);
+      &.horizontal { @include _border(scrollbar-slider-horizontal-hover, $width: 8px 8px 8px 8px, $image-width: 8 8 8 8 / 8px 8px 8px 8px); }
+    }
+    &:active {
+      @include _border(scrollbar-slider-active, $width: 8px 8px 8px 8px, $image-width: 8 8 8 8 / 8px 8px 8px 8px);
+      &.horizontal { @include _border(scrollbar-slider-horizontal-active, $width: 8px 8px 8px 8px, $image-width: 8 8 8 8 / 8px 8px 8px 8px); }
+    }
+    &:insensitive {
+      @include _border(scrollbar-slider-insensitive, $width: 8px 8px 8px 8px, $image-width: 8 8 8 8 / 8px 8px 8px 8px);
+      &.horizontal { @include _border(scrollbar-slider-horizontal-insensitive, $width: 8px 8px 8px 8px, $image-width: 8 8 8 8 / 8px 8px 8px 8px); }
+    }
+    &:backdrop {
+      @include _border(scrollbar-slider-backdrop, $width: 8px 8px 8px 8px, $image-width: 8 8 8 8 / 8px 8px 8px 8px);
+      &.horizontal { @include _border(scrollbar-slider-horizontal-backdrop, $width: 8px 8px 8px 8px, $image-width: 8 8 8 8 / 8px 8px 8px 8px); }
+    }
+  }
+}
+
+
+.scrollbars-junction,
+.scrollbars-junction.frame { // the small square between two scrollbars
+  border-color: transparent;
+  // the border image is used to add the missing dot between the borders, details, details, details...
+  border-image: linear-gradient(to bottom, border(normal) 1px, transparent 1px) 0 0 0 1 / 0 1px stretch;
+  background-color: bg_color(s);
+
+  &:dir(rtl) { border-image-slice: 0 1 0 0; }
+
+  &:backdrop {
+    border-image-source: linear-gradient(to bottom, backdrop(border(normal)) 1px, transparent 1px);
+    background-color: backdrop(bg_color(s));
+  }
+}

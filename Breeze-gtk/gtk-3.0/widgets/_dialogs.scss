@@ -1,0 +1,34 @@
+/***********
+ * Dialogs *
+ ***********/
+
+// .message-dialog .dialog-action-area .button {
+//   //padding: 8px;
+// }
+
+.message-dialog { // Message Dialog styling
+  -GtkDialog-button-spacing: 8;
+  -GtkDialog-action-area-border: 8;
+    &.background { background-color: bg_color(w); }
+    &:backdrop { background-color: backdrop(bg_color(w))}
+  .titlebar {
+    box-shadow: none;
+  }
+}
+
+GtkFileChooserDialog {
+  .search-bar {
+    background-color: bg_color(w);
+    border-color: bg_color(w);
+    box-shadow: none;
+    &:backdrop {
+      background-color: backdrop(bg_color(w));
+      border-color: backdrop(bg_color(w));
+      color: backdrop(fg_color(w));
+    }
+  }
+  .dialog-action-box {
+    border-top: 1px solid border(normal);
+    &:backdrop { border-top-color: backdrop(border(normal)); }
+  }
+}

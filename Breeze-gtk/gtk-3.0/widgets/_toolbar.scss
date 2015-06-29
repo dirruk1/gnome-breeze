@@ -1,0 +1,46 @@
+/************
+ * Toolbars *
+ ************/
+.toolbar,
+.primary-toolbar {
+  -GtkWidget-window-dragging: true;
+  padding: 4px;
+  background-color: bg_color(w);
+  &:backdrop {
+    background-color: backdrop(bg_color(w));
+    box-shadow: none;
+  }
+  .osd &, &.osd {
+    padding: 13px;
+    border: none;
+    border-radius: $r;
+    background-color: bg_color(w);
+    &:backdrop {
+      border-color: backdrop(border(normal));
+      background-color: backdrop(bg_color(w));
+      box-shadow: none;
+    }
+  }
+}
+
+//searchbar, location-bar & inline-toolbar
+.inline-toolbar {
+  @extend .toolbar;
+  @extend %inset-bar;
+  border-width: 0 1px 1px;
+  padding: 3px;
+  border-radius: 0  0 $r $r;
+}
+.search-bar, .location-bar {
+  @extend .toolbar;
+  @extend %inset-bar;
+  border-width: 0 0 1px;
+  padding: 3px;
+}
+
+%inset-bar {
+  border-style: solid;
+  border-color: border(normal);
+  text-shadow: none;
+  background-color: bg_color(w);
+}

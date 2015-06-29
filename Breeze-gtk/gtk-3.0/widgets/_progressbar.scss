@@ -1,0 +1,142 @@
+/*****************
+ * Progress bars *
+ *****************/
+
+GtkProgressBar {
+  padding: 0;
+  font-size: smaller;
+  color: border(normal);
+  box-shadow: none;                           // here ot it gets
+  &:backdrop { color: backdrop(border(normal))}                                          // clipped
+
+  &.osd {
+    -GtkProgressBar-xspacing: 0;
+    -GtkProgressBar-yspacing: 0;
+    -GtkProgressBar-min-horizontal-bar-height: 3;
+  }
+  &.trough {  // background
+    border: 1px solid transparent;
+    border-radius: $r;
+    background-color: border(normal);
+    &.osd {
+      border: 1px solid transparent;
+      border-radius: $r;
+      background-color: border(normal);
+      &:backdrop {
+        background-color: backdrop(border(normal));
+      }
+    }
+    &:backdrop {
+      background-color: backdrop(border(normal));
+    }
+  }
+}
+
+// moving bit
+.progressbar {
+  background-color: selection(bg);
+  border: 1px solid selection(bg);
+  border-radius: 0px;
+  box-shadow: none; //needed for clipping
+  &.left {
+    border-top-left-radius: $r;
+    border-bottom-left-radius: $r;
+  }
+  &.right {
+    border-top-right-radius: $r;
+    border-bottom-right-radius: $r;
+  }
+  &.left.right {
+    box-shadow: none;
+  }
+  &.vertical {
+
+    &.bottom {
+      border-bottom-left-radius: $r;
+      border-bottom-right-radius: $r;
+      box-shadow: none;
+    }
+    &.top {
+      border-top-left-radius: $r;
+      border-top-right-radius: $r;
+    }
+  }
+
+  &.osd {
+    background-image: none;
+    background-color: selection(bg);
+    border: 1px solid selection(bg);
+    border-radius: $r;
+    &:backdrop {
+      background-color: backdrop(selection(bg, backdrop));
+      border-color: backdrop(selection(bg, backdrop));
+    }
+  }
+  &:backdrop {
+    background-color: backdrop(selection(bg, backdrop));
+    border-color: backdrop(selection(bg, backdrop));
+  }
+}
+
+/*************
+ * Level Bar *
+ *************/
+
+.level-bar.vertical {
+  -GtkLevelBar-min-block-width: 6;
+  -GtkLevelBar-min-block-height: 34;
+}
+
+.level-bar {
+  box-shadow: none; // needs to be set here to avoid clipping
+  -GtkLevelBar-min-block-width: 34;
+  -GtkLevelBar-min-block-height: 6;
+  &.vertical {
+    -GtkLevelBar-min-block-width: 6;
+    -GtkLevelBar-min-block-height: 34;
+  }
+  &.trough {
+    border: 1px solid transparent;
+    padding: 3px;
+    border-radius: $r;
+    background-color: transparent;;
+  }
+  &.fill-block {
+    // FIXME: it would be nice to set make fill blocks bigger, but we'd need
+    // :nth-child working on discrete indicators
+    border: 1px solid selection(bg);
+    background-color: selection(bg);
+    box-shadow: none;
+    border-radius: $r;
+
+    &.indicator-discrete {
+      &.horizontal { margin: 0 1px; }
+      &.vertical { margin: 1px 0; }
+    }
+    &.level-high {
+      border-color: $success_color;
+      background-color: $success_color;
+      &:backdrop {
+        background-color: backdrop($success_color);
+        border-color: backdrop($success_color);
+      }
+    }
+    &.level-low {
+      border-color: $warning_color;
+      background-color: $warning_color;
+      &:backdrop {
+        background-color: backdrop($warning_color);
+        border-color: backdrop($warning_color);
+      };
+    }
+    &.empty-fill-block {
+      background-color: border(normal);
+      border-color: transparent;
+      box-shadow: none;
+    }
+    &:backdrop {
+      border-color: backdrop(selection(bg, backdrop));
+      background-color: backdrop(selection(bg,backdrop));
+    }
+  }
+}

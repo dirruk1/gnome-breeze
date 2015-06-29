@@ -1,0 +1,87 @@
+/************
+ * GtkScale *
+ ************/
+.scale,
+.scale.scale-has-marks-above.scale-has-marks-below,
+.scale.vertical.scale-has-marks-above.scale-has-marks-below {
+  -GtkScale-slider-length: 18;
+  -GtkRange-slider-width: 18;
+  -GtkRange-trough-border: 2;
+
+  &.fine-tune {
+    &.trough {
+      margin: 8px;
+      border-radius: $r;
+    }
+  }
+
+  &.slider {
+    background-color: bg_color(b);
+    border: 1px solid border(normal);
+    border-radius: 50%;
+    box-shadow: none;
+    &:hover {
+      border-style: solid;
+  	  border-width: 2px;
+      border-color: border(hover);
+      border-radius: 50%; // needed for double marks scales
+      &:backdrop {
+        background-color: backdrop(bg_color(b));
+        border-color: backdrop(border(hover));
+      }
+    }
+    &:insensitive {
+      border-style: solid; // needed for double marks scales or they'll get
+      border-radius: 50%;  // overridden
+      background-color: insensitive(bg_color(b));
+      border-color: insensitive(border(normal));
+      &:backdrop {
+        background-color: backdrop(insensitive(bg_color(b)));
+        border-color: backdrop(insensitive(border(normal)));
+      }
+    }
+    &:active {
+      border: 2px solid border(active);
+      &:backdrop {
+        background-color: backdrop(bg_color(b));
+        border-color: backdrop(border(active));
+      }
+    }
+    &:backdrop {
+      background-color: backdrop(bg_color(b));
+      border-color: backdrop(border(normal));
+    }
+  }
+  &.trough {
+    margin: 9px;
+    border: 1px solid border(normal);
+    border-radius: $r;
+    background-color: border(normal);
+    box-shadow: none;
+    &.highlight {
+      background-color: selection(bg);
+      border-color: selection(bg);
+      &.vertical {
+        background-color: selection(bg);
+        border-color: selection(bg);
+      }
+      &:backdrop {
+        background-color: backdrop(selection(bg, backdrop));
+        border-color: backdrop(selection(bg, backdrop));
+      }
+    }
+    &:insensitive, &.vertical:insensitive {
+      border-color: insensitive(border(normal));
+      background-color: insensitive(border(normal));
+      box-shadow: none;
+      &:backdrop {
+        background-color: backdrop(insensitive(border(normal)));
+        border-color: backdrop(insensitive(border(normal)));
+      }
+    }
+    &:backdrop {
+      background-color: backdrop(border(normal));
+      border-color: backdrop(border(normal));
+    }
+  }
+}
