@@ -1,59 +1,156 @@
-// When color definition differs for dark and light variant,
-// it gets @if ed depending on $variant
+/* colors needed for gtk2 and assets
+  [Buttons]
+  insensitive gradient1:                #{"" + lighten(insensitive(fg_color(b)), 1%)}
+  insensitive gradient2:                #{"" + darken(insensitive(fg_color(b)), 3%)}
 
+  insensitive active gradient1:         #{"" + lighten(insensitive(selection(bg)), 3%)}
+  insensitive active gradient2:         #{"" + darken(insensitive(selection(bg)), 10%)}
 
-$base_color: if($variant == 'light', #fcfcfc, #232629);
-$text_color: if($variant == 'light', #31363b, #EEEFF0);
-$bg_color: if($variant == 'light', #eff0f1, #31363B);
-$fg_color: if($variant == 'light', #31363b, #EEEFF0);
+  insensitive fg color:                 #{"" + insensitive(fg_color(b))}
+  insensitive selected fg color:        #{"" + insensitive(selection(fg))}
+  insensitive border                    #{"" + insensitive(border(normal))}
 
-$selected_fg_color: if($variant == 'light', #fcfcfc, #EEEFF0);
-$selected_bg_color: if($variant == 'light', #3daee9, #3DADE8);
-$selected_borders_color: if($variant== 'light', $selected_bg_color, $selected_bg_color);
-$titlebar_bg_color: if($variant == 'light',#475057 , #31363B); // add to public 
-$titlebar_fg_color: if($variant == 'light', #fcfcfc, #EEEFF0); // add to public
-$hover_color: if($variant == 'light', #93cee9, #3DADE8);
+  [Window]
+  insensitive fg color:                 #{"" + insensitive(fg_color(w))}
+  insensitive selection bg:             #{"" + insensitive(selection(bg))}
+  insensitive selection fg:             #{"" + insensitive(selection(fg))}
 
-// todo
-$borders_color: if($variant == 'light', #bdc3c7, #696D71);
-$borders_edge: if($variant == 'light', white, transparentize($fg_color, 0.9));
-$link_color: if($variant == 'light', darken($selected_bg_color,10%), lighten($selected_bg_color,20%));
-$link_visited_color: if($variant == 'light', darken($selected_bg_color,20%), lighten($selected_bg_color,10%));
-$top_hilight: $borders_edge;
+  [Scrollbar]
+  trough:                               #{"" + bg_color(s)}
+  scrollbar:                            #{"" + fg_color(s)}
+  insensitive scrollbar:                #{"" + insensitive(fg_color(s))}
 
-$scrollbar_bg_color: darken($bg_color, 7%);
+  [Check & Radio]
+  normal                                #{"" + mix(bg_color(w), fg_color(w), 50%)}
+  Disabled                              #{"" + insensitive(mix(bg_color(w), fg_color(w), 60%))}
+  hover                                 #{"" + mix(bg_color(w),selection(bg))}
 
-$warning_color: #f67400;
-$error_color: #ed1515;
-$success_color: if($variant == 'light', #11d116, darken(#73d216,10%));
-$destructive_color: if($variant == 'light', #ef2929, darken(#ef2929,10%));
-$icon_red: #da4453;
+  [titlebuttons]
+  normal                                #{"" + titlebar(fg)}
+  hover                                 #{"" + titlebar(bg)}
+  pressed                               #{"" + mix(titlebar(bg),titlebar(fg), 30%)}
+  close hover                           #{"" + change-color($error_color, $lightness: lightness($error_color)*1.5)}
+  close                                 #{"" + $error_color}
 
-$osd_fg_color: if($variant == 'light', #31363b, #EEEFF0);
-$osd_text_color: if($variant == 'light', #31363b, #EEEFF0);
-$osd_bg_color: transparentize($base_color, 0.2);
-$osd_insensitive_bg_color: shade($osd_fg_color, 0.3);
-$osd_insensitive_fg_color: mix($osd_fg_color, opacify($osd_bg_color, 1), 50%);
-$osd_borders_color: transparentize(black, 0.3);
+*/
 
-$sidebar_bg_color: $bg_color;
+//apps rely on some named colors to be exported
+/* GTK NAMED COLORS
+   ----------------
+   use responsibly! */
 
-$tooltip_borders_color: transparentize(white, 0.9);
+// Sass thinks we're using the colors in the variables as strings and may shoot
+// warning, it's innocuous and can be defeated by using "" + $var
+/*
+widget text/foreground color */
+@define-color theme_fg_color #{"" + fg_color(w)};
 
-//insensitive state derived colors
-$insensitive_fg_color: mix($fg_color, $bg_color, 50%);
-$insensitive_bg_color: mix($bg_color, $fg_color, 95%);
-$insensitive_borders_color: $borders_color;
+/*
+text color for entries, views and content in general */
+@define-color theme_text_color #{"" +fg_color(v)};
 
-//colors for the backdrop state, derived from the main colors.
-$backdrop_base_color: if($variant ==' light', $base_color, lighten($base_color, 1%));
-$backdrop_text_color: $text_color;
-$backdrop_bg_color: $bg_color;
-$backdrop_fg_color: mix($fg_color, $backdrop_bg_color, 25%);
-$backdrop_insensitive_color: if($variant == 'light', darken($backdrop_bg_color, 15%), lighten($backdrop_bg_color, 15%));
-$backdrop_selected_fg_color: $selected_fg_color;
-$backdrop_borders_color: mix($borders_color, $bg_color, 90%);
-$backdrop_dark_fill: mix($backdrop_borders_color, $backdrop_bg_color, 35%);
-$backdrop_sidebar_bg_color: lighten($backdrop_bg_color,5%);
+/*
+widget base background color */
+@define-color theme_bg_color #{"" +bg_color(w)};
 
-$backdrop_scrollbar_bg_color: darken($backdrop_bg_color, 3%);
+/*
+text widgets and the like base background color */
+@define-color theme_base_color #{"" +bg_color(v)};
+
+/*
+base background color of selections */
+@define-color theme_selected_bg_color #{"" +selection(bg)};
+
+/*
+text/foreground color of selections */
+@define-color theme_selected_fg_color #{"" +selection(fg)};
+
+/*
+base background color of insensitive widgets */
+@define-color insensitive_bg_color #{"" +insensitive(bg_color(w))};
+
+/*
+text foreground color of insensitive widgets */
+@define-color insensitive_fg_color #{"" +insensitive(fg_color(w))};
+
+/*
+insensitive text widgets and the like base background color */
+@define-color insensitive_base_color #{"" +insensitive(fg_color(v))};
+
+/*
+widget text/foreground color on backdrop windows */
+@define-color theme_unfocused_fg_color #{"" +backdrop(fg_color(w))};
+
+/*
+text color for entries, views and content in general on backdrop windows */
+@define-color theme_unfocused_text_color #{"" +backdrop(fg_color(v))};
+
+/*
+widget base background color on backdrop windows */
+@define-color theme_unfocused_bg_color #{"" +backdrop(bg_color(w))};
+
+/*
+text widgets and the like base background color on backdrop windows */
+@define-color theme_unfocused_base_color #{"" +backdrop(bg_color(v))};
+
+/*
+base background color of selections on backdrop windows */
+@define-color theme_unfocused_selected_bg_color #{"" +backdrop(selection(bg, backdrop))};
+
+/*
+text/foreground color of selections on backdrop windows */
+@define-color theme_unfocused_selected_fg_color #{"" + backdrop(selection(fg))};
+
+/*
+widgets main borders color */
+@define-color borders #{"" +border(normal)};
+
+/*
+widgets main borders color on backdrop windows */
+@define-color unfocused_borders #{"" +backdrop(border(normal))};
+
+/*
+widgets main borders color insensitive */
+@define-color insensitive_borders #{"" +insensitive(border(normal))};
+/*
+these are pretty self explicative */
+@define-color warning_color #{"" +$warning_color};
+@define-color error_color #{"" +$error_color};
+@define-color success_color #{"" +$success_color};
+
+//@define-color destructive_color #{$destructive_color}
+
+/*
+titlebar colors */
+@define-color titlebar_bg_color #{"" +titlebar(bg)};
+@define-color titlebar_fg_color #{"" +titlebar(fg)};
+
+//WM
+
+// $_wm_highlight: if($variant=='light', $top_hilight,  // Sass gets mad if this is
+//                   transparentize(black,1));          // done directly in the
+//                                                      // color definition
+//
+// /*
+// these colors are exported for the window manager and shouldn't be used in applications,
+// read if you used those and something break with a version upgrade you're on your own... */
+// @define-color wm_title #{$titlebar_fg_color};
+// @define-color wm_unfocused_title #{$backdrop_fg_color};
+// @define-color wm_highlight #{"" + $_wm_highlight};
+// @define-color wm_borders_edge #{"" + $borders_edge};
+//
+// @define-color wm_bg_a #{$titlebar_bg_color};
+// @define-color wm_bg_b #{$titlebar_bg_color};
+//
+// @define-color wm_shadow alpha(black, 0.35);
+// @define-color wm_border alpha(black, 0.18);
+//
+// @define-color wm_button_hover_color_a shade(#{$bg_color}, 1.3);
+// @define-color wm_button_hover_color_b #{$bg_color};
+// @define-color wm_button_active_color_a shade(#{$bg_color}, 0.85);
+// @define-color wm_button_active_color_b shade(#{$bg_color}, 0.89);
+// @define-color wm_button_active_color_c shade(#{$bg_color}, 0.9);
+
+//FIXME this is really an API
+
+@define-color content_view_bg #{"" + bg_color(v)};
