@@ -1,0 +1,459 @@
+
+// buttons
+
+@mixin button($t, $c:b_color(normal), $tc:b_color(text)) {
+//
+// Button drawing function
+//
+// $t:    button type,
+// $c:    base button color for colored* types
+// $tc:   optional text color for colored* types
+// $edge: set to none to not draw the bottom edge or specify a color to not
+//        use the default one
+//
+// possible $t values:
+// normal, hover, active, insensitive, insensitive-active,
+// backdrop, backdrop-active, backdrop-insensitive, backdrop-insensitive-active,
+// osd, osd-hover, osd-active, osd-insensitive, osd-backdrop, undecorated
+//
+
+  @if $t==normal {
+  //
+  // normal button
+  //
+    box-shadow: 1px 1px 1px rgba(0,0,0,0.2);
+    text-shadow: none;
+    icon-shadow: none;
+
+    color: $tc;
+    border-color: if($c!=b_color(normal), $c, $border_color);
+    background-image: button_gradient($c, normal);
+  }
+
+  @else if $t==hover {
+  //
+  // hovered button
+  //
+    color: $tc;
+    border-color: if($c!=b_color(normal), $c, b_color(hover));
+  }
+
+  @else if $t==active {
+  //
+  // pushed button
+  //
+    color: if($tc==b_color(text),b_color(active-text), $tc);
+    border-color: if($c!=b_color(normal), $c, b_color(active));
+    background-image: if($c!=b_color(normal), button_gradient($c, active),
+                                          button_gradient(b_color(active),active));
+  }
+
+  @else if $t==active-hover {
+  //
+  //
+  //
+    color: $tc;
+    border-color: if($c!=b_color(normal), transparentize($c, 0.5), b_color(hover));
+    background-image: if($c!=b_color(normal), button_gradient(transparentize($c, 0.5),active),
+                                        button_gradient(b_color(hover),active));
+  }
+
+  @else if $t==insensitive {
+  //
+  // insensitive button
+  //
+    color: if($tc!=b_color(text),insensitive($tc),insensitive(b_color(text)));
+    border-color: if($c!=b_color(normal), insensitive($c), insensitive($border_color));
+    background-image: if($c!=b_color(normal), button_gradient(insensitive($c), normal),
+                                          button_gradient(insensitive(b_color(normal)), normal));
+    > .label { color: inherit; }
+  }
+
+  @else if $t==insensitive-active {
+  //
+  // insensitive pushed button
+  //
+    color: if($tc!=b_color(text), insensitive($tc), insensitive(b_color(active-text)));
+    border-color: insensitive(b_color(active));
+    background-image: if($c!=b_color(normal), button_gradient(insensitive($c), active),
+                                          button_gradient(insensitive(b_color(active)),active));
+    > .label { color: inherit; }
+  }
+
+  @else if $t==backdrop {
+  //
+  // backdrop button
+  //
+    color: backdrop($tc);
+    border-color: backdrop($border_color);
+    background-image: button_gradient(backdrop($c), normal);
+  }
+
+  @else if $t==backdrop-active {
+  //
+  // backdrop pushed button
+  //
+    color: if($tc!=b_color(text), backdrop($tc), backdrop(b_color(active-text)));
+    border-color: if($c!=b_color(normal), backdrop($c), backdrop(b_color(active)));
+    background-image: if($c!=b_color(normal), button_gradient(backdrop($c), active),
+                                          button_gradient(backdrop(b_color(active)),active));
+  }
+
+  @else if $t==backdrop-insensitive {
+  //
+  // backdrop insensitive button
+  //
+    color: backdrop(insensitive($tc));
+    border-color: if($c!=b_color(normal), backdrop(insensitive($c)), backdrop(insensitive($border_color)));
+    background-image: button_gradient(backdrop(insensitive($c)));
+    > .label { color: inherit; }
+  }
+
+  @else if $t==backdrop-insensitive-active {
+  //
+  // backdrop insensitive pushed button
+  //
+    color: if($c!=b_color(normal), backdrop(insensitive($tc)), backdrop(insensitive(b_color(active-text))));
+    border-color: if($c!=b_color(normal), backdrop(insensitive($c)), backdrop(insensitive(b_color(active))));
+    background-image: if($c!=b_color(normal), button_gradient(backdrop(insensitive($c)), active),
+                                          button_gradient(backdrop(insensitive(b_color(active))),active));
+    > .label { color: inherit; }
+  }
+
+  @else if $t==undecorated {
+  //
+  // reset
+  //
+    border-color: transparentize(white,1);  //FIXME needed?
+    background-color: transparent;
+    background-image: none;
+	  box-shadow:none;
+    color: $tc;
+
+    text-shadow: none;
+    icon-shadow: none;
+  }
+}
+
+/***********
+ * Buttons *
+ ***********/
+
+// stuff for .needs-attention
+$_dot_color: b_color(active);
+@keyframes needs_attention {
+  from {
+    background-image: -gtk-gradient(radial,
+                                    center center, 0,
+                                    center center, 0.01,
+                                    to($_dot_color),
+                                    to(transparent));
+  }
+  to {
+    background-image: -gtk-gradient(radial,
+                                    center center, 0,
+                                    center center, 0.5,
+                                    to(s_color(normal)),
+                                    to(transparent));
+  }
+}
+
+%buttons {
+
+    $_button_transition: all 200ms $ease-out-quad;
+
+    border: 1px solid;
+    border-radius: $r;
+    padding: 6px;
+    background-clip: border-box;
+    transition: $_button_transition;
+    @include button(normal);
+    &.flat {
+      @include button(undecorated);
+      // to avoid adiacent buttons borders clashing when transitioning, the transition on the normal state is set
+      // to none, while it's added back in the hover state, so the button decoration will fade in on hover, but
+      // it won't fade out when the pointer leave the button allocation area. To make the transition more evident
+      // in this case the duration is increased.
+      transition: none;
+      &:hover {
+        transition: $_button_transition;
+        transition-duration: 500ms;
+        &:active { transition: $_button_transition; }
+      }
+      &:checked { background-color: $border_color;}
+    }
+    &:hover {
+      @include button(hover);
+      -gtk-image-effect: highlight;  // Do we want this?
+    }
+    &:active, &:checked {
+      @include button(active);
+      transition-duration: 50ms;
+      &:hover {
+  	  @include button(active-hover);
+        }
+    }
+   &:backdrop {
+     @include button(backdrop);
+     -gtk-image-effect: none;
+     &:active, &:checked {
+       @include button(backdrop-active);
+     }
+     &:insensitive {
+       @include button(backdrop-insensitive);
+     }
+     &:insensitive:active, &:insensitive:checked {
+       @include button(backdrop-insensitive-active);
+     }
+   }
+    &.flat:backdrop {
+      -gtk-image-effect: none;
+      @include button(undecorated);
+      color: backdrop(b_color(text));
+    }
+    &.flat:insensitive {
+      @include button(undecorated);
+      color: insensitive(b_color(text));
+    }
+    &.flat:backdrop:insensitive {
+      @include button(undecorated);
+      color: backdrop(insensitive(b_color(text)));
+    }
+    &:insensitive {
+      @include button(insensitive);
+      &:active, &:checked {
+        @include button(insensitive-active);
+      }
+    }
+}
+
+.button {
+  @extend %buttons;
+  &.osd {
+    @extend %buttons;
+  }
+  //overlay / OSD style
+  .osd & {
+    @extend %buttons;
+  }
+
+  // Suggested and Destructive Action buttons
+  @each $b_type, $button_color in (suggested-action, b_color(active)),
+                              (destructive-action, $error_color) {
+    &.#{$b_type},
+    &.#{$b_type}.osd & {
+      @include button(normal, $button_color, b_color(active-text));
+      &.flat {
+        @include button(undecorated);
+        color: $button_color;
+      }
+      &:hover { @include button(hover, $button_color, white); }  //FIXME no hardcoded colors
+      &:active, &:checked { @include button(active, $button_color, white); }
+      &:backdrop, &.flat:backdrop {
+        @include button(backdrop, $button_color, white);
+        &:active, &:checked {
+          @include button(backdrop-active, $button_color, white);
+        }
+        &:insensitive {
+          @include button(backdrop-insensitive);
+          &:active, &:checked {
+            @include button(backdrop-insensitive-active, $button_color, white);
+          }
+        }
+      }
+      &.flat:backdrop, &.flat:insensitive, &.flat:backdrop:insensitive {
+        @include button(undecorated);
+        color: transparentize($button_color, 0.2);
+      }
+      &:insensitive {
+        @include button(insensitive);
+        &:active, &:checked {
+          @include button(insensitive-active, $button_color, white);
+        }
+      }
+    }
+  }
+
+  &.image-button { padding: 6px; }
+
+  &.text-button {
+    padding: 6px
+  }
+
+  &.text-button.image-button {
+    // those buttons needs uneven horizontal padding, we want the icon side
+    // to have the image-button padding, while the text side the text-button
+    // one, so we're adding the missing padding to the label depending on
+    // its position inside the button
+    padding: 6px; // same as .button
+    .label:first-child { padding-left: 8px; }
+    .label:last-child { padding-right: 8px; }
+  }
+
+  .stack-switcher > & {
+    // to position the needs attention dot, padding is added to the button
+    // child, a label needs just lateral padding while an icon needs vertical
+    // padding added too.
+    > .label {
+      padding-left: 6px;  // label padding
+      padding-right: 6px; //
+    }
+    > GtkImage {
+      padding-left: 6px;   // image padding
+      padding-right: 6px;  //
+      padding-top: 3px;    //
+      padding-bottom: 3px; //
+    }
+    &.text-button {
+      padding: 6px; // needed or it will get overridden
+    }
+    &.image-button {
+      // we want image buttons to have a 1:1 aspect ratio, so compensation
+      // of the padding added to the GtkImage is needed
+      padding: 3px 0px;
+    }
+    &.needs-attention > .label,
+    &.needs-attention > GtkImage { @extend %needs_attention; }
+    &.needs-attention:active > .label,
+    &.needs-attention:active > GtkImage,
+    &.needs-attention:checked > .label,
+    &.needs-attention:checked > GtkImage {
+      animation: none;
+      background-image: none;
+    }
+  }
+
+  //inline-toolbar buttons
+  .inline-toolbar &, .inline-toolbar &:backdrop {
+    border-radius: $r;
+    border-width: 1px;
+    @extend %linked;
+  }
+
+  .primary-toolbar & { icon-shadow: none; }
+
+  .linked > &,
+  .linked > &:hover,
+  .linked > &:active,
+  .linked > &:checked,
+  .linked > &:backdrop { @extend %linked; }
+
+  .linked.vertical > &,
+  .linked.vertical > &:hover,
+  .linked.vertical > &:active,
+  .linked.vertical > &:checked,
+  .linked.vertical > &:backdrop { @extend %linked_vertical; }
+}
+
+/**************
+ * ComboBoxes *
+ **************/
+GtkComboBox {
+  > .button { padding: 5px 4px; } // Otherwise combos
+                                                       // are bigger then
+                                                       // buttons
+  -GtkComboBox-arrow-scaling: 0.5;
+  -GtkComboBox-shadow-type: none;
+
+//  box-shadow: 0 1px $borders_edge;
+
+
+  &:insensitive {
+    color: insensitive(b_color(text));
+    text-shadow: none;
+    icon-shadow: none;
+  }
+  &:backdrop {
+    color: backdrop(b_color(text));
+    text-shadow: none;
+    icon-shadow: none;
+  }
+  &:backdrop:insensitive {
+    color: backdrop(insensitive(b_color(text)));
+  }
+  .menuitem { text-shadow: none; }
+  .separator.vertical {
+    // always disable separators
+    -GtkWidget-wide-separators: true;
+  }
+  &.combobox-entry .entry { @extend %linked; }
+  &.combobox-entry .button, &.combobox-entry .button:backdrop {
+    // It is needed to specify the backdrop button or it gets overridden
+    @extend %linked;
+  }
+}
+
+%needs_attention {
+  animation: needs_attention 150ms ease-in;
+  $_dot_shadow: b_color(text);
+  $_dot_shadow_r: 0.5;
+  background-image: -gtk-gradient(radial,
+                                  center center, 0,
+                                  center center, 0.5,
+                                  to($_dot_color),
+                                  to(transparent)),
+                    -gtk-gradient(radial,
+                                  center center, 0,
+                                  center center, $_dot_shadow_r,
+                                  to($_dot_shadow),
+                                  to(transparent));
+  background-size: 6px 6px, 6px 6px;
+  background-repeat: no-repeat;
+  background-position: right 3px, right 4px;
+  &:backdrop {background-size: 6px 6px, 0 0;}
+  &:dir(rtl) {
+    background-position: left 3px, left 4px;
+  }
+}
+
+%linked_middle {
+  border-radius: $r;
+  &:dir(rtl) {
+    border-radius: $r; // needed when including %linked_middle:dir(rtl)
+  }
+}
+
+%linked {
+  @extend %linked_middle;
+  &:first-child {
+    border-radius: $r;
+    border-style: solid;
+  }
+  &:last-child {
+    border-radius: $r;
+    &:dir(rtl) { }
+  }
+  &:only-child {
+    border-radius: $r;
+    border-style: solid;
+  }
+}
+
+%linked_vertical_middle {
+  border-style: solid;
+  border-radius: $r;
+}
+
+%linked_vertical{
+  @extend %linked_vertical_middle;
+  &:first-child {
+    border-radius: $r;
+  }
+  &:last-child {
+    border-radius: $r;
+    border-style: solid;
+  }
+  &:only-child {
+    border-radius: $r;
+    border-style: solid;
+  }
+}
+
+%undecorated_button {
+  border-color: transparent;
+  background-color: transparent;
+  background-image: none;
+  box-shadow:none;
+  text-shadow: none;
+  icon-shadow: none;
+}

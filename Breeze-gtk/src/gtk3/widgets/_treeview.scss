@@ -1,0 +1,136 @@
+
+
+/**************
+ * Tree Views *
+ **************/
+GtkTreeView.view {
+  -GtkTreeView-grid-line-width: 0;
+  -GtkTreeView-grid-line-pattern: '';
+  -GtkTreeView-tree-line-width: 1;
+  -GtkTreeView-tree-line-pattern: '';
+  -GtkTreeView-expander-size: 16;
+
+  border-left-color: $border_color; // this is actually the tree lines color,
+  border-top-color: transparent;                    // while this is the grid lines color, better then nothing
+
+  &:selected { border-radius: 0; } // rest border radius in lists
+
+  &:selected  {
+    background-color: s_color(normal);
+    border-left-color: s_color(text);
+    border-top-color: s_color(text); // doesn't work unfortunatelly
+  }
+  &:backdrop:selected {
+    background-color: backdrop(s_color(backdrop));
+    border-left-color: backdrop(s_color(text));
+    border-top-color: backdrop(s_color(text));
+  }
+
+  &:insensitive {
+    color: insensitive($border_color);
+    &:selected {
+      color: insensitive(s_color(text));
+      &:backdrop { color: backdrop(insensitive(s_color(text))); }
+    }
+    &:backdrop { color: backdrop(insensitive($border_color)); }
+  }
+  &.seperator {
+    color: $border_color;
+  }
+  &.separator:backdrop {
+    color: backdrop($border_color);
+  }
+
+  &:backdrop {
+    border-left-color: backdrop($border_color);
+  }
+
+  &.dnd {
+    border-style: solid none;
+    border-width: 1px;
+    border-color: b_color(hover);
+  }
+
+  &.expander {
+    -gtk-icon-source: -gtk-icontheme('pan-end-symbolic');
+    color: v_color(text);
+    &:dir(rtl) { -gtk-icon-source: -gtk-icontheme('pan-end-symbolic-rtl');}
+    &:hover { color: b_color(hover); }
+    &:selected { color: s_color(text); }
+    &:checked {
+       -gtk-icon-source: -gtk-icontheme('pan-down-symbolic');
+      &:selected { color: s_color(text); }
+      &:backdrop { color: backdrop(v_color(normal)); }
+    }
+    &:backdrop { color: backdrop(v_color(normal)); }
+  }
+}
+
+column-header {
+  .button {
+    @extend %column_header_button;
+    color: b_color(text);
+    background-color: b_color(normal);
+    text-shadow: none;
+    box-shadow: none;
+    &:hover {
+      @extend %column_header_button;
+      color: b_color(text);
+      background-color: transparentize(b_color(hover), 0.5);
+      box-shadow: none;
+      transition: none; //I shouldn't need this
+    }
+    &:active {
+      @extend %column_header_button;
+      color: b_color(text);
+      background-color: transparentize(b_color(hover), 0.5);
+      transition: none; //I shouldn't need this
+    }
+    &.dnd {
+      @extend column-header.button.dnd;
+    }
+  }
+  &:last-child .button,
+  &:last-child .button:backdrop, // set :backdrop too or the border will be visibile there
+  &:last-child.button,
+  &:last-child.button:backdrop { //treeview-like derived widgets in Banshee and Evolution
+    border-right-style: none;
+  }
+}
+
+column-header.button.dnd { // for treeview-like derive widgets
+  transition: none;
+  color: s_color(normal);
+  box-shadow: none;
+  &:active { @extend column-header.button.dnd; }
+  &:selected { @extend column-header.button.dnd; }
+  &:hover { @extend column-header.button.dnd; }
+}
+
+%column_header_button {
+  padding: 6px;
+  border-style: none solid solid none;
+  border-radius: 0;
+  background-image: none;
+  border-color: $border_color;
+  text-shadow: none;
+  &:insensitive {
+    border-color: insensitive($border_color);
+    color: insensitive(b_color(text));
+    background-color: insensitive(b_color(normal));
+    background-image: none;
+  }
+  &:backdrop {
+    border-color: backdrop($border_color);
+    border-style: none solid solid none;
+    color: backdrop(b_color(text));
+    background-image: none;
+    background-color: backdrop(b_color(normal));
+    &:insensitive {
+      border-color: backdrop(insensitive($border_color));
+      background-image: none;
+      background-color: backdrop(insensitive(b_color(normal)));
+      color: backdrop(insensitive(b_color(text)));
+    }
+  }
+}
