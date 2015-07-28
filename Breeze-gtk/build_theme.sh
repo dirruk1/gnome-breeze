@@ -20,8 +20,6 @@ else python $SOURCE_DIR/render_theme.py;
 fi
 
 sass --cache-location /tmp/sass-cache $SOURCE_DIR/gtk3/gtk.scss $SOURCE_DIR/gtk3/gtk.css
-glib-compile-resources --sourcedir=$SOURCE_DIR/gtk3 $SOURCE_DIR/gtk3/gtk.gresource.xml
 cp -R $SOURCE_DIR/gtk3/assets gtk-3.0/
-cp -R $SOURCE_DIR/gtk3/gtk.css gtk-3.0/
-cp $SOURCE_DIR/gtk3/gtk.gresource gtk-3.0/
+cp $SOURCE_DIR/gtk3/gtk.css gtk-3.0/
 cp -R $SOURCE_DIR/gtk2/* gtk-2.0/
