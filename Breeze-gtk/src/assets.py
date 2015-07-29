@@ -208,7 +208,7 @@ def assets(widget, suffix='' ,state='', w=20, h=20, color='none', color2='none',
             drawing.background(color,0,7,20,6)
 
     elif widget == 'scrollbar-slider':
-        if gtk_version=='gtk-2.0':
+        if gtk_version=='gtk2':
             if suffix == '-horizontal':
                 drawing.background(color, 2,0,26,10,5,5,alpha=alpha)
             else:
@@ -282,5 +282,5 @@ def assets(widget, suffix='' ,state='', w=20, h=20, color='none', color2='none',
             drawing.maximize_maximized(color2)
 
     drawing.save(filename)
-    if gtk_version == 'gtk-3.0':
-        drawing.save('{0}/assets/{1}{2}{3}{4}@2.png'.format(gtk_version,prefix,widget,suffix,state), dpi=180)
+    if gtk_version == 'gtk3':
+        drawing.save('src/{0}/assets/{1}{2}{3}{4}@2.png'.format(gtk_version,prefix,widget,suffix,state), dpi=180)
