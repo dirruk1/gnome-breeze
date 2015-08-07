@@ -1590,17 +1590,17 @@ style "tooltips"
 
 style "chrome-gtk-frame"
 {
-	ChromeGtkFrame::frame-color = "#EDEDED"
-	ChromeGtkFrame::inactive-frame-color = "#EDEDED"
+	ChromeGtkFrame::frame-color = @bg_color
+	ChromeGtkFrame::inactive-frame-color = @bg_color
 
 	ChromeGtkFrame::frame-gradient-size = 16
-	ChromeGtkFrame::frame-gradient-color = "#EDEDED"
+	ChromeGtkFrame::frame-gradient-color = @bg_color
 
-	ChromeGtkFrame::incognito-frame-color = lighter ("#EDEDED")
-	ChromeGtkFrame::incognito-inactive-frame-color = lighter ("#EDEDED")
+	ChromeGtkFrame::incognito-frame-color = lighter (@bg_color)
+	ChromeGtkFrame::incognito-inactive-frame-color = lighter (@bg_color)
 
 	ChromeGtkFrame::incognito-frame-gradient-size = 16
-	ChromeGtkFrame::incognito-frame-gradient-color = "#EDEDED"
+	ChromeGtkFrame::incognito-frame-gradient-color = @bg_color
 
 	ChromeGtkFrame::scrollbar-trough-color = shade (0.912, @bg_color)
 	ChromeGtkFrame::scrollbar-slider-prelight-color = shade (1.04, @bg_color)
