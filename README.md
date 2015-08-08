@@ -13,8 +13,7 @@ If your distribution doesn't provide a package, you can install the theme system
 find Breeze* -type f -exec install -Dm644 '{}' "$pkgdir/usr/share/themes/{}" \;
 ```
 
-if you're using KDE make sure you disable "apply colors to non-qt apps" in system-settings > colors > options.
-
 To install only for the current user, copy the files to "~/.themes".
 
-To set the theme in Plasma 5, use System Settings > Application Style > GNOME Application Style. If your distribution doesn't provide a package for kde-gtk-config, you can find it here: https://projects.kde.org/projects/kde/workspace/kde-gtk-config
+To set the theme in Plasma 5, install kde-gtk-config use System Settings > Application Style > GNOME Application Style.
+Also make sure to disable "apply colors to non-qt apps" in System Settings > Colors > Options.
