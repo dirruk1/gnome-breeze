@@ -1607,6 +1607,13 @@ style "chrome-gtk-frame"
 	ChromeGtkFrame::scrollbar-slider-normal-color = @bg_color
 }
 
+# Firefox/Thunderbird
+
+style "mozilla"
+{
+    bg[ACTIVE]		= @bg_color
+}
+
 style "null"
 {
 	engine "pixmap"
@@ -1674,3 +1681,6 @@ widget "*xchat-inputbox"                            	style "entry"
 # Chrome/Chromium
 widget_class "*Chrom*Button*"		style "button"
 widget "*swt*toolbar*"			style "null"
+
+# Firefox/Thunderbird
+widget	"MozillaGtkWidget*"	style	"mozilla"
