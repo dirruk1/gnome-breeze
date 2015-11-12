@@ -35,15 +35,15 @@ style "default"
 	GtkButton::default-border	= { 0, 0, 0, 0 }
 	GtkButton::default-outside_border	= { 0, 0, 0, 0 }
 
-	GtkScrollbar::trough-border	= 5
-	GtkScrollbar::slider-width	= 10
+	GtkScrollbar::trough-border	= 0
+	GtkScrollbar::slider-width	= 20
 	GtkRange::trough-border		= 0
 	GtkRange::slider-width		= 7
 	GtkRange::stepper-size		= 0
 
 	GtkScrollbar::has-backward-stepper		= 1
 	GtkScrollbar::has-forward-stepper		= 1
-	GtkScrollbar::stepper-size			= 10
+	GtkScrollbar::stepper-size			= 20
 	GtkScrollbar::stepper-spacing			= 0
 	GtkScrolledWindow ::scrollbar-spacing		= 0
 	GtkScrolledWindow ::scrollbars-within-bevel	= 1
@@ -557,7 +557,7 @@ style "scrollbar"
       function			= BOX
       detail			= "trough"
       file			= "Scrollbars/trough-scrollbar-horiz.png"
-      border			= { 25,25, 5, 5 }   #large borders while LibreOffice won't use GtkScrollbar::stepper-spacing=1
+      border			= { 30, 30, 5, 5 }   #large borders while LibreOffice won't use GtkScrollbar::stepper-spacing=1
       stretch			= TRUE
       orientation		= HORIZONTAL
     }
@@ -566,7 +566,7 @@ style "scrollbar"
       function			= BOX
       detail			= "trough"
       file			= "Scrollbars/trough-scrollbar-vert.png"
-      border			= { 5, 5, 25, 25 }
+      border			= { 5, 5, 30, 30 }
       stretch			= TRUE
       orientation		= VERTICAL
     }
