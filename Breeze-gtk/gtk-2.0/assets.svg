@@ -19,6 +19,13 @@
    sodipodi:docname="assets.svg">
   <defs
      id="defs4">
+    <inkscape:perspective
+       sodipodi:type="inkscape:persp3d"
+       inkscape:vp_x="0 : 526.1811 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_z="744.09449 : 526.1811 : 1"
+       inkscape:persp3d-origin="372.04724 : 350.7874 : 1"
+       id="perspective5408" />
     <linearGradient
        inkscape:collect="always"
        id="linearGradient4480">
@@ -121,16 +128,16 @@
      borderopacity="1.0"
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
-     inkscape:zoom="15.999999"
-     inkscape:cx="200.34296"
-     inkscape:cy="681.94405"
+     inkscape:zoom="2.828427"
+     inkscape:cx="480.21874"
+     inkscape:cy="484.20489"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="true"
-     inkscape:window-width="1366"
-     inkscape:window-height="713"
+     inkscape:window-width="1920"
+     inkscape:window-height="1052"
      inkscape:window-x="0"
-     inkscape:window-y="27"
+     inkscape:window-y="1"
      inkscape:window-maximized="1"
      showguides="false"
      inkscape:snap-bbox="true"
@@ -148,7 +155,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -1069,108 +1076,208 @@
          rx="3"
          ry="3" />
     </g>
-    <rect
-       style="opacity:1;fill:#74757a;fill-opacity:1;stroke:none;stroke-width:1.25;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+    <g
        id="slider-scrollbar-horiz"
-       width="12"
-       height="10"
-       x="480"
-       y="447.36221"
-       rx="5"
-       ry="5"
-       inkscape:label="#rect4515" />
-    <rect
-       ry="5"
-       rx="5"
-       y="462.36221"
-       x="480"
-       height="10"
-       width="12"
+       inkscape:label="#g5553">
+      <rect
+         transform="matrix(0,1,-1,0,0,0)"
+         style="opacity:1;fill:none;fill-opacity:1;stroke:none;stroke-width:1.25;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         id="rect4545-2-3"
+         width="20"
+         height="11.999991"
+         x="442.36221"
+         y="-492"
+         inkscape:label="#rect4545" />
+      <rect
+         inkscape:label="#rect4515"
+         ry="5"
+         rx="5"
+         y="447.36221"
+         x="480"
+         height="10"
+         width="12"
+         id="rect4515"
+         style="opacity:1;fill:#74757a;fill-opacity:1;stroke:none;stroke-width:1.25;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    </g>
+    <g
        id="slider-scrollbar-horiz-prelight"
-       style="opacity:1;fill:#93cee9;fill-opacity:1;stroke:none;stroke-width:1.25;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       inkscape:label="#rect4517" />
-    <rect
-       style="opacity:1;fill:#3daee9;fill-opacity:1;stroke:none;stroke-width:1.25;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       inkscape:label="#g5557">
+      <rect
+         transform="matrix(0,1,-1,0,0,0)"
+         style="opacity:1;fill:none;fill-opacity:1;stroke:none;stroke-width:1.25;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         id="rect4545-2-3-9"
+         width="20"
+         height="11.999991"
+         x="465.36221"
+         y="-492"
+         inkscape:label="#rect4545" />
+      <rect
+         inkscape:label="#rect4517"
+         style="opacity:1;fill:#93cee9;fill-opacity:1;stroke:none;stroke-width:1.25;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         id="rect4517"
+         width="12"
+         height="10"
+         x="480"
+         y="470.36221"
+         rx="5"
+         ry="5" />
+    </g>
+    <g
        id="slider-scrollbar-horiz-active"
-       width="12"
-       height="10"
-       x="480"
-       y="477.36221"
-       rx="5"
-       ry="5"
-       inkscape:label="#rect4519" />
-    <rect
-       ry="5"
-       rx="5"
-       y="492.36221"
-       x="480"
-       height="10"
-       width="12"
+       inkscape:label="#g5561">
+      <rect
+         transform="matrix(0,1,-1,0,0,0)"
+         style="opacity:1;fill:none;fill-opacity:1;stroke:none;stroke-width:1.25;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         id="rect4545-2-3-4"
+         width="20"
+         height="11.999991"
+         x="488.36221"
+         y="-492"
+         inkscape:label="#rect4545" />
+      <rect
+         inkscape:label="#rect4519"
+         ry="5"
+         rx="5"
+         y="493.36221"
+         x="480"
+         height="10"
+         width="12"
+         id="rect4519-0"
+         style="opacity:1;fill:#3daee9;fill-opacity:1;stroke:none;stroke-width:1.25;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    </g>
+    <g
        id="slider-scrollbar-horiz-insens"
-       style="opacity:0.15;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1.25;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       inkscape:label="#rect4521" />
-    <rect
-       ry="5"
-       rx="5"
-       y="-509"
-       x="446.36221"
-       height="10"
-       width="12"
+       inkscape:label="#g5565">
+      <rect
+         transform="matrix(0,1,-1,0,0,0)"
+         style="opacity:1;fill:none;fill-opacity:1;stroke:none;stroke-width:1.25;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         id="rect4545-2-3-2"
+         width="20"
+         height="11.999991"
+         x="511.36221"
+         y="-492"
+         inkscape:label="#rect4545" />
+      <rect
+         inkscape:label="#rect4521"
+         style="opacity:0.15;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1.25;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         id="rect4521"
+         width="12"
+         height="10"
+         x="480"
+         y="516.36218"
+         rx="5"
+         ry="5" />
+    </g>
+    <g
        id="slider-scrollbar-vert"
-       style="opacity:1;fill:#74757a;fill-opacity:1;stroke:none;stroke-width:1.25;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       transform="matrix(0,1,-1,0,0,0)"
-       inkscape:label="#rect4523" />
-    <rect
-       style="opacity:1;fill:#93cee9;fill-opacity:1;stroke:none;stroke-width:1.25;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       inkscape:label="#g5441">
+      <rect
+         inkscape:label="#rect4545"
+         y="446.36221"
+         x="494"
+         height="11.999991"
+         width="20"
+         id="rect4545"
+         style="opacity:1;fill:none;fill-opacity:1;stroke:none;stroke-width:1.25;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <rect
+         inkscape:label="#rect4523"
+         transform="matrix(0,1,-1,0,0,0)"
+         style="opacity:1;fill:#74757a;fill-opacity:1;stroke:none;stroke-width:1.25;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         id="rect4523"
+         width="12"
+         height="10"
+         x="446.36221"
+         y="-509"
+         rx="5"
+         ry="5" />
+    </g>
+    <g
        id="slider-scrollbar-vert-prelight"
-       width="12"
-       height="10"
-       x="461.36221"
-       y="-509"
-       rx="5"
-       ry="5"
-       transform="matrix(0,1,-1,0,0,0)"
-       inkscape:label="#rect4525" />
-    <rect
-       ry="5"
-       rx="5"
-       y="-509"
-       x="476.36221"
-       height="10"
-       width="12"
+       inkscape:label="#g5541">
+      <rect
+         style="opacity:1;fill:none;fill-opacity:1;stroke:none;stroke-width:1.25;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         id="rect4545-2"
+         width="20"
+         height="11.999991"
+         x="494"
+         y="469.36221"
+         inkscape:label="#rect4545" />
+      <rect
+         inkscape:label="#rect4525"
+         transform="matrix(0,1,-1,0,0,0)"
+         ry="5"
+         rx="5"
+         y="-509"
+         x="469.36221"
+         height="10"
+         width="12"
+         id="rect4525"
+         style="opacity:1;fill:#93cee9;fill-opacity:1;stroke:none;stroke-width:1.25;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    </g>
+    <g
        id="slider-scrollbar-vert-active"
-       style="opacity:1;fill:#3daee9;fill-opacity:1;stroke:none;stroke-width:1.25;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       transform="matrix(0,1,-1,0,0,0)"
-       inkscape:label="#rect4527" />
-    <rect
-       style="opacity:0.15;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1.25;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       inkscape:label="#g5545">
+      <rect
+         style="opacity:1;fill:none;fill-opacity:1;stroke:none;stroke-width:1.25;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         id="rect4545-2-0"
+         width="20"
+         height="11.999991"
+         x="494"
+         y="492.36221"
+         inkscape:label="#rect4545" />
+      <rect
+         inkscape:label="#rect4527"
+         transform="matrix(0,1,-1,0,0,0)"
+         style="opacity:1;fill:#3daee9;fill-opacity:1;stroke:none;stroke-width:1.25;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         id="rect4527"
+         width="12"
+         height="10"
+         x="492.36221"
+         y="-509"
+         rx="5"
+         ry="5" />
+    </g>
+    <g
        id="slider-scrollbar-vert-insens"
-       width="12"
-       height="10"
-       x="491.36221"
-       y="-509"
-       rx="5"
-       ry="5"
-       transform="matrix(0,1,-1,0,0,0)"
-       inkscape:label="#rect4529" />
+       inkscape:label="#g5549">
+      <rect
+         style="opacity:1;fill:none;fill-opacity:1;stroke:none;stroke-width:1.25;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         id="rect4545-2-0-2"
+         width="20"
+         height="11.999991"
+         x="494"
+         y="515.36218"
+         inkscape:label="#rect4545" />
+      <rect
+         inkscape:label="#rect4529"
+         transform="matrix(0,1,-1,0,0,0)"
+         ry="5"
+         rx="5"
+         y="-509"
+         x="515.36218"
+         height="10"
+         width="12"
+         id="rect4529"
+         style="opacity:0.15;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1.25;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    </g>
     <g
        id="trough-scrollbar-horiz"
-       transform="translate(394,-465.99997)"
-       inkscape:label="#g4535">
+       inkscape:label="#g5390"
+       transform="translate(0,16)">
       <rect
          ry="0"
          rx="0"
-         y="982.36218"
-         x="85"
+         y="516.36218"
+         x="474"
          height="20"
-         width="70"
+         width="80"
          id="rect4533"
          style="opacity:0;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1.25;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
       <rect
          ry="5"
          rx="5"
-         y="987.36218"
-         x="100"
+         y="521.36218"
+         x="494"
          height="10"
          width="40"
          id="rect4531"
@@ -1178,24 +1285,26 @@
     </g>
     <g
        id="trough-scrollbar-vert"
-       transform="matrix(0,1,-1,0,1482.3622,477.3622)"
-       inkscape:label="#g4539">
+       inkscape:label="#g5396"
+       transform="translate(0,16)">
       <rect
+         transform="matrix(0,1,-1,0,0,0)"
          style="opacity:0;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1.25;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
          id="rect4541"
-         width="70"
+         width="79.999954"
          height="20"
-         x="65"
-         y="982.36218"
+         x="537.36218"
+         y="-500.00003"
          rx="0"
          ry="0" />
       <rect
+         transform="matrix(0,1,-1,0,0,0)"
          style="opacity:1;fill:#bdc3c7;fill-opacity:1;stroke:none;stroke-width:1.25;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
          id="rect4543"
          width="40"
          height="10"
-         x="80"
-         y="987.36218"
+         x="557.36218"
+         y="-495.00003"
          rx="5"
          ry="5" />
     </g>
