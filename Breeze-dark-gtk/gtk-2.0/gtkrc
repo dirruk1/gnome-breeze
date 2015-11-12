@@ -53,8 +53,8 @@ style "default"
 	GtkSpinButton::shadow_type 	= GTK_SHADOW_NONE
 	GtkMenuBar::shadow-type		= GTK_SHADOW_NONE
 	GtkMenuBar::internal-padding	= 3
-	GtkMenu::horizontal-padding	= 2
-	GtkMenu::vertical-padding	= 2
+	GtkMenu::horizontal-padding	= 1
+	GtkMenu::vertical-padding	= 1
 
 	GtkNotebook::tab-overlap	= 7
 	GtkNotebook::tab-curvature	= 7
