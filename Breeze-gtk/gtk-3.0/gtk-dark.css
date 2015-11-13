@@ -1334,6 +1334,7 @@ GtkComboBox {
   border-width: 0px 0px 2px 0px;
   border-style: solid;
   border-color: #3DADE8;
+  border-radius: 0;
   color: #EEEFF0;
   background-image: none;
   background-color: #31363B;
@@ -4019,9 +4020,9 @@ GtkVolumeButton.button, .header-bar GtkVolumeButton.button.titlebutton,
     box-shadow: 0 2px 6px 1px rgba(0, 0, 0, 0.5); }
   .window-frame.solid-csd {
     border-radius: 0;
-    margin: 4px;
+    margin: 0;
     background-color: #31363B;
-    border: solid 1px #63686c;
+    border: 0;
     box-shadow: none; }
 
 .header-bar .titlebutton.button,
