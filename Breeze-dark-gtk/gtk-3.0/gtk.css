@@ -1907,6 +1907,12 @@ column-header .titlebar .button.titlebutton,
       border-style: solid;
       border-width: 0px 1px 0px 1px;
       border-color: #6bc0ed; }
+      .menu .menuitem:hover:first-child {
+        border-radius: 3px 3px 0px 0px;
+        border-width: 1px 1px 0px 1px; }
+      .menu .menuitem:hover:last-child {
+        border-radius: 0px 0px 3px 3px;
+        border-width: 0px 1px 1px 1px; }
     .menu .menuitem:insensitive {
       color: #909396; }
       .menu .menuitem:insensitive:backdrop {
