@@ -3192,7 +3192,7 @@ GtkVolumeButton.button { padding: 8px; }
 
 .window-frame {
   
-  border-width: 0px;
+  border-width: 0;
 
   // this needs to be transparent
   // see bug #722563
@@ -3235,8 +3235,8 @@ GtkVolumeButton.button { padding: 8px; }
   }
   &.solid-csd {
     border-radius: 0;
-    margin: 0;
-    background-color: $backdrop_bg_color;
+    margin: 1px;
+    background-color: $titlebar_bg_color;
     border: 0;
     box-shadow: none;
   }
