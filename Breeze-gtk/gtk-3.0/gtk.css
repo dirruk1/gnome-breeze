@@ -1911,8 +1911,8 @@ column-header .titlebar .button.titlebutton,
       background-color: #3daee9;
       background-clip: padding-box;
       border-style: solid;
-      border-width: 2px;
-      border-color: transparent; }
+      border-width: 0px 1px 0px 1px;
+      border-color: #1998da; }
     .menu .menuitem:insensitive {
       color: #909396; }
       .menu .menuitem:insensitive:backdrop {
