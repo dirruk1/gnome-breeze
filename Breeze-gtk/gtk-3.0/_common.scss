@@ -1096,7 +1096,7 @@ GtkComboBox {
   border-width: 0px 0px 2px 0px;
   border-style: solid;
   border-color: $selected_bg_color;
-  //border-radius: 0;
+  border-radius: 0;
   color: $titlebar_fg_color;
   
   @include headerbar_fill;
@@ -1575,8 +1575,17 @@ column-header.button.dnd { // for treeview-like derive widgets
       background-color: $selected_bg_color;
       background-clip: padding-box;
       border-style: solid;
-      border-width: 2px;
-      border-color: transparent;
+      border-width: 0px 1px 0px 1px;
+      border-color: if($variant == 'light', darken($selected_bg_color, 10%), lighten($selected_bg_color, 10%)); //tint sides of menu
+      //round top and bottom items
+      &:first-child {
+        border-radius: 3px 3px 0px 0px;
+        border-width: 1px 1px 0px 1px;
+      }
+      &:last-child{
+        border-radius: 0px 0px 3px 3px;
+        border-width: 0px 1px 1px 1px;
+      }
     }
     &:insensitive {
       color: $insensitive_fg_color;
@@ -3183,7 +3192,7 @@ GtkVolumeButton.button { padding: 8px; }
 
 .window-frame {
   
-  border-width: 0px;
+  border-width: 0;
 
   // this needs to be transparent
   // see bug #722563
@@ -3226,9 +3235,9 @@ GtkVolumeButton.button { padding: 8px; }
   }
   &.solid-csd {
     border-radius: 0;
-    margin: 4px;
-    background-color: $backdrop_bg_color;
-    border: solid 1px $backdrop_borders_color;
+    margin: 1px;
+    background-color: $titlebar_bg_color;
+    border: 0;
     box-shadow: none;
   }
 }
