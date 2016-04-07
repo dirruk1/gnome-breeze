@@ -167,6 +167,11 @@ textview { // This will get overridden by .view, needed by gedit line numbers
 //                                     $backdrop_base_color, 50%); }
 }
 
+textview text selection, textview text selection:focus {
+  color: #fcfcfc;
+  background-color: #3daee9;
+}
+
 .grid-child {
   padding: 3px;
   border-radius: 3px;
@@ -1600,8 +1605,8 @@ menu {
       background-color: $bg_color;
     }
     //submenu indicators
-    &.arrow { -gtk-icon-source: -gtk-icontheme('pan-end-symbolic'); }
-    &.arrow:dir(rtl) {-gtk-icon-source:-gtk-icontheme('pan-end-symbolic-rtl'); }
+    arrow { -gtk-icon-source: -gtk-icontheme('pan-end-symbolic'); }
+    arrow:dir(rtl) {-gtk-icon-source:-gtk-icontheme('pan-end-symbolic-rtl'); }
   }
   
   &.button { // overlow buttons

@@ -98,7 +98,12 @@ assistant .sidebar .label.highlight {
   background-color: #575b5f; }
 
 textview {
-  background-color: #2a2e32; }
+    background-color: #2a2e32; }
+
+textview text selection, textview text selection:focus {
+  color: #EEEFF0;
+  background-color: #3DADE8;
+}
 
 .grid-child {
   padding: 3px;

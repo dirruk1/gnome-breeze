@@ -101,6 +101,7 @@ textview {
   background-color: #2a2e32; }
 
 textview text selection, textview text selection:focus {
+  color: #EEEFF0;
   background-color: #3DADE8;
 }
 

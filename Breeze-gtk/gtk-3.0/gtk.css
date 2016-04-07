@@ -100,6 +100,11 @@ assistant .sidebar .label.highlight {
 textview {
   background-color: #f6f6f7; }
 
+textview text selection, textview text selection:focus {
+  color: #fcfcfc;
+  background-color: #3daee9;
+}
+
 .grid-child {
   padding: 3px;
   border-radius: 3px; }
@@ -1927,9 +1932,9 @@ menu {
     menu menuitem:backdrop, menu menuitem:backdrop:hover {
       color: #31363b;
       background-color: #eff0f1; }
-    menu menuitem.arrow {
+    menu menuitem arrow {
       -gtk-icon-source: -gtk-icontheme("pan-end-symbolic"); }
-    menu menuitem.arrow:dir(rtl) {
+    menu menuitem arrow:dir(rtl) {
       -gtk-icon-source: -gtk-icontheme("pan-end-symbolic-rtl"); }
   menu.button, headerbar menu.button.titlebutton,
   .titlebar menu.button.titlebutton {
