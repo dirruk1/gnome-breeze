@@ -2331,55 +2331,55 @@ scrollbar {
       border-width: 8px 8px 8px 8px;
       border-style: solid;
       border-color: transparent; }
-  scrollbar.slider {
+  scrollbar slider {
     border-image: -gtk-scaled(url("assets/scrollbar-slider-dark.png"), url("assets/scrollbar-slider-dark@2.png")) 8 8 8 8/8px 8px 8px 8px stretch;
     border-radius: 0;
     border-width: 8px 8px 8px 8px;
     border-style: solid;
     border-color: transparent; }
-    scrollbar.slider:dir(rtl) {
+    scrollbar slider:dir(rtl) {
       border-image: -gtk-scaled(url("assets/scrollbar-slider-rtl-dark.png"), url("assets/scrollbar-slider-rtl-dark@2.png")) 8 8 8 8/8px 8px 8px 8px stretch;
       border-radius: 0;
       border-width: 8px 8px 8px 8px;
       border-style: solid;
       border-color: transparent; }
-    scrollbar.slider:hover, scrollbar.slider:disabled {
+    scrollbar slider:hover, scrollbar slider:disabled {
       border-image: -gtk-scaled(url("assets/scrollbar-slider-hover-dark.png"), url("assets/scrollbar-slider-hover-dark@2.png")) 8 8 8 8/8px 8px 8px 8px stretch;
       border-radius: 0;
       border-width: 8px 8px 8px 8px;
       border-style: solid;
       border-color: transparent; }
-      scrollbar.slider:hover:dir(rtl), scrollbar.slider:disabled:dir(rtl) {
+      scrollbar slider:hover:dir(rtl), scrollbar slider:disabled:dir(rtl) {
         border-image: -gtk-scaled(url("assets/scrollbar-slider-rtl-hover-dark.png"), url("assets/scrollbar-slider-rtl-hover-dark@2.png")) 8 8 8 8/8px 8px 8px 8px stretch;
         border-radius: 0;
         border-width: 8px 8px 8px 8px;
         border-style: solid;
         border-color: transparent; }
-    scrollbar.slider:active {
+    scrollbar slider:active {
       border-image: -gtk-scaled(url("assets/scrollbar-slider-active-dark.png"), url("assets/scrollbar-slider-active-dark@2.png")) 8 8 8 8/8px 8px 8px 8px stretch;
       border-radius: 0;
       border-width: 8px 8px 8px 8px;
       border-style: solid;
       border-color: transparent; }
-      scrollbar.slider:active:dir(rtl) {
+      scrollbar slider:active:dir(rtl) {
         border-image: -gtk-scaled(url("assets/scrollbar-slider-rtl-active-dark.png"), url("assets/scrollbar-slider-rtl-active-dark@2.png")) 8 8 8 8/8px 8px 8px 8px stretch;
         border-radius: 0;
         border-width: 8px 8px 8px 8px;
         border-style: solid;
         border-color: transparent; }
-    scrollbar.slider.horizontal {
+    scrollbar slider.horizontal {
       border-image: -gtk-scaled(url("assets/scrollbar-slider-horizontal-dark.png"), url("assets/scrollbar-slider-horizontal-dark@2.png")) 8 8 8 8/8px 8px 8px 8px stretch;
       border-radius: 0;
       border-width: 8px 8px 8px 8px;
       border-style: solid;
       border-color: transparent; }
-      scrollbar.slider.horizontal:hover, scrollbar.slider.horizontal:disabled {
+      scrollbar slider.horizontal:hover, scrollbar slider.horizontal:disabled {
         border-image: -gtk-scaled(url("assets/scrollbar-slider-horizontal-hover-dark.png"), url("assets/scrollbar-slider-horizontal-hover-dark@2.png")) 8 8 8 8/8px 8px 8px 8px stretch;
         border-radius: 0;
         border-width: 8px 8px 8px 8px;
         border-style: solid;
         border-color: transparent; }
-      scrollbar.slider.horizontal:active {
+      scrollbar slider.horizontal:active {
         border-image: -gtk-scaled(url("assets/scrollbar-slider-horizontal-active-dark.png"), url("assets/scrollbar-slider-horizontal-active-dark@2.png")) 8 8 8 8/8px 8px 8px 8px stretch;
         border-radius: 0;
         border-width: 8px 8px 8px 8px;
