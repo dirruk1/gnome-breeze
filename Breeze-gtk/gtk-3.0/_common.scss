@@ -243,7 +243,7 @@ entry {
     @extend %selected_items;
   }
 
-  &.progressbar {
+  progressbar {
     margin: 1px;
     border-radius: 0;
     border-width: 0 0 2px;
@@ -330,9 +330,9 @@ entry {
   // this takes care of coloring the top border of the focused entry subsequent widget.
   // :not(:only-child) is a specificity bump hack.
   > entry:focus:not(:only-child) + entry,
-  > entry:focus:not(:only-child) + .button,
-  > entry:focus:not(:only-child) + combobox > .button,
-  > entry:focus:not(:only-child) + comboboxText > .button { border-top-color: entry_focus_border(); }
+  > entry:focus:not(:only-child) + button,
+  > entry:focus:not(:only-child) + combobox > button,
+  > entry:focus:not(:only-child) + comboboxText > button { border-top-color: entry_focus_border(); }
 }
 
 
@@ -361,7 +361,7 @@ $_dot_color: if($variant=='light', $selected_bg_color,
 }
 
 
-.button {
+button {
 
   $_button_transition: all 200ms $ease-out-quad;
 
@@ -584,7 +584,7 @@ $_dot_color: if($variant=='light', $selected_bg_color,
     // to have the image-button padding, while the text side the text-button
     // one, so we're adding the missing padding to the label depending on
     // its position inside the button
-    padding: 5px 8px 6px; // same as .button
+    padding: 5px 8px 6px; // same as button
     .label:first-child { padding-left: 8px; }
     .label:last-child { padding-right: 8px; }
   }
@@ -675,7 +675,7 @@ $_dot_color: if($variant=='light', $selected_bg_color,
 
 // all the following is for the +|- buttons on inline toolbars, that way
 // should really be deprecated...
-.inline-toolbar toolbutton > .button { // redefining the button look is
+.inline-toolbar toolbutton > button { // redefining the button look is
                                           // needed since those are flat...
   @include button(normal);
   &:hover { @include button(hover); }
@@ -696,12 +696,12 @@ $_dot_color: if($variant=='light', $selected_bg_color,
 // More inline toolbar buttons
 .inline-toolbar.toolbar toolbutton,
 .inline-toolbar.toolbar toolbutton:backdrop {
-  & > .button.flat { @extend %linked_middle; }
-  &:dir(rtl) > .button.flat { @extend %linked_middle:dir(rtl); }
-  &:first-child > .button.flat { @extend %linked:first-child; }
-  &:last-child > .button.flat { @extend %linked:last-child; }
-  &:last-child:dir(rtl) > .button.flat { @extend %linked:last-child:dir(rtl); }
-  &:only-child > .button.flat { @extend %linked:only-child; }
+  & > button.flat { @extend %linked_middle; }
+  &:dir(rtl) > button.flat { @extend %linked_middle:dir(rtl); }
+  &:first-child > button.flat { @extend %linked:first-child; }
+  &:last-child > button.flat { @extend %linked:last-child; }
+  &:last-child:dir(rtl) > button.flat { @extend %linked:last-child:dir(rtl); }
+  &:only-child > button.flat { @extend %linked:only-child; }
 }
 
 %linked_middle {
@@ -812,7 +812,7 @@ button.color {
   }
 }
 
-.button:link, .button:visited {
+button:link, button:visited {
   @extend %undecorated_button;
   @extend *:link;
   text-shadow: none;
@@ -832,7 +832,7 @@ button.color {
  *****************/
 
 spinbutton {
-  .button {
+  button {
     background-image: none;
     border-style: none none none solid;
     border-color: transparentize($borders_color, 0.7);
@@ -866,7 +866,7 @@ spinbutton {
     }
   }
   .osd & {
-    .button {
+    button {
       @include button(undecorated);
       color: $osd_fg_color;
       border-style: none none none solid;
@@ -902,7 +902,7 @@ spinbutton {
     }
   }
   &.vertical, &.vertical:dir(rtl) { //FIXME: try using linking templates for vertically linked stuff
-    .button {
+    button {
       padding-top: 8px;    //  Same vertical padding as image-buttons
       padding-bottom: 8px; //
       &:first-child {
@@ -981,7 +981,7 @@ spinbutton {
  * ComboBoxes *
  **************/
 combobox {
-  > .button { padding-top: 3px; padding-bottom: 4px; } // Otherwise combos
+  > button { padding-top: 3px; padding-bottom: 4px; } // Otherwise combos
                                                        // are bigger then
                                                        // buttons
   -combobox-arrow-scaling: 0.5;
@@ -1009,36 +1009,36 @@ combobox {
     -GtkWidget-wide-separators: true;
   }
   &.combobox-entry entry { @extend %linked; }
-  &.combobox-entry .button, &.combobox-entry .button:backdrop {
+  &.combobox-entry button, &.combobox-entry button:backdrop {
     // It is needed to specify the backdrop button or it gets overridden
     @extend %linked;
   }
 }
 
-.linked > combobox > .button {
+.linked > combobox > button {
   // the combo is a composite widget so the way we do button linkind doesn't
   // work, special case needed. See
   // https://bugzilla.gnome.org/show_bug.cgi?id=733979
   &:dir(ltr) { @extend %linked_middle; } // specificity bump
   &:dir(rtl) { @extend %linked_middle:dir(rtl); }
 }
-.linked > combobox:first-child > .button {
+.linked > combobox:first-child > button {
   @extend %linked:first-child;
 }
-.linked > combobox:last-child > .button {
+.linked > combobox:last-child > button {
   @extend %linked:last-child;
 }
-.linked > combobox:only-child > .button {
+.linked > combobox:only-child > button {
   @extend %linked:only-child;
 }
-.linked.vertical > comboboxText > .button,
-.linked.vertical > combobox > .button { @extend %linked_vertical_middle; }
-.linked.vertical > comboboxText:first-child > .button,
-.linked.vertical > combobox:first-child > .button { @extend %linked_vertical:first-child; }
-.linked.vertical > comboboxText:last-child > .button,
-.linked.vertical > combobox:last-child > .button { @extend %linked_vertical:last-child; }
-.linked.vertical > comboboxText:only-child > .button,
-.linked.vertical > combobox:only-child > .button { @extend %linked_vertical:only-child; }
+.linked.vertical > comboboxText > button,
+.linked.vertical > combobox > button { @extend %linked_vertical_middle; }
+.linked.vertical > comboboxText:first-child > button,
+.linked.vertical > combobox:first-child > button { @extend %linked_vertical:first-child; }
+.linked.vertical > comboboxText:last-child > button,
+.linked.vertical > combobox:last-child > button { @extend %linked_vertical:last-child; }
+.linked.vertical > comboboxText:only-child > button,
+.linked.vertical > combobox:only-child > button { @extend %linked_vertical:only-child; }
 
 /************
  * Toolbars *
@@ -1091,7 +1091,7 @@ combobox {
  ***************/
 
 .titlebar,
-.header-bar {
+headerbar {
   padding: 2px 6px;
   border-width: 0px 0px 2px 0px;
   border-style: solid;
@@ -1108,10 +1108,10 @@ combobox {
     box-shadow: none;
     color: $backdrop_fg_color;
   }
-.path-bar .button {
+.path-bar button {
   color: $titlebar_fg_color;
   }
-.button {
+button {
   background-color: $titlebar_bg_color;
   color: $titlebar_fg_color;
   background-image: none;
@@ -1220,7 +1220,7 @@ combobox {
 
     .subtitle:link { @extend *:link:selected;  }
 
-    .button {
+    button {
       @include button(normal, $selected_bg_color, $selected_fg_color);
 
       &.flat { @include button(undecorated); }
@@ -1322,7 +1322,7 @@ combobox {
 
   &.default-decoration {
     padding: 4px;
-    .button { padding: 5px; }
+    button { padding: 5px; }
   }
 }
 
@@ -1330,7 +1330,7 @@ combobox {
  * Pathbars *
  ************/
 
-.path-bar .button {
+.path-bar button {
   padding: 5px 6px 6px;
   @include button(undecorated);
   color: $fg_color;
@@ -1412,7 +1412,7 @@ treeview.view {
     &:backdrop { color: mix($backdrop_fg_color, $backdrop_base_color, 70%); }
   }
 
-  &.progressbar { // progress bar in treeviews
+  progressbar { // progress bar in treeviews
     @if $variant == light { color: $base_color; }
 
     border: 1px solid $selected_borders_color;
@@ -1473,7 +1473,7 @@ treeview.view {
 }
 
 column-header {
-  .button {
+  button {
     @extend %column_header_button;
     $_column_header_color: mix($fg_color, $base_color, 50%);
     color: $_column_header_color;
@@ -1496,8 +1496,8 @@ column-header {
       @extend column-header.button.dnd;
     }
   }
-  &:last-child .button,
-  &:last-child .button:backdrop, // set :backdrop too or the border will be visibile there
+  &:last-child button,
+  &:last-child button:backdrop, // set :backdrop too or the border will be visibile there
   &:last-child.button,
   &:last-child.button:backdrop { //treeview-like derived widgets in Banshee and Evolution
     border-right-style: none;
@@ -1642,11 +1642,11 @@ popover {
     background-color: transparent;
   }
 
-  .button.flat {
+  button.flat {
 	color: $fg_color;
   }
   
-  .button.flat:hover {
+  button.flat:hover {
 	background-color: transparentize($selected_bg_color, 0.8);
 	color: $fg_color;
 	text-shadow: none;
@@ -1902,7 +1902,7 @@ notebook {
       color: $fg_color;
       
     }
-    .button { //tab close button
+    button { //tab close button
       padding: 0px;
       border: 1px solid transparent;
       border-radius: 50%;
@@ -1932,7 +1932,7 @@ notebook {
         padding: 0px;
       }
     }
-    .button .active-page, .button.active-page { //not working
+    button .active-page, button.active-page { //not working
 		background-color: $icon_red;
     }
   }
@@ -1965,7 +1965,7 @@ scrollbar {
   -GtkRange-stepper-spacing: 1;
   -GtkRange-trough-under-steppers: 0;
 
-  .button { 
+  button { 
 	border: none;
 	background-image:none;
 	background-color: transparent;
@@ -2397,55 +2397,55 @@ progressbar {
   color: transparentize($fg_color, 0.6);
   box-shadow: none;                           // here ot it gets
                                                         // clipped
-  
-  &.osd {
+
+  .osd {
     -progressbar-xspacing: 0;
     -progressbar-yspacing: 0;
     -progressbar-min-horizontal-bar-height: 3;
+    trough {  // background
+      border: 1px solid transparent;
+      border-radius: 3px;
+      background-color: $borders_color;
+    }
   }
-  &.trough {  // background
+   trough {  // background
     border: 1px solid transparent;
     border-radius: 3px;
     background-color: $borders_color;
-    &.osd {
-      border-style: none;
-      background-color: transparent;
-      box-shadow: none;
-    }
   }
 }
 
 // moving bit
-.progressbar {
-  background-color: $selected_bg_color;
-  border: 1px solid $selected_bg_color;
-  border-radius: 0px;
-  box-shadow: none; //needed for clipping
-  &.left {
+progressbar {
+  progress{
+    background-color: $selected_bg_color;
+    border: 1px solid $selected_bg_color;
+    border-radius: 0px;
+    box-shadow: none; //needed for clipping
+  }
+  &.left progress {
     border-top-left-radius: 3px;
     border-bottom-left-radius: 3px;
   }
-  &.right {
+  &.right progress {
     border-top-right-radius: 3px;
     border-bottom-right-radius: 3px;
   }
-  &.left.right {
+  &.left.right progress {
     box-shadow: none;
   }
-  &.vertical {
-    
-    &.bottom {
+  &.vertical progress {
+    &.bottom progress {
       border-bottom-left-radius: 3px;
       border-bottom-right-radius: 3px;
       box-shadow: none;
     }
-    &.top {
+    &.top progress {
       border-top-left-radius: 3px;
       border-top-right-radius: 3px;
     }
   }
-  
-  &.osd {
+  .osd progress {
     background-image: none;
     background-color: $selected_bg_color;
     border-style: none;
@@ -2600,7 +2600,7 @@ list-row.button {
 
 list-row:selected {
   @extend %selected_items;
-  .button {
+  button {
     @include button(normal, $edge:none);
     @if $variant == 'light' { border-color: $selected_borders_color; }
     &.flat {
@@ -2666,7 +2666,7 @@ list-row, list-row.button {
   background-image: none;
   background-clip: padding-box;
   &:backdrop { background-image: none; }
-  .button {
+  button {
     @include button(osd);
     &.flat {
       @extend %undecorated_button;
@@ -2749,7 +2749,7 @@ calendar {
  * Dialogs *
  ***********/
 
-message-dialog .dialog-action-area .button {
+message-dialog .dialog-action-area button {
   //padding: 8px;
 }
 
@@ -2772,7 +2772,7 @@ message-dialog { // Message Dialog styling
       border-bottom-left-radius: 0px;
       border-bottom-right-radius: 0px;
     }
-    .dialog-action-area .button {
+    .dialog-action-area button {
       //padding: 12px;
       border-radius: 0;
       @include button(normal, $edge:none);
@@ -2980,7 +2980,7 @@ infobar {
   color: $selected_fg_color;
   text-shadow: none;
   border-color: darken($selected_bg_color, 10%);
-  .button {
+  button {
     // FIXME: extend selection mode buttons
     @include button(normal, $selected_bg_color, $selected_fg_color, none);
     &:hover {
@@ -3172,7 +3172,7 @@ colorswatch {
  * Misc *
  ********/
 
-scale-popup .button { // +/- buttons on GtkVolumeButton popup
+scale-popup button { // +/- buttons on GtkVolumeButton popup
   padding: 6px;
   &:hover {
     @extend %undecorated_button;
@@ -3241,10 +3241,10 @@ scale-popup .button { // +/- buttons on GtkVolumeButton popup
 }
 
 // Window Close button
-.header-bar .button.titlebutton,
-.titlebar .button.titlebutton {
-  @extend .button;
-  @extend .button.flat;
+headerbar button.titlebutton,
+.titlebar button.titlebutton {
+  @extend button;
+  @extend button.flat;
   @extend .image-button;
   //@include _button_text_shadow;
   padding: 2px;
@@ -3339,8 +3339,8 @@ scale-popup .button { // +/- buttons on GtkVolumeButton popup
     }
 }
 
-.header-bar.selection-mode .button.titlebutton,
-.titlebar.selection-mode .button.titlebutton {
+headerbar.selection-mode button.titlebutton,
+.titlebar.selection-mode button.titlebutton {
   text-shadow: none;
   &:backdrop { -gtk-icon-shadow: none; }
 }
