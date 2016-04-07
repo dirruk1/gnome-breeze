@@ -1098,7 +1098,7 @@ headerbar {
   border-color: $selected_bg_color;
   border-radius: 0;
   color: $titlebar_fg_color;
-  
+
   @include headerbar_fill;
 
   &:backdrop {
@@ -1588,6 +1588,10 @@ menu {
       }
     }
     &:disabled {
+      color: $insensitive_fg_color;
+      &:backdrop { color: $backdrop_insensitive_color; }
+    }
+    *:disabled {
       color: $insensitive_fg_color;
       &:backdrop { color: $backdrop_insensitive_color; }
     }

@@ -1918,9 +1918,9 @@ menu {
       menu menuitem:hover:last-child {
         border-radius: 0px 0px 3px 3px;
         border-width: 0px 1px 1px 1px; }
-    menu menuitem:disabled {
+    menu menuitem:disabled, menu menuitem *:disabled {
       color: #909396; }
-      menu menuitem:disabled:backdrop {
+      menu menuitem:disabled:backdrop, menu menuitem *:disabled:backdrop {
         color: #545c65; }
     menu menuitem:backdrop, menu menuitem:backdrop:hover {
       color: #EEEFF0;
