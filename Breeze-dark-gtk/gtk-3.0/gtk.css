@@ -99,11 +99,7 @@ assistant .sidebar .label.highlight {
 
 textview {
   background-color: #2a2e32; }
-
-textview text selection, textview text selection:focus {
-  color: #EEEFF0;
-  background-color: #3DADE8;
-}
+  textview text selection { }
 
 .grid-child {
   padding: 3px;
@@ -4109,7 +4105,7 @@ headerbar.selection-mode .titlebutton.button,
   .titlebar.selection-mode .titlebutton.button:backdrop {
     -gtk-icon-shadow: none; }
 
-.view:selected, calendar:selected, .label:selected, .label:selected:focus, .label:selected:hover, .grid-child:selected, entry:selected, entry:selected:focus, menuitem.button.flat:selected, headerbar menuitem.titlebutton.button:selected,
+textview text selection, .view selection, .view:selected, calendar:selected, .label:selected, .label:selected:focus, .label:selected:hover, .grid-child:selected, entry:selected, entry:selected:focus, menuitem.button.flat:selected, headerbar menuitem.titlebutton.button:selected,
 .titlebar menuitem.titlebutton.button:selected, list-row:selected, .sidebar:selected, placessidebar.sidebar .view:selected, placessidebar.sidebar calendar:selected {
   background-color: #3DADE8;
   color: #EEEFF0; }

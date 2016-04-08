@@ -112,9 +112,12 @@ $ease-out-quad: cubic-bezier(0.25, 0.46, 0.45, 0.94);
     border-radius: 3px;
     @extend %selected_items;
   }
+  selection {
+    @extend %selected_items;
+  }
 }
 
-.rubberband {
+view.rubberband, rubberband, .view.rubberband, .rubberband, .rubberband {
   border: 1px solid $selected_bg_color;
   background-color: transparentize($selected_bg_color,0.8);
 }
@@ -164,12 +167,10 @@ assistant {
 textview { // This will get overridden by .view, needed by gedit line numbers
   background-color: mix($bg_color, $base_color, 50%);
 //  &:backdrop { background-color: mix($backdrop_bg_color,
-//                                     $backdrop_base_color, 50%); }
-}
-
-textview text selection, textview text selection:focus {
-  color: #fcfcfc;
-  background-color: #3daee9;
+  //                                     $backdrop_base_color, 50%); }
+  text selection, textview text selection:focus {
+    @extend %selected_items;
+  }
 }
 
 .grid-child {
@@ -246,6 +247,11 @@ entry {
   &:selected,
   &:selected:focus {
     @extend %selected_items;
+  }
+
+  selection, selection:focus {
+    color: #fcfcfc;
+    background-color: #3daee9;
   }
 
   progressbar {

@@ -65,7 +65,11 @@
   background-color: #fcfcfc; }
   .view:selected, calendar:selected {
     border-radius: 3px; }
+  .view selection { }
 
+view.rubberband,
+rubberband,
+.view.rubberband,
 .rubberband {
   border: 1px solid #3daee9;
   background-color: rgba(61, 174, 233, 0.2); }
@@ -99,11 +103,7 @@ assistant .sidebar .label.highlight {
 
 textview {
   background-color: #f6f6f7; }
-
-textview text selection, textview text selection:focus {
-  color: #fcfcfc;
-  background-color: #3daee9;
-}
+  textview text selection { }
 
 .grid-child {
   padding: 3px;
@@ -173,20 +173,11 @@ entry {
     border-color: #bdc3c7;
     background-color: #e6e7e8;
     box-shadow: none; }
-  entry:backdrop {
-    background-color: #fcfcfc;
-    background-image: none;
-    color: #31363b;
-    border-color: #bdc3c7;
-    background-color: #fcfcfc;
-    box-shadow: none; }
-  entry:backdrop:disabled {
-    background-color: #fcfcfc;
-    background-image: none;
-    color: #909396;
-    border-color: #bdc3c7;
-    background-color: #e6e7e8;
-    box-shadow: none; }
+  entry selection,
+  entry selection:focus {
+    color: #fcfcfc;
+    background-color: #3daee9;
+  }
   entry progressbar {
     margin: 1px;
     border-radius: 0;
@@ -4280,7 +4271,7 @@ headerbar.selection-mode .titlebutton.button,
   .titlebar.selection-mode .titlebutton.button:backdrop {
     -gtk-icon-shadow: none; }
 
-.view:selected, calendar:selected, .label:selected, .label:selected:focus, .label:selected:hover, .grid-child:selected, entry:selected, entry:selected:focus, menuitem.button.flat:selected, headerbar menuitem.titlebutton.button:selected,
+textview text selection, .view selection, .view:selected, calendar:selected, .label:selected, .label:selected:focus, .label:selected:hover, .grid-child:selected, entry:selected, entry:selected:focus, menuitem.button.flat:selected, headerbar menuitem.titlebutton.button:selected,
 .titlebar menuitem.titlebutton.button:selected, list-row:selected, .sidebar:selected, placessidebar.sidebar .view:selected, placessidebar.sidebar calendar:selected {
   background-color: #3daee9;
   color: #fcfcfc;
