@@ -2004,8 +2004,8 @@ scrollbar {
     -GtkScrollbar-has-backward-stepper: false;
 	-GtkScrollbar-has-forward-stepper: false;
 
-    .slider { @include _border(scrollbar-slider-overlay, $prefix:assets, $radius: 0, $width: 5px 4px 5px 4px, $image-width: 6 4 6 4 / 6px 4px 6px 4px); }
-    &.horizontal .slider { @include _border(scrollbar-slider-overlay-horizontal, $prefix:assets, $radius: 0, $width: 4px 6px 4px 6px, $image-width: 4 6 4 6 / 4px 6px 4px 6px); }
+    &.vertical { slider { @include _border(scrollbar-slider-overlay, $prefix:assets, $radius: 0, $width: 5px 4px 5px 4px, $image-width: 6 4 6 4 / 6px 4px 6px 4px); } }
+    &.horizontal { slider { @include _border(scrollbar-slider-overlay-horizontal, $prefix:assets, $radius: 0, $width: 4px 6px 4px 6px, $image-width: 4 6 4 6 / 4px 6px 4px 6px); } }
 
     .trough {
       border: none;
@@ -2013,29 +2013,29 @@ scrollbar {
     }
   }
   // Normal Scrollbars / Overlay Scrollbars on Mouseover
-  &.trough {
-    @include _border(scrollbar-trough, $prefix:assets, $radius: 0, $width: 8px 8px 8px 8px, $image-width: 8 8 8 8 / 8px 8px 8px 8px);
+  &.vertical{
+    trough {
+      @include _border(scrollbar-trough, $prefix:assets, $radius: 0, $width: 8px 8px 8px 8px, $image-width: 8 8 8 8 / 8px 8px 8px 8px);
 
-    &:dir(rtl) { @include _border(scrollbar-trough-rtl, $prefix:assets, $radius: 0, $width: 8px 8px 8px 8px, $image-width: 8 8 8 8 / 8px 8px 8px 8px); }
-    &.horizontal { @include _border(scrollbar-trough-horizontal, $prefix:assets, $radius: 0, $width: 8px 8px 8px 8px, $image-width: 8 8 8 8 / 8px 8px 8px 8px); }
+      &:dir(rtl) { @include _border(scrollbar-trough-rtl, $prefix:assets, $radius: 0, $width: 8px 8px 8px 8px, $image-width: 8 8 8 8 / 8px 8px 8px 8px); }
+    }
+    slider {
+      @include _border(scrollbar-slider, $prefix:assets, $radius: 0, $width: 8px 8px 8px 8px, $image-width: 8 8 8 8 / 8px 8px 8px 8px);
+      &:dir(rtl) { @include _border(scrollbar-slider-rtl, $prefix:assets, $radius: 0, $width: 8px 8px 8px 8px, $image-width: 8 8 8 8 / 8px 8px 8px 8px); }
+      &:hover, &:disabled {
+        @include _border(scrollbar-slider-hover, $prefix:assets, $radius: 0, $width: 8px 8px 8px 8px, $image-width: 8 8 8 8 / 8px 8px 8px 8px);
+        &:dir(rtl) { @include _border(scrollbar-slider-rtl-hover, $prefix:assets, $radius: 0, $width: 8px 8px 8px 8px, $image-width: 8 8 8 8 / 8px 8px 8px 8px); }
+      }
+      &:active {
+        @include _border(scrollbar-slider-active, $prefix:assets, $radius: 0, $width: 8px 8px 8px 8px, $image-width: 8 8 8 8 / 8px 8px 8px 8px);
+        &:dir(rtl) { @include _border(scrollbar-slider-rtl-active, $prefix:assets, $radius: 0, $width: 8px 8px 8px 8px, $image-width: 8 8 8 8 / 8px 8px 8px 8px); }
+      }
+    }
   }
-  &.slider {
-    @include _border(scrollbar-slider, $prefix:assets, $radius: 0, $width: 8px 8px 8px 8px, $image-width: 8 8 8 8 / 8px 8px 8px 8px);
-
-    &:dir(rtl) { @include _border(scrollbar-slider-rtl, $prefix:assets, $radius: 0, $width: 8px 8px 8px 8px, $image-width: 8 8 8 8 / 8px 8px 8px 8px); }
-
-    &:hover, &:disabled {
-      @include _border(scrollbar-slider-hover, $prefix:assets, $radius: 0, $width: 8px 8px 8px 8px, $image-width: 8 8 8 8 / 8px 8px 8px 8px);
-
-      &:dir(rtl) { @include _border(scrollbar-slider-rtl-hover, $prefix:assets, $radius: 0, $width: 8px 8px 8px 8px, $image-width: 8 8 8 8 / 8px 8px 8px 8px); }
-    }
-    &:active {
-      @include _border(scrollbar-slider-active, $prefix:assets, $radius: 0, $width: 8px 8px 8px 8px, $image-width: 8 8 8 8 / 8px 8px 8px 8px);
-
-      &:dir(rtl) { @include _border(scrollbar-slider-rtl-active, $prefix:assets, $radius: 0, $width: 8px 8px 8px 8px, $image-width: 8 8 8 8 / 8px 8px 8px 8px); }
-    }
-
-    &.horizontal {
+  &.horizontal {
+    trough {
+      @include _border(scrollbar-trough-horizontal, $prefix:assets, $radius: 0, $width: 8px 8px 8px 8px, $image-width: 8 8 8 8 / 8px 8px 8px 8px); }
+    slider {
       @include _border(scrollbar-slider-horizontal, $prefix:assets, $radius: 0, $width: 8px 8px 8px 8px, $image-width: 8 8 8 8 / 8px 8px 8px 8px);
 
       &:hover, &:disabled { @include _border(scrollbar-slider-horizontal-hover, $prefix:assets, $radius: 0, $width: 8px 8px 8px 8px, $image-width: 8 8 8 8 / 8px 8px 8px 8px); }
