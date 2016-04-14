@@ -2409,44 +2409,54 @@ switch {
   font-size: smaller;
   outline-offset: 0px;
   box-shadow: inset 0 1px rgba(255, 255, 255, 0); }
-  switch.trough {
+  switch {
     border: 1px solid #696D71;
     border-radius: 3px;
     color: #EEEFF0;
     background-image: none;
     background-color: #31363B;
     text-shadow: none; }
-    switch.trough:active {
+    switch:active, switch:checked {
       color: #3DADE8;
       border-color: #3DADE8;
       box-shadow: none;
       text-shadow: none; }
-      switch.trough:active:hover {
+      switch:active:hover {
         border-color: #3DADE8; }
-    switch.trough:hover {
+    switch:hover {
       border-color: #3DADE8; }
-    switch.trough:disabled {
+    switch:disabled {
       color: #909396;
       border-color: #696D71;
       background-image: none;
       background-color: #3a3f44;
       box-shadow: none;
       text-shadow: none; }
-  switch.slider {
+  switch slider {
     padding: 3px;
     border: 3px solid;
     border-radius: 3px;
     border-color: rgba(255, 255, 255, 0);
     box-shadow: none;
     background-color: #696D71; }
-    switch.slider:hover {
+    switch slider:hover {
       box-shadow: none; }
-    switch.slider:active {
+    switch slider:active {
       background-color: #3DADE8; }
-      switch.slider:active:hover {
+      switch slider:active:hover {
         background-color: #3DADE8; }
-    switch.slider:disabled {
-      background-color: #3a3f44; }
+    switch slider:disabled {
+      background-color: #3a3f44; } row:selected switch {
+    box-shadow: none;
+    border-color: #3daee9; }
+    row:selected switch:backdrop {
+      border-color: #3daee9; }
+    row:selected switch slider:dir(rtl) {
+      border-left-color: #bdc3c7; }
+    row:selected switch slider:dir(ltr) {
+      border-right-color: #bdc3c7; }
+    row:selected switch slider, row:selected switch slider:active {
+      border-color: #3daee9; }
 
 /*************************
  * Check and Radio items *

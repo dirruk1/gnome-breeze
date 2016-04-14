@@ -2410,54 +2410,54 @@ switch {
   font-size: smaller;
   outline-offset: 0px;
   box-shadow: inset 0 1px rgba(255, 255, 255, 0); }
-  switch.trough {
+  switch {
     border: 1px solid #bdc3c7;
     border-radius: 3px;
     color: #31363b;
     background-image: none;
     background-color: #eff0f1;
     text-shadow: none; }
-    switch.trough:active {
+    switch:active, switch:checked {
       color: #3daee9;
       border-color: #3daee9;
       box-shadow: none;
       text-shadow: none; }
-      switch.trough:active:hover {
+      switch:active:hover {
         border-color: #93cee9; }
-    switch.trough:hover {
+    switch:hover {
       border-color: #3daee9; }
-    switch.trough:disabled {
+    switch:disabled {
       color: #909396;
       border-color: #bdc3c7;
       background-image: none;
       background-color: #e6e7e8;
       box-shadow: none;
       text-shadow: none; }
-  switch.slider {
+  switch slider {
     padding: 3px;
     border: 3px solid;
     border-radius: 3px;
     border-color: rgba(255, 255, 255, 0);
     box-shadow: none;
     background-color: #bdc3c7; }
-    switch.slider:hover {
+    switch slider:hover {
       box-shadow: none; }
-    switch.slider:active {
+    switch slider:active {
       background-color: #3daee9; }
-      switch.slider:active:hover {
+      switch slider:active:hover {
         background-color: #93cee9; }
     switch.slider:disabled {
       background-color: #e6e7e8; }
-  list-row:selected switch {
+  row:selected switch {
     box-shadow: none;
     border-color: #3daee9; }
-    list-row:selected switch:backdrop {
+    row:selected switch:backdrop {
       border-color: #3daee9; }
-    list-row:selected switch.slider:dir(rtl) {
+    row:selected switch slider:dir(rtl) {
       border-left-color: #bdc3c7; }
-    list-row:selected switch.slider:dir(ltr) {
+    row:selected switch slider:dir(ltr) {
       border-right-color: #bdc3c7; }
-    list-row:selected switch.slider, list-row:selected switch.slider:active {
+    row:selected switch slider, row:selected switch slider:active {
       border-color: #3daee9; }
 
 /*************************
