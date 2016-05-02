@@ -1,0 +1,125 @@
+/*****************
+ * GtkSpinButton *
+ *****************/
+
+.spinbutton {
+  .button {
+    @extend %spinbutton;
+  }
+  .osd & {
+    .button {
+      @extend %spinbutton;
+      &:last-child { border-radius: 0 3px 3px 0; }
+      &:dir(rtl):first-child { border-radius: 3px 0 0 3px; }
+    }
+  }
+  &.vertical, &.vertical:dir(rtl) { //FIXME: try using linking templates for vertically linked stuff
+    .button {
+      padding-top: 5px;    //  Same vertical padding as image-buttons
+      padding-bottom: 5px; //
+      &:first-child {
+        @extend %top_button;
+        @include button(normal);
+        &:active {
+          @extend %top_button;
+          @include button(active);
+        }
+        &:hover {
+          @extend %top_button;
+          @include button(hover);
+        }
+        &:insensitive {
+          @extend %top_button;
+          @include button(insensitive);
+        }
+        &:backdrop {
+          @extend %top_button;
+          @include button(backdrop);
+        }
+      }
+      &:last-child {
+        @extend %bottom_button;
+        @include button(normal);
+        &:active {
+          @extend %bottom_button;
+          @include button(active);
+        }
+        &:hover {
+          @extend %bottom_button;
+          @include button(hover);
+        }
+        &:insensitive {
+          @extend %bottom_button;
+          @include button(insensitive);
+        }
+        &:backdrop {
+          @extend %bottom_button;
+          @include button(backdrop);
+        }
+      }
+      &:backdrop:insensitive {
+        @include button(backdrop-insensitive);
+      }
+    }
+    &.entry {
+      // we should remove the bottom edge hilight here, but seems
+      // like buttons are on top of it so it doesn't show up
+      border-radius: 0px;
+      padding-left: 0px;
+      padding-right: 0px;
+      &:insensitive { background-color: insensitive(v_color(normal));}
+    }
+  }
+  GtkTreeView & {
+    &.entry, &.entry:focus {
+      padding: 1px;
+      border-width: 1px 0;
+      border-color: v_color(active);
+      border-radius: 0;
+      box-shadow: none;
+
+    }
+  }
+}
+
+%spinbutton {
+  background-image: none;
+  background-color: transparent;
+  border-style: none none none solid;
+  border-color: transparentize($border_color, 0.7);
+  color: b_color(text);
+  border-radius: 0;
+  box-shadow: none;
+  &:dir(rtl) { border-style: none solid none none; }
+  &:hover {
+    color: b_color(hover);
+  }
+  &:insensitive {
+    color: insensitive(b_color(text));
+    border-color: insensitive(transparentize($border_color, 0.7));
+  }
+  &:active {
+    color: b_color(active);
+  }
+  &:backdrop {
+    color: backdrop(b_color(text));
+    border-color: backdrop(transparentize($border_color, 0.7));
+    background-color: transparent;
+  }
+  &:backdrop:insensitive {
+    background-image: none;
+    color: backdrop(insensitive(b_color(text)));
+    border-style: none none none solid; // It is needed or it gets overridden
+    border-color: backdrop(insensitive(transparentize($border_color, 0.7)));
+    &:dir(rtl) { border-style: none solid none none; }
+  }
+}
+
+%top_button {
+  border-radius: 3px 3px 0 0;
+  border-style: solid solid none solid;
+}
+%bottom_button {
+  border-radius: 0 0 3px 3px;
+  border-style: none solid solid solid;
+}

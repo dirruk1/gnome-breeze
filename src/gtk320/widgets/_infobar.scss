@@ -1,0 +1,66 @@
+/**************
+ * GtkInfoBar *
+ **************/
+infobar {
+  border-style: none;
+  border-bottom: 1px solid $border_color;
+  background-color: w_color(normal);
+  background-image: none;
+  &:backdrop {border-bottom: 1px solid backdrop($border_color);}
+}
+
+.info,
+.question,
+.warning,
+.error {
+  background-color: w_color(normal);
+  background-image: none;
+  color: $warning_color;
+  text-shadow: none;
+  &:backdrop {
+    background-color: backdrop(w_color(normal));
+    color: backdrop($warning_color);
+  }
+  button {
+    box-shadow: none;
+    background-image:none;
+    background-color: transparentize($warning_color, 0.5);
+    border-color: transparentize($warning_color, 0.5);
+    color: b_color(text);
+    &:hover {
+      background-color: transparentize($warning_color, 0.75);
+      border-color: $warning_color;
+    }
+    &:active, &:checked {
+      background-image: button_gradient($warning_color);
+      color: w_color(normal);
+      border-color: $warning_color;
+    }
+    &:disabled {
+      background-color: insensitive(transparentize($warning_color, 0.5));
+      border-color: insensitive(transparentize($warning_color, 0.5));
+      color: insensitive(b_color(text));
+    }
+    &:backdrop {
+      background-color: backdrop(transparentize($warning_color, 0.5));
+      border-color: backdrop(transparentize($warning_color, 0.5));
+      color: backdrop(b_color(text));
+      &:active, &:checked {
+        background-image: button_gradient(backdrop($warning_color));
+        color: backdrop(w_color(normal));
+        border-color: backdrop($warning_color);
+      }
+      &:disabled {
+        background-color: backdrop(insensitive(transparentize($warning_color, 0.5)));
+        border-color: backdrop(insensitive(transparentize($warning_color, 0.5)));
+        color: backdrop(insensitive(b_color(text)));
+      }
+      &:disabled:active,
+      &:disabled:checked {
+        background-image: button_gradient(backdrop(insensitive($warning_color)));
+        color: backdrop(insensitive(w_color(normal)));
+        border-color: backdrop(insensitive($warning_color));
+      }
+    }
+  }
+}

@@ -1,0 +1,125 @@
+@mixin _border($name, $width: 1px 1px 2px 1px, $image-width: 2 2 3 2 / 2px 2px 3px 2px) {
+  border-image: -gtk-scaled(url("../assets/#{$name}.png"),url("../assets/#{$name}@2.png")) $image-width stretch;
+  border-width: $width;
+  border-style: solid;
+  border-color: transparent;
+}
+
+$scrollbar_color: transparentize(v_color(text),0.5);
+$trough_color: transparentize(w_color(text),0.7);
+
+/**************
+ * Scrollbars *
+ **************/
+
+.scrollbar {
+  -GtkRange-trough-border: 0;
+  -GtkScrollbar-has-backward-stepper: true;
+  -GtkScrollbar-has-forward-stepper: true;
+  -GtkRange-slider-width: 20;
+  -GtkScrollbar-min-slider-length: 64;
+  -GtkRange-stepper-spacing: 0;
+  -GtkRange-trough-under-steppers: 1;
+
+  .button {
+	@extend %undecorated_button;
+  color: b_color(text);
+	&:hover {
+    @extend %undecorated_button;
+		color: b_color(hover);
+		}
+	&:insensitive { color: insensitive(b_color(text)); }
+  &:backdrop {
+    @extend %undecorated_button;
+    color: backdrop(b_color(text));
+    &:insensitive {color: backdrop(insensitive(b_color(text)));}
+    @extend %undecorated_button;
+    }
+	}
+
+  // Overlay Scrollbars
+  &.dragging,                                                             // if this isn't set, the scrollbars don't update their size correctly
+  &.hovering { opacity: 0.9910; }                                          // probably a gtk bug
+  &.overlay-indicator:not(.dragging):not(.hovering) { opacity: 0.999; }     //
+
+
+  &.overlay-indicator:not(.dragging):not(.hovering) {
+   -GtkRange-slider-width: 8px;
+   -GtkScrollbar-has-backward-stepper: false;
+   -GtkScrollbar-has-forward-stepper: false;
+
+    .slider {
+      margin: 2px;
+      border: 2px solid transparent;
+      border-radius: 2px;
+      background-color: $scrollbar_color;
+      &:backdrop { background-color: backdrop($scrollbar_color); }
+    }
+
+    .trough {
+      border: none;
+      background: none;
+    }
+  }
+  //   Firefox in Fedora 22 won't take any margins, so images must be used
+  //
+  //    // Normal Scrollbars / Overlay Scrollbars on Mouseover
+  //    &.trough {
+  //      margin: 5px;
+  //      border: 5px solid transparent;
+  //      border-radius: 5px;
+  //      background-color: $trough_color;
+  //      &:backdrop { background-color: backdrop($trough_color); }
+  //    }
+  //    &.slider {
+  //      margin: 5px;
+  //      border: 5px solid transparent;
+  //      border-radius: 5px;
+  //      background-color: $scrollbar_color;
+  //      &:hover { background-color: border(hover); }
+  //      &:active { background-color: border(active);}
+  //      &:insensitive { background-color: insensitive($scrollbar_color); }
+  //      &:backdrop { background-color: backdrop($trough_color); }
+  //      &:backdrop:insensitive { background-color: backdrop(insensitive($scrollbar_color)); }
+  //    }
+  //  }
+  //
+  //
+  &.trough {
+    @include _border(scrollbar-trough-vertical, $width: 23px 10px 23px 10px, $image-width: 23 10 23 10 / 23px 10px 23px 10px);
+    &.horizontal { @include _border(scrollbar-trough-horizontal, $width: 10px 23px 10px 23px, $image-width: 10 23 10 23 / 10px 23px 10px 23px); }
+    &:backdrop {
+      @include _border(scrollbar-trough-vertical-backdrop, $width: 23px 10px 23px 10px, $image-width: 23 10 23 10 / 23px 10px 23px 10px);
+      &.horizontal { @include _border(scrollbar-trough-horizontal-backdrop, $width: 10px 23px 10px 23px, $image-width: 10 23 10 23 / 10px 23px 10px 23px); }
+    }
+  }
+  &.slider {
+    @include _border(scrollbar-slider-vertical, $width: 10px 10px 10px 10px, $image-width: 10 10 10 10 / 10px 10px 10px 10px);
+    &.horizontal { @include _border(scrollbar-slider-horizontal, $width: 10px 10px 10px 10px, $image-width: 10 10 10 10 / 10px 10px 10px 10px); }
+
+    &:hover {
+      @include _border(scrollbar-slider-vertical-hover, $width: 10px 10px 10px 10px, $image-width: 10 10 10 10 / 10px 10px 10px 10px);
+      &.horizontal { @include _border(scrollbar-slider-horizontal-hover, $width: 10px 10px 10px 10px, $image-width: 10 10 10 10 / 10px 10px 10px 10px); }
+    }
+    &:active {
+      @include _border(scrollbar-slider-vertical-active, $width: 10px 10px 10px 10px, $image-width: 10 10 10 10 / 10px 10px 10px 10px);
+      &.horizontal { @include _border(scrollbar-slider-horizontal-active, $width: 10px 10px 10px 10px, $image-width: 10 10 10 10 / 10px 10px 10px 10px); }
+    }
+    &:insensitive {
+      @include _border(scrollbar-slider-vertical-insensitive, $width: 10px 10px 10px 10px, $image-width: 10 10 10 10 / 10px 10px 10px 10px);
+      &.horizontal { @include _border(scrollbar-slider-horizontal-insensitive, $width: 10px 10px 10px 10px, $image-width: 10 10 10 10 / 10px 10px 10px 10px); }
+    }
+    &:backdrop {
+      @include _border(scrollbar-slider-vertical-backdrop, $width: 10px 10px 10px 10px, $image-width: 10 10 10 10 / 10px 10px 10px 10px);
+      &.horizontal { @include _border(scrollbar-slider-horizontal-backdrop, $width: 10px 10px 10px 10px, $image-width: 10 10 10 10 / 10px 10px 10px 10px); }
+    }
+  }
+}
+
+
+.scrollbars-junction,
+.scrollbars-junction.frame { // the small square between two scrollbars
+  border-color: transparent;
+  background-color: transparent;
+  border-image: none;
+}

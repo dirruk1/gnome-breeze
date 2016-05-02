@@ -1,0 +1,170 @@
+/*****************
+ * Notebooks and *
+ * Tabs          *
+ *****************/
+ /*************
+  * Notebooks *
+  *************/
+ notebook {
+   &.frame {
+     border: none;
+     padding: 0px;
+     box-shadow: inset 0px 0px 0px 1px $border_color;
+   }
+
+   > header {
+     padding: 0px;
+     border: none;
+     background-color: w_color(normal);
+     //box-shadow: inset 0 -1px $border_color;
+
+     &.top {
+       box-shadow: inset 0 -1px $border_color; // border
+       &:backdrop { box-shadow: inset 0 -1px backdrop($border_color); }
+     }
+     &.bottom {
+       box-shadow: inset 0 1px $border_color;
+       &:backdrop { box-shadow: inset 0 1px backdrop($border_color); }
+     }
+     &.right {
+       box-shadow: inset 1px 0 $border_color;
+       &:backdrop { box-shadow: inset 1px 0 backdrop($border_color); }
+     }
+     &.left {
+       box-shadow: inset -1px 0 $border_color;
+       &:backdrop { box-shadow: inset -1px 0 backdrop($border_color); }
+     }
+     &:backdrop {
+       background-color: backdrop(w_color(normal));
+     }
+
+     tabs {
+      margin: 0px;
+      }
+
+      @each $_tab, $_border, $_radius in  (top,bottom,3px 3px 0px 0px),
+                                          (bottom,top,0px 0px 3px 3px),
+                                          (left,right, 3px 0px 0px 3px),
+                                          (right,left, 0px 3px 3px 0px) {
+        &.#{$_tab} {
+          > tabs {
+            > tab {
+              border: 1px solid transparentize(w_color(text), 0.8);
+              background-color: transparentize(w_color(text), 0.8);
+              border-radius: #{$_radius};
+              border-#{$_border}-color: transparent;
+              &:hover, &.prelight-page {
+                background-color: transparentize(s_color(normal), 0.8);
+                border-color: transparentize(s_color(normal), 0.8);
+              }
+              &:checked {
+                border-color: $border_color;
+                border-#{$_border}-color: $menu_color;
+                background-color: $menu_color;
+                &:backdrop {
+                  border-color: backdrop($border_color);
+                  border-#{$_border}-color: backdrop($menu_color);
+                  background-color: backdrop($menu_color);
+                }
+              }
+            }
+          }
+        }
+      }
+
+     &.top > tabs > arrow {
+       @extend %notebook_vert_arrows;
+
+       border-top-style: none;
+     }
+
+     &.bottom > tabs > arrow {
+       @extend %notebook_vert_arrows;
+
+       border-bottom-style: none;
+     }
+
+     @at-root %notebook_vert_arrows {
+       margin-left: -5px;
+       margin-right: -5px;
+       padding-left: 4px;
+       padding-right: 4px;
+
+       &.down { -gtk-icon-source: -gtk-icontheme('pan-start-symbolic'); }
+
+       &.up { -gtk-icon-source: -gtk-icontheme('pan-end-symbolic'); }
+     }
+
+     &.left > tabs > arrow {
+       @extend %notebook_horz_arrows;
+
+       border-left-style: none;
+     }
+
+     &.right > tabs > arrow {
+       @extend %notebook_horz_arrows;
+
+       border-right-style: none;
+     }
+
+     @at-root %notebook_horz_arrows {
+       margin-top: -5px;
+       margin-bottom: -5px;
+       padding-top: 4px;
+       padding-bottom: 4px;
+
+       &.down { -gtk-icon-source: -gtk-icontheme('pan-up-symbolic'); }
+
+       &.up { -gtk-icon-source: -gtk-icontheme('pan-down-symbolic'); }
+     }
+
+     > tabs > arrow {
+       @extend %button_basic;
+
+       @extend %button_basic.flat;
+
+       min-height: 16px;
+       min-width: 16px;
+       border-radius: 0;
+
+       &:hover:not(:active):not(:backdrop) {
+         background-clip: padding-box;
+         background-image: none;
+         background-color: transparentize(white, 0.7);
+         border-color: transparent;
+         box-shadow: none;
+       }
+
+       &:disabled { @include button(undecorated); }
+     }
+
+
+   // colors the button like the label, overridden otherwise
+   button.flat {
+     padding: 0;
+     margin: 4px;
+     // FIXME: generalize .small-button?
+     min-width: 20px;
+     min-height: 20px;
+     border: 0px solid;
+     border-radius: 50%;
+     color: w_color(normal);
+     background-color: $border_color;
+     background-image: none;
+     &:hover {
+      background-color: $error_color;
+    }
+    &:active { background-color: $error_color;}
+
+    &:backdrop { background-color: backdrop($border_color)}
+   }
+ }
+
+
+  > stack:not(:only-child) { // the :not(:only-child) is for "hidden" notebooks
+     background-color: transparent;
+     border-style: solid;
+     border-color: $border_color;
+     border-width: 0px;
+   }
+}

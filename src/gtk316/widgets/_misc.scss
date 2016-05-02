@@ -1,0 +1,110 @@
+/********
+ * Misc *
+ ********/
+
+/**********
+* Frames *
+**********/
+.frame {
+ border: 1px solid $border_color;
+ &.flat { border-style: none; }
+ padding: 0;
+ &.action-bar {
+   padding: 6px;
+   border-width: 1px 0 0;
+   &:backdrop {border-color: backdrop($border_color);}
+ }
+ &:backdrop {border-color: backdrop($border_color);}
+}
+
+GtkScrolledWindow {
+ GtkViewport.frame { // avoid double borders when viewport inside
+                     // scrolled window
+   border-style: none;
+ }
+}
+
+//vbox and hbox separators
+.separator {
+ // always disable separators
+ //-GtkWidget-wide-separators: true;
+ color: transparent;
+&.vertical {
+  color: $border_color;
+  &:backdrop { color: backdrop($border_color); }
+  }
+ // Font and File button separators
+ GtkFileChooserButton &.vertical,
+ GtkFontButton &.vertical {
+   // always disable separators
+   -GtkWidget-wide-separators: true;
+ }
+}
+
+/*************
+* Expanders *
+*************/
+
+.expander {
+ -gtk-icon-source: -gtk-icontheme('pan-end-symbolic');
+ &:dir(rtl) { -gtk-icon-source: -gtk-icontheme('pan-end-symbolic-rtl'); }
+ &:hover { color: lighten(w_color(text),30%); } //only lightens the arrow
+ &:checked { -gtk-icon-source: -gtk-icontheme('pan-down-symbolic'); }
+}
+
+/*********
+* Paned *
+*********/
+
+GtkPaned { // this is for the standard paned separator
+
+ -GtkPaned-handle-size: 1; // sets separator width
+
+ -gtk-icon-source: none; // removes handle decoration
+ margin: 0 8px 8px 0; // drag area of the separator, not a real margin
+ &:dir(rtl) {
+   margin-right: 0;
+   margin-left: 8px;
+ }
+ .pane-separator {
+   background-color: $border_color;
+   &:backdrop {
+     background-color: backdrop($border_color);
+   }
+ }
+}
+
+GtkPaned.wide { // this is for the paned with wide separator
+ -GtkPaned-handle-size: 5; // wider separator here
+ margin: 0; // no need of the invisible drag area so, reset margin
+ .pane-separator {
+   background-color: transparent;
+   border-style: none;
+   // border-color: $borders_color;
+   // border-width: 1px;
+ }
+ &.vertical .pane-separator { border-style: none;}
+ .pane-separator:backdrop { border-color: transparent; }
+}
+
+/*********************
+* Spinner Animation *
+*********************/
+
+@keyframes spin {
+ to { -gtk-icon-transform: rotate(1turn); }
+}
+
+.spinner {
+ background-image: none;
+ background-color: blue;
+ opacity: 0; // non spinning spinner makes no sense
+ -gtk-icon-source: -gtk-icontheme('process-working-symbolic');
+ &:active {
+   opacity: 1;
+   animation: spin 1s linear infinite;
+   &:insensitive {
+     opacity: 0.5;
+   }
+ }
+}

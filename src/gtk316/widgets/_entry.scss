@@ -1,0 +1,117 @@
+@mixin entry($t, $fc:v_color(active)) {
+//
+// Entries drawing function
+//
+// $t: entry type
+// $fc: focus color
+// $edge: set to none to not draw the bottom edge or specify a color to not
+//        use the default one
+//
+// possible $t values:
+// normal, focus, insensitive, backdrop, backdrop-insensitive, osd, osd-focus, osd-backdrop;
+//
+  @if $t==normal {
+    color: v_color(text);
+    border-color: $border_color;
+    background-color: v_color(normal);
+    box-shadow: none;
+  }
+
+  @if $t==focus {
+    border-color: $fc;
+  }
+
+  @if $t==insensitive {
+    color: insensitive(v_color(text));
+    border-color: insensitive($border_color);
+    background-color: insensitive(v_color(normal));
+  }
+
+  @if $t==backdrop {
+    color: backdrop(v_color(text));
+    border-color: backdrop($border_color);
+    background-color: backdrop(v_color(normal));
+  }
+
+  @if $t==backdrop-insensitive {
+    color: backdrop(insensitive(v_color(text)));
+    border-color: backdrop(insensitive($border_color));
+    background-color: backdrop(insensitive(v_color(normal)));
+  }
+}
+
+/****************
+ * Text Entries *
+ ****************/
+
+.entry {
+  border: 1px solid;
+  padding: 5px 8px 5px;
+
+  &.image { // icons inside the entry
+    &.left { padding-left: 0; }
+    &.right { padding-right: 0; }
+  }
+
+  border-radius: $r;
+  transition: all 200ms $ease-out-quad;
+  @include entry(normal);
+
+  &.flat, &.flat:focus {
+    padding: 2px;
+    @include entry(normal);
+    border: none;
+    border-radius: 0;
+  }
+
+  &:focus { @include entry(focus); }
+  &:insensitive { @include entry(insensitive); }
+  &:backdrop { @include entry(backdrop); }
+  &:backdrop:insensitive { @include entry(backdrop-insensitive); }
+
+  &:selected,
+  &:selected:focus {
+    @extend %selected_items;
+  }
+
+  &.progressbar {
+    margin: 1px;
+    border-radius: 0;
+    border-width: 0 0 2px;
+    border-color: s_color(normal);
+    border-style: solid;
+    background-image: none;
+    background-color: transparent;
+    box-shadow: none;
+    &:backdrop {
+      background-color: transparent;
+      border-color: backdrop(s_color(backdrop));
+    }
+  }
+
+  @each $e_type, $e_color in (error, $error_color),
+                             (warning, $warning_color) {
+    &.#{$e_type} {
+      color: $e_color;
+      border-color: $e_color;
+      background-color: transparentize($e_color, 0.5);
+      &:focus {
+        @include entry(focus, $e_color);
+        background-color: transparentize($e_color, 0.5);
+      }
+      &:selected, &:selected:focus { background-color: $e_color; }
+      &:backdrop {
+        color: backdrop($e_color);
+        border-color: backdrop($e_color);
+        background-color: backdrop(transparentize($e_color, 0.5));
+      }
+    }
+  }
+
+  &.image { // entry icons colors
+    color: mix(w_color(text),v_color(text), 80%);
+    &:hover { color: b_color(hover); }
+    &:active { color: b_color(active); }
+    &:backdrop { color: backdrop(mix(w_color(text), v_color(text), 80%)); }
+  }
+}

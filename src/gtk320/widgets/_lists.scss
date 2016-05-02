@@ -1,0 +1,48 @@
+/*********
+ * Lists *
+ *********/
+
+list {
+  background-color: w_color(normal);
+  color: w_color(text);
+  border-width: 0px;
+  &:backdrop {
+    background-color: backdrop(w_color(normal));
+    color: backdrop(w_color(text));
+  }
+  row { padding: 2px; }
+}
+
+row {
+  transition: all 150ms $ease-out-quad;
+
+  &:hover { transition: none; }
+
+  &.activatable {
+    &.has-open-popup, // this is for indicathing which row generated a popover see https://bugzilla.gnome.org/show_bug.cgi?id=754411
+
+    &:hover { background-color: transparentize(s_color(normal), 0.5); }
+
+    &:active {
+      box-shadow: none;
+      background-color: s_color(normal);
+    }
+
+    &:selected {
+      &:active {
+        box-shadow: none;
+        background-color: s_color(normal);
+      }
+
+      &.has-open-popup,
+      &:hover {
+        color: w_color(text);
+        background-color: s_color(hover);
+      }
+
+      &:backdrop { background-color: backdrop(s_color(normal)); }
+    }
+  }
+
+  &:selected { @extend %selected_items; }
+}
