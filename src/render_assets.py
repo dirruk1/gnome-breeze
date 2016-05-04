@@ -43,9 +43,7 @@ class Color(object):
             g = g * amount + float(color2.split(',')[1]) * (1 - amount)
             b = b * amount + float(color2.split(',')[2]) * (1 - amount)
 
-        self.rgb255 = (r,g,b)
         self.rgb = (r/255,g/255,b/255)
-        self.html = '#%02x%02x%02x' % self.rgb255
         self.insensitive = self._color_effect(self._intensity_effect(self.rgb,'Disabled'),'Disabled')
         self.insensitive_alpha = self._contrast_effect(self.rgb,'Disabled')
 
@@ -127,8 +125,6 @@ class Color(object):
         v = (1+amount)*v
         r,g,b = colorsys.hsv_to_rgb(h,s,v)
         self.rgb = (r,g,b)
-        self.rgb255 = (r*255,g*255,b*255)
-
 
     def gradient(self,state='',alpha=1.0):
         if state == 'active':
@@ -620,7 +616,7 @@ def progressbar(color1, color2, state=''):
 
 
 def html(color):
-    return '#%02x%02x%02x' % (color[0]*255,color[1]*255,color[2]*255)
+    return '#%02x%02x%02x' % (int(color[0]*255),int(color[1]*255),int(color[2]*255))
 
 def mix(color, mix_color, amount):
     r = color[0] * amount + mix_color[0] * (1 - amount)
