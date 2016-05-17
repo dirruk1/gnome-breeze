@@ -35,5 +35,4 @@ else
     echo "colorscheme $1 not found"
   fi
 fi
-
-
+        

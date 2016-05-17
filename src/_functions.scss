@@ -91,10 +91,10 @@
 
 @function button_gradient($c, $state: normal) {
   @if $state == normal {
-    @return linear-gradient(to bottom, change-color($c, $lightness: lightness($c)*1.01), change-color($c, $lightness:lightness($c)/1.03));
+    @return linear-gradient(to bottom, change-color($c, $lightness: min(lightness($c)*1.01,100%)), change-color($c, $lightness:min(lightness($c)/1.03,100%)));
   }
   @else {
-    @return linear-gradient(to bottom, change-color($c, $lightness: lightness($c)*1.03), change-color($c, $lightness:lightness($c)/1.10));
+    @return linear-gradient(to bottom, change-color($c, $lightness: min(lightness($c)*1.03,100%)), change-color($c, $lightness:min(lightness($c)/1.10,100%)));
   }
 }
 

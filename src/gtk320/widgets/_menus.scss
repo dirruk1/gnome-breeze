@@ -8,9 +8,7 @@ menubar,
   -GtkWidget-window-dragging: true;
   padding: 0px;
   box-shadow: none;
-  border-style: solid;
-  border-color: $border_color;
-  border-bottom-width: 1px;
+  border-style: none;
   background-color: w_color(normal);
   &:backdrop {
     background-color: backdrop(w_color(normal));

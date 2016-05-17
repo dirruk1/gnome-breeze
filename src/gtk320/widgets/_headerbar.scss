@@ -11,7 +11,7 @@ headerbar {
   border-style: solid;
   border-color: s_color(normal);
   color: t_color(text);
-  background-image: linear-gradient(to bottom,change-color(t_color(background),$lightness: lightness(t_color(background))*1.2),t_color(background));
+  background-image: linear-gradient(to bottom,change-color(t_color(background),$lightness: min(lightness(t_color(background))*1.2,100%)),t_color(background));
   &:backdrop {
     border-color: transparent;
     background-image: none;

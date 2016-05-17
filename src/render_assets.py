@@ -43,7 +43,9 @@ class Color(object):
             g = g * amount + float(color2.split(',')[1]) * (1 - amount)
             b = b * amount + float(color2.split(',')[2]) * (1 - amount)
 
+        self.rgb255 = (r,g,b)
         self.rgb = (r/255,g/255,b/255)
+        self.html = '#%02x%02x%02x' % self.rgb255
         self.insensitive = self._color_effect(self._intensity_effect(self.rgb,'Disabled'),'Disabled')
         self.insensitive_alpha = self._contrast_effect(self.rgb,'Disabled')
 
@@ -125,6 +127,8 @@ class Color(object):
         v = (1+amount)*v
         r,g,b = colorsys.hsv_to_rgb(h,s,v)
         self.rgb = (r,g,b)
+        self.rgb255 = (r*255,g*255,b*255)
+
 
     def gradient(self,state='',alpha=1.0):
         if state == 'active':
@@ -616,7 +620,7 @@ def progressbar(color1, color2, state=''):
 
 
 def html(color):
-    return '#%02x%02x%02x' % (int(color[0]*255),int(color[1]*255),int(color[2]*255))
+    return '#%02x%02x%02x' % (color[0]*255,color[1]*255,color[2]*255)
 
 def mix(color, mix_color, amount):
     r = color[0] * amount + mix_color[0] * (1 - amount)
@@ -733,6 +737,7 @@ gtk2.write(
 'gtk-color-scheme = "insensitive_fg_color:' + html(mix(window_fg.insensitive,window_bg.rgb,window_fg.insensitive_alpha)) + '"\n'
 'gtk-color-scheme = "insensitive_text_color:' + html(mix(view_fg.insensitive,view_bg.rgb,view_fg.insensitive_alpha)) + '"\n'
 'gtk-color-scheme = "button_insensitive_fg_color:' + html(mix(button_fg.insensitive,button_bg.rgb,button_fg.insensitive_alpha)) + '"\n'
+'gtk-color-scheme = "button_active:' + html(button_active.rgb) + '"\n'
 'gtk-color-scheme = "border_color:' + html(border_color.rgb) + '"\n'
 '\n'
 'include "widgets/default"\n'
@@ -751,7 +756,9 @@ gtk2.close()
 
 gtk3 = open('_global.scss', 'w')
 for key in _colors:
-    if 'Disabled' in key or 'Inactive' in key:
+    if key == 'DisabledColor' or key == 'InactiveColor':
+        gtk3.write('${0}:rgb({1});\n'.format(key,_colors[key]))
+    elif 'Disabled' in key or 'Inactive' in key:
         gtk3.write('${0}:{1};\n'.format(key,_colors[key]))
     else:
         gtk3.write('${0}:rgb({1});\n'.format(key,_colors[key]))
