@@ -1,0 +1,42 @@
+/************
+ * Pathbars *
+ ************/
+.path-bar {
+  background-color: w_color(normal);
+  border-bottom: 1px solid $border_color;
+}
+
+.path-bar button {
+  @include button(undecorated);
+  padding: 4px 8px;
+  color: w_color(text);
+  &:hover {border-color: b_color(hover); }
+  &:active, &:checked {
+    background-color: $border_color;
+    font-weight: normal;
+    }
+  &.text-button, &.image-button, & {
+    padding-left: 4px;
+    padding-right: 4px;
+  }
+
+  &.text-button.image-button label {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  &.text-button.image-button, & {
+    label:last-child { padding-right: 8px; }
+    label:first-child { padding-left: 8px; }
+  }
+
+  image {
+    padding-left: 4px;
+    padding-right: 4px;
+  }
+
+  &.slider-button {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}

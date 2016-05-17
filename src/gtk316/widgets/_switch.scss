@@ -1,0 +1,67 @@
+/**********
+ * Switch *
+ **********/
+
+GtkSwitch {
+  -GtkSwitch-slider-width: 24px;
+  -GtkSwitch-slider-height: 24px;
+  font-weight: bold;
+  font-size: smaller;
+  outline-offset: 0px;
+  color: transparent;
+  box-shadow: none; // needs to be set here
+                                                    // otherwise it gets
+                                                    // clipped
+  &.trough {
+    // similar to the .scale
+    border: 0px solid;
+    border-radius: 12px;
+    background-image: none;
+    background-color: transparentize(b_color(text),0.7);
+    text-shadow: none;
+    &:active {
+      background-color: s_color(normal);
+      box-shadow: none;
+      text-shadow: none;
+    }
+    &:backdrop {
+      background-color: backdrop(transparentize(b_color(text),0.7));
+    }
+
+  }
+
+  &.slider {
+    border: 1px solid;
+    border-radius: 11px;
+    background-color: w_color(normal);
+    border-color: $border_color;
+    &:hover {
+      box-shadow: none;
+      border-color: b_color(hover);
+      background-color: w_color(normal);
+    }
+    &:active {
+    border-color: b_color(active);
+      &:hover { border-color: b_color(hover)}
+    }
+    &:insensitive { background-color: insensitive(w_color(normal)); }
+    &:backdrop {
+      background-color: backdrop(w_color(normal));
+      &:insensitive {
+        background-color: backdrop(insensitive(w_color(normal)));
+      }
+    }
+  }
+  .header-bar & {
+    &.trough {
+      &:backdrop {
+        background-color:transparent;
+      }
+    }
+    &.slider {
+      &:backdrop {
+        background-color: t_color(backdrop-text);
+      }
+    }
+  }
+}

@@ -1,0 +1,160 @@
+/*********
+ * Menus *
+ *********/
+ /* menu buttons */
+ .menuitem.button.flat {
+   @extend %undecorated_button;
+   color: w_color(text);
+   &:hover { background-color: b_color(hover); }
+   &:selected {
+     background-color: b_color(active);
+     color: b_color(active-text)
+   }
+   &:backdrop, &:backdrop:hover {
+     @extend %undecorated_button;
+     color: backdrop(w_color(text));
+   }
+ }
+
+.menubar {
+  -GtkWidget-window-dragging: true;
+  padding: 0px;
+  box-shadow: none;
+  background-color: w_color(normal);
+  &:backdrop {
+    background-color: backdrop(w_color(normal));
+  }
+  & > .menuitem {
+    padding: 6px 8px;
+    border: 1px solid w_color(normal);
+    &:hover { //Seems like it :hover even with keyboard focus
+      background-color: b_color(active);
+      color: b_color(active-text);
+    }
+    &:insensitive {
+      color: insensitive(w_color(text));
+      box-shadow: none;
+      &:backdrop {
+        background-color: backdrop(w_color(normal));
+        color: backdrop(insensitive(w_color(text)));
+      }
+    }
+    &:backdrop {
+      background-color: backdrop(w_color(normal));
+      border-color: backdrop(w_color(normal));
+      color: backdrop(w_color(text));
+    }
+  }
+}
+
+.menu {
+  padding: 0px;
+  background-color: $menu_color;
+  border: 1px solid $border_color; // adds borders in a non composited env
+  border-radius: $r;
+  .csd & { border: 1px solid $border_color; }  // axes borders in a composited env
+  .separator {color: $border_color;}
+  .menuitem {
+	text-shadow: none;
+    padding: 4px 4px;
+    &:hover {
+      color: b_color(active-text);
+      background-color: b_color(active);
+    }
+    &:insensitive {
+      color: insensitive(w_color(text));
+      &:backdrop { color: backdrop(insensitive(w_color(text))); }
+    }
+    &:backdrop, &:backdrop:hover {
+      color: backdrop(w_color(text));
+      background-color: backdrop(w_color(normal));
+    }
+    //submenu indicators
+    &.arrow { -gtk-icon-source: -gtk-icontheme('pan-end-symbolic');}
+    &.arrow:dir(rtl) { -gtk-icon-source: -gtk-icontheme('pan-end-symbolic-rtl'); }
+  }
+}
+
+.menuitem .accelerator { color: gtkalpha(currentColor,0.5); }
+/***************
+ * Popovers   *
+ ***************/
+
+.popover {
+  margin: 10px;
+  padding: 0px;
+  border: 1px solid $border_color;
+  border-radius: 3px;
+  background-color: $menu_color;
+
+  box-shadow: 0 2px 3px transparentize(black, 0.2);
+
+  &:backdrop {
+    box-shadow: none;
+  }
+
+  > .list,
+  > .view,
+  > .toolbar,
+  &.osd > .toolbar {
+    border-style: none;
+    background-color: transparent;
+  }
+  .button.flat {
+    border-radius: 0px;
+	  color: w_color(text);
+    .label { padding: 4px 0px; }
+    &:hover,
+    &:checked:hover {
+      background-image: none;
+      background-color: b_color(active);
+    	color: b_color(active-text);
+      transition: none;
+    }
+
+    &:backdrop {
+      background-color: transparent;
+    	color: backdrop(w_color(text));
+    }
+  }
+
+  &.osd { @extend %osd; }
+
+}
+
+//touch selection handlebars for the Popover.osd above
+.entry.cursor-handle,
+.cursor-handle {
+  background-color: transparent;
+  background-image: none;
+  box-shadow: none;
+  border-style: none;
+  &.top { -gtk-icon-source: -gtk-icontheme('selection-start-symbolic'); }
+  &.bottom { -gtk-icon-source: -gtk-icontheme('selection-end-symbolic'); }
+}
+
+.scale-popup .button,
+.scale-popup .button.flat { // +/- buttons on GtkVolumeButton popup
+  @extend %undecorated_button;
+  background-color: transparent;
+  padding: 5px;
+  color: w_color(text);
+  &:hover {
+    @extend %undecorated_button;
+    color: b_color(hover);
+  }
+  &:active {
+    color: b_color(active);
+  }
+  &:insensitive {
+    color: insensitive(w_color(text));
+  }
+  &:backdrop {
+    color: backdrop(w_color(text));
+    &:insensitive {
+      color: backdrop(insensitive(w_color(text)));
+    }
+  }
+}
+
+GtkVolumeButton.button { padding: 5px; }

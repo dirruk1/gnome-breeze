@@ -1,0 +1,49 @@
+/*********
+ * Links *
+ *********/
+%link,
+*:link {
+  color: $link_color;
+  &:visited {
+    color: $link_visited_color;
+    *:selected & { color: mix(s_color(text), s_color(normal), 60%); }
+  }
+  &:hover {
+    color: lighten($link_color,10%);
+    *:selected & { color: mix(s_color(text), s_color(normal), 90%); }
+  }
+  &:active {
+    color: $link_color;
+    *:selected & { color: mix(s_color(text), s_color(normal), 80%); }
+  }
+  &:backdrop, &:backdrop:hover, &:backdrop:hover:selected {
+    color: backdrop(s_color(backdrop));
+  }
+  @at-root %link_selected,
+  &:selected, *:selected & {
+    color: mix(s_color(text), s_color(normal), 80%);
+  }
+}
+
+button:link,
+button:visited {
+  @extend %undecorated_button;
+
+  @extend *:link;
+
+  text-shadow: none;
+
+  &:hover,
+  &:active,
+  &:checked {
+    @extend %undecorated_button;
+
+    text-shadow: none;
+  }
+
+  > label {
+    @extend %link;
+
+    text-decoration-line: underline;
+  }
+}

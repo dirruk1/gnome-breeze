@@ -1,0 +1,44 @@
+/***********
+ * Dialogs *
+ ***********/
+
+// .message-dialog .dialog-action-area .button {
+//   //padding: 8px;
+// }
+
+messagedialog { // Message Dialog styling
+
+    &.background { background-color: w_color(normal); }
+    &:backdrop { background-color: backdrop(w_color(normal))}
+  .titlebar {
+    min-height: 32px;
+    background-color: transparent;
+    background-image: linear-gradient(to bottom,change-color(t_color(background),$lightness: min(lightness(t_color(background))*1.2,100%)),t_color(background));
+    box-shadow: none;
+  }
+  .dialog-action-area {
+    padding: 8px;
+  }
+  button { margin: 2px; }
+}
+
+filechooser {
+  .search-bar {
+    background-color: w_color(normal);
+    border-color: w_color(normal);
+    box-shadow: none;
+    &:backdrop {
+      background-color: backdrop(w_color(normal));
+      border-color: backdrop(w_color(normal));
+      color: backdrop(w_color(text));
+    }
+  }
+  .dialog-action-box {
+    border-top: 1px solid $border_color;
+    &:backdrop { border-top-color: backdrop($border_color); }
+  }
+  #pathbarbox {
+    background-color: w_color(normal);
+    border-bottom: 1px solid $border_color;
+  }
+}

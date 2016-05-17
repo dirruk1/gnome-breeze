@@ -1,0 +1,52 @@
+/**********
+ * Switch *
+ **********/
+
+switch {
+ margin: 2px;
+ font-weight: bold;
+ font-size: smaller;
+ min-width: 48px;
+ min-height: 24px;
+ border: 0px solid;
+ border-radius: 12px;
+ color: transparent;
+ background-color: transparentize(b_color(text),0.7);
+ text-shadow: none;
+
+ &:checked {
+   background-color: s_color(normal);
+ }
+
+ &:backdrop {
+   background-color: backdrop(transparentize(b_color(text),0.7));
+   text-shadow: none;
+
+   &:checked {
+     background-color: backdrop(s_color(normal));
+   }
+ }
+
+ slider {
+   min-width: 22px;
+   min-height: 22px;
+   border: 1px solid;
+   border-radius: 11px;
+   background-color: w_color(normal);
+   border-color: $border_color;
+ }
+
+ &:hover slider { border-color: b_color(hover); }
+
+ &:disabled slider {
+   background-color:insensitive(w_color(normal));
+ }
+
+ &:backdrop {
+   slider {
+     background-color: backdrop(w_color(normal));
+   }
+
+   &:disabled slider { background-color: backdrop(insensitive(w_color(normal))); }
+ }
+}

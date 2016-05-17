@@ -1,0 +1,72 @@
+/***********
+ * Sidebar *
+ ***********/
+
+.sidebar,
+.sidebar .view {
+  border: none;
+  background-color: w_color(normal);
+  &:selected {
+    @extend %selected_items;
+  }
+  &:backdrop { background-color: backdrop(w_color(normal))}
+}
+
+GtkSidebarRow {
+  // Needs overriding of the GtkListBoxRow padding
+  &.list-row {
+    padding: 0px;
+  }
+  // Using margins/padding directly in the SidebarRow
+  // will make the animation of the new bookmark row jump
+  .sidebar-revealer {
+    padding: 4px 14px 4px 12px;
+  }
+  .sidebar-icon {
+    
+    &:dir(ltr) { padding-right: 8px; }
+    &:dir(rtl) { padding-left: 8px; }
+  }
+  .sidebar-label {
+    &:dir(ltr) { padding-right: 2px; }
+    &:dir(rtl) { padding-left: 2px; }
+  }
+}
+
+// Places sidebar is a special case, since the view here have to look like chrome not content, so we override text color
+GtkPlacesSidebar.sidebar .view {
+//  color: w_color(text);
+//  background-color: transparent;
+  &:insensitive { color: insensitive(w_color(text)); }
+  &:backdrop {
+    color: backdrop(w_color(text));
+    &:insensitive { color: backdrop(insensitive(w_color(text))); }
+  }
+  &:selected { @extend %selected_items; }
+  .separator,
+  .separator:backdrop { @extend .separator; }
+  .image { // icons color
+    color: w_color(text);
+    &:selected {
+        color: s_color(text);
+        &:backdrop { color: backdrop(w_color(text)); }
+    }
+    &:insensitive { color: insensitive(w_color(text)); }
+    &:backdrop {
+      color: backdrop(w_color(text));
+      &:insensitive { color: backdrop(insensitive(w_color(text))); }
+    }
+  }
+}
+
+.sidebar-item {
+  padding: 10px 4px;
+  > .label {
+    padding-left: 6px;
+    padding-right: 6px;
+  }
+  &.needs-attention > .label {
+    @extend %needs_attention;
+    background-size: 6px 6px, 0 0;
+  }
+}

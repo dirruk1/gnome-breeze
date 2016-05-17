@@ -1,0 +1,79 @@
+/*************************
+ * Check and Radio items *
+ *************************/
+@each $s,$as in ('','-unchecked'),
+                 (':hover', '-unchecked-hover'),
+                 (':active', '-unchecked-active'),
+                 (':backdrop', '-unchecked-backdrop'),
+                 (':checked', '-checked-active'),
+                 (':checked:hover', '-checked-hover'),
+                 (':checked:active', '-checked-active'),
+                 (':backdrop:checked', '-checked-backdrop') {
+ .view.content-view.check#{$s}:not(list) {
+   -gtk-icon-shadow: none;
+   -gtk-icon-source: -gtk-scaled(url("../assets/check-selectionmode#{$as}.png"), url("../assets/check-selectionmode#{$as}@2.png"));
+   background-color: transparent;
+ }
+}
+
+checkbutton.text-button, radiobutton.text-button {
+ // this is for a nice focus on check and radios text
+ padding: 2px 0;
+ outline-offset: 0;
+
+ label:not(:only-child) {
+   &:first-child { margin-left: 4px; }
+   &:last-child { margin-right: 4px; }
+ }
+}
+
+@each $a in ('check','radio') {
+
+  #{$a} {
+   margin: 0 4px;
+
+   &:only-child { margin: 0; }
+
+   min-height: 18px;
+   min-width: 18px;
+   //border: none;
+   animation: none;
+   background-color: transparent;
+   -gtk-icon-source: -gtk-scaled(url("../assets/#{$a}-unchecked.png"), url("../assets/#{$a}-unchecked@2.png"));
+
+   @each $s,$as in ('hover','-hover'),
+                    ('active','-active'),
+                    ('disabled','-insensitive'),
+                    ('backdrop','-backdrop'),
+                    ('backdrop:disabled','-backdrop-insensitive') {
+    &:#{$s} { -gtk-icon-source: -gtk-scaled(url("../assets/#{$a}-unchecked#{$as}.png"), url("../assets/#{$a}-unchecked#{$as}@2.png")); }
+    &:checked {
+      -gtk-icon-source: -gtk-scaled(url("../assets/#{$a}-checked-active.png"), url("../assets/#{$a}-checked-active@2.png"));
+      &:#{$s} { -gtk-icon-source: -gtk-scaled(url("../assets/#{$a}-checked#{$as}.png"), url("../assets/#{$a}-checked#{$as}@2.png")); }
+    }
+    &:indeterminate {
+      -gtk-icon-source: -gtk-scaled(url("../assets/#{$a}-mixed-active.png"), url("../assets/#{$a}-mixed-active@2.png"));
+      &:#{$s} { -gtk-icon-source: -gtk-scaled(url("../assets/#{$a}-mixed#{$as}.png"), url("../assets/#{$a}-mixed#{$as}@2.png")); }
+    }
+  }
+  
+   menu menuitem & {
+     margin: 0; // this is a workaround for a menu check/radio size allocation issue
+     min-height: 18px;
+     min-width: 18px;
+     background-color: transparent;
+     box-shadow: none;
+     -gtk-icon-shadow: none;
+     animation: none;
+     &:hover {
+       -gtk-icon-source: -gtk-scaled(url("../assets/#{$a}-unchecked.png"), url("../assets/#{$a}-unchecked@2.png"));
+     }
+     &:checked:hover {
+       -gtk-icon-source: -gtk-scaled(url("../assets/#{$a}-checked-active.png"), url("../assets/#{$a}-checked-active@2.png"));
+     }
+     &:indeterminate:hover {
+       -gtk-icon-source: -gtk-scaled(url("../assets/#{$a}-mixed-active.png"), url("../assets/#{$a}-mixed-active@2.png"));
+     }
+   }
+  }
+}

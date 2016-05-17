@@ -1,0 +1,178 @@
+/**********************
+ * Window Decorations *
+ *********************/
+
+decoration {
+
+  //border: 1px solid transparent;
+  border-radius: $r $r 0 0;
+  border-width: 0px;
+  box-shadow: 0 2px 6px 1px rgba(0, 0, 0, 0.5);
+
+  /* this is used for the resize cursor area */
+  margin: 10px;
+
+  .maximized &,
+  .fullscreen &,
+  .tiled & {
+    border-radius: 0;
+  }
+  .popup & {
+    border-radius: $r;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.1)
+  }
+  // server-side decorations as used by mutter
+  .ssd &{
+	  box-shadow: 0 2px 6px 1px rgba(0, 0, 0, 0.1);
+  }
+  .csd & {
+    border-radius: $r;
+    &.popup {
+      box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.1)
+    }
+    &.tooltip {
+      box-shadow: none;
+    }
+    &.message-dialog {
+      box-shadow: 0 2px 6px 1px rgba(0, 0, 0, 0.5)
+    }
+  }
+  .solid-csd & {
+    border-radius: 0;
+    margin: 0;
+    padding: 1px;
+    border: none;
+    background-color: $border_color;
+    box-shadow: none;
+  }
+}
+
+headerbar,
+.titlebar {
+  &.default-decoration button.titlebutton {
+    padding: 6px 1px;
+    min-height: 18px;
+    min-width: 18px;
+    margin: 0;
+  }
+  button.titlebutton {
+    padding: 6px;
+    &:hover,
+    &:active,
+    &:checked,
+    &:backdrop,
+    &:active:hover {
+      transition: none;
+    }
+
+    &.close {
+      padding: 6px 1px;
+      color: transparent;
+      border-image: none;
+      box-shadow: none;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-image: -gtk-scaled(url('../assets/titlebutton-close.png'),url('../assets/titlebutton-close@2.png'));
+    }
+    &.close:hover {
+      border-color: transparent;
+      background-color: transparent;
+      background-image: -gtk-scaled(url('../assets/titlebutton-close-hover.png'),url('../assets/titlebutton-close-hover@2.png'));
+    }
+    &.close:active {
+      border-color: transparent;
+      background-color: transparent;
+      background-image: -gtk-scaled(url('../assets/titlebutton-close-active.png'),url('../assets/titlebutton-close-active@2.png'));
+    }
+    &.close:backdrop {
+      border-color: transparent;
+      background-color: transparent;
+      background-image: -gtk-scaled(url('../assets/titlebutton-close-backdrop.png'),url('../assets/titlebutton-close-backdrop@2.png'));
+    }
+
+    &.maximize {
+      padding: 6px 1px;
+      color: transparent;
+      border-image: none;
+      box-shadow: none;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-image: -gtk-scaled(url('../assets/titlebutton-maximize.png'),url('../assets/titlebutton-maximize@2.png'));
+    }
+    &.maximize:hover {
+    	border-color: transparent;
+      background-color: transparent;
+    	background-image: -gtk-scaled(url('../assets/titlebutton-maximize-hover.png'),url('../assets/titlebutton-maximize-hover@2.png'));
+  	}
+    &.maximize:active {
+    	border-color: transparent;
+      background-color: transparent;
+    	background-image: -gtk-scaled(url('../assets/titlebutton-maximize-active.png'),url('../assets/titlebutton-maximize-active@2.png'));
+  	}
+    &.maximize:backdrop {
+    	border-color: transparent;
+      background-color: transparent;
+    	background-image: -gtk-scaled(url('../assets/titlebutton-maximize-backdrop.png'),url('../assets/titlebutton-maximize-backdrop@2.png'));
+  	}
+
+    &.minimize {
+      padding: 6px 1px;
+      color: transparent;
+      border-image: none;
+      box-shadow: none;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-image: -gtk-scaled(url('../assets/titlebutton-minimize.png'),url('../assets/titlebutton-minimize@2.png'));
+    }
+    &.minimize:hover {
+  	  border-color: transparent;
+      background-color: transparent;
+      background-image: -gtk-scaled(url('../assets/titlebutton-minimize-hover.png'),url('../assets/titlebutton-minimize-hover@2.png'));
+    }
+    &.minimize:active {
+  	  border-color: transparent;
+      background-color: transparent;
+      background-image: -gtk-scaled(url('../assets/titlebutton-minimize-active.png'),url('../assets/titlebutton-minimize-active@2.png'));
+    }
+    &.minimize:backdrop {
+  	  border-color: transparent;
+      background-color: transparent;
+      background-image: -gtk-scaled(url('../assets/titlebutton-minimize-backdrop.png'),url('../assets/titlebutton-minimize-backdrop@2.png'));
+    }
+  }
+
+  .maximized & {
+    button.titlebutton {
+      &.maximize {
+        padding: 6px 1px;
+        color: transparent;
+        border-image: none;
+        box-shadow: none;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-image: -gtk-scaled(url('../assets/titlebutton-maximize-maximized.png'),url('../assets/titlebutton-maximize-maximized@2.png'));
+      }
+      &.maximize:hover {
+      	border-color: transparent;
+        background-color: transparent;
+      	background-image: -gtk-scaled(url('../assets/titlebutton-maximize-maximized-hover.png'),url('../assets/titlebutton-maximize-maximized-hover@2.png'));
+    	}
+      &.maximize:active {
+      	border-color: transparent;
+        background-color: transparent;
+      	background-image: -gtk-scaled(url('../assets/titlebutton-maximize-maximized-active.png'),url('../assets/titlebutton-maximize-maximized-active@2.png'));
+    	}
+      &.maximize:backdrop {
+      	border-color: transparent;
+        background-color: transparent;
+      	background-image: -gtk-scaled(url('../assets/titlebutton-maximize-maximized-backdrop.png'),url('../assets/titlebutton-maximize-maximized-backdrop@2.png'));
+    	}
+    }
+  }
+}
+
+headerbar.selection-mode button.titlebutton,
+.titlebar.selection-mode button.titlebutton {
+  text-shadow: none;
+  &:backdrop { -gtk-icon-shadow: none; }
+}

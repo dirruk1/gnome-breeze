@@ -1,0 +1,190 @@
+/*****************
+ * Notebooks and *
+ * Tabs          *
+ *****************/
+
+.notebook {
+  // Through me you go to the grief wracked city;
+  // Through me you go to everlasting pain;
+  // Through me you go a pass among lost souls.
+  // ...
+  // Abandon all hope — Ye Who Enter Here
+
+  -GtkNotebook-initial-gap: 0;
+  -GtkNotebook-arrow-spacing: 5;
+  -GtkNotebook-tab-curvature: 0;
+  -GtkNotebook-tab-overlap: 1;
+  -GtkNotebook-has-tab-gap: false;
+  -GtkWidget-focus-padding: 0;
+  -GtkWidget-focus-line-width: 0;
+  transition: all 200ms $ease-out-quad;
+  background-color: $menu_color;
+  &:backdrop {background-color: backdrop($menu_color)}
+
+  &.frame {
+    border: 1px solid $border_color;
+    // FIXME doesn't work
+    &.top { border-top-width: 0; }
+    &.bottom { border-bottom-width: 0; }
+    &.right { border-right-width: 0; }
+    &.left { border-left-width: 0; }
+    &:backdrop { border-color: backdrop($border_color); }
+  }
+  &.header {
+    background-color: w_color(normal);
+    padding-top: 4px;
+
+    //this is the shading of the header behind the tabs
+    &.frame {
+      border-style: none;
+    }
+    &.top {
+      box-shadow: inset 0 -1px $border_color; // border
+      &:backdrop { box-shadow: inset 0 -1px backdrop($border_color); }
+    }
+    &.bottom {
+      box-shadow: inset 0 1px $border_color;
+      &:backdrop { box-shadow: inset 0 1px backdrop($border_color); }
+    }
+    &.right {
+      box-shadow: inset 1px 0 $border_color;
+      &:backdrop { box-shadow: inset 1px 0 backdrop($border_color); }
+    }
+    &.left {
+      box-shadow: inset -1px 0 $border_color;
+      &:backdrop { box-shadow: inset -1px 0 backdrop($border_color); }
+    }
+    &:backdrop {
+      background-color: backdrop(w_color(normal));
+    }
+  }
+
+  tab {
+    border: 1px solid transparentize(w_color(text), 0.8);
+    background-color: transparentize(w_color(text), 0.8);
+    background-clip: padding-box;
+    &:backdrop {background-color: backdrop(transparentize(w_color(text), 0.8));}
+    //FIXME: we get double border in some cases, not considering the broken
+    //notebook content frame...
+    padding: 8px;
+    &.reorderable-page {
+		    background-color: w_color(normal);
+      &.top, &.bottom {
+        padding-left: 12px;  // for a nicer close button
+        padding-right: 6px; // placement
+        padding-bottom: 8px;
+      }
+    }
+
+    @each $_tab, $_border, $_radius in  (top,bottom,3px 3px 0px 0px),
+                                        (bottom,top,0px 0px 3px 3px),
+                                        (left,right, 3px 0px 0px 3px),
+                                        (right,left, 0px 3px 3px 0px) {
+      &.#{$_tab} {
+        border-radius: #{$_radius};
+        border-#{$_border}-color: transparent;
+        &:active, &.active-page {
+          border-color: $border_color;
+          border-#{$_border}-color: $menu_color;
+          background-color: $menu_color;
+          &:backdrop {
+            border-color: backdrop($border_color);
+            border-#{$_border}-color: backdrop($menu_color);
+            background-color: backdrop($menu_color);
+          }
+        }
+      }
+    }
+
+    //here's the interesting stuff
+    &:hover, &.prelight-page {
+      background-color: transparentize(s_color(normal), 0.8);
+      border-color: transparentize(s_color(normal), 0.8);
+    }
+
+    @each $_tab, $_border, $_shadow1 in (top, right, -3px 0px 0px 0px),
+                             (bottom, right, -3px 0px 0px 0px),
+                             (left, bottom, 0px -3px 0px 0px),
+                             (right, bottom, 0px -3px 0px 0px) {
+      &.reorderable-page.#{$_tab} {
+      border-width: 3px;
+      border-style: solid;
+      border-color: transparent;
+      background-color: w_color(normal);
+      background-clip: padding-box;
+      border-#{$_border}-width: 1px;
+      border-#{$_border}-color: $border_color;
+      box-shadow: inset #{$_shadow1} w_color(normal);
+        &:hover, &.prelight-page {
+          box-shadow: inset 0px -3px 0px 0px transparentize(s_color(normal),0.8), inset $_shadow1 w_color(normal);
+        }
+        &:active, &.active-page {
+          box-shadow: inset 0px -3px 0px 0px s_color(normal), inset $_shadow1 w_color(normal);
+          &:backdrop {
+            background-color: backdrop(w_color(normal));
+            border-color: transparent;
+		        border-#{$_border}-color: backdrop($border_color);
+            box-shadow:none;
+          }
+        }
+        &:backdrop {
+			    background-color: backdrop(w_color(normal));
+		      border-#{$_border}-color: backdrop($border_color);
+          box-shadow:none;
+        }
+      }
+    }
+    .label { //tab text
+      padding: 0 2px; // needed for a nicer focus ring
+      color: w_color(text);
+      &:backdrop { color: backdrop(w_color(text)); }
+    }
+    .button { //tab close button
+      padding: 0px;
+      border: 1px solid transparent;
+      border-radius: 50%;
+      background-image: none;
+      background-color: $border_color;
+      box-shadow: none;
+      icon-shadow: none;
+      transition: none;
+      color: w_color(normal);
+      &:hover {
+        background-color:  $error_color;
+        border-color: transparent;
+        background-image: none;
+        box-shadow: none;
+      }
+      &:active {
+        color: w_color(normal);
+        border-color: transparent;
+        background-image: none;
+        box-shadow: none;
+      }
+      &:backdrop {
+        color: backdrop(w_color(normal));
+        background-color: backdrop($border_color);
+      }
+      & > GtkImage {
+        padding: 0px;
+      }
+    }
+    .button .active-page, .button.active-page { //not working
+		background-color: $error_color;
+    }
+  }
+  &.arrow {
+    color: w_color(text);
+    &:hover { color: b_color(hover); }
+    &:active { color: b_color(active); }
+    &:insensitive {
+      color: insensitive(w_color(text));
+    }
+    &:backdrop {
+      color: backdrop(w_color(text));
+      &:insensitive {
+        color: backdrop(insensitive(w_color(text)));
+      }
+    }
+  }
+}

@@ -1,0 +1,83 @@
+/*************************
+ * Check and Radio items *
+ *************************/
+
+// draw regular check and radio items using our PNG assets
+// all assets are rendered from assets.svg. never add pngs directly
+
+@each $w,$a in ('check', 'check'),
+               ('radio','radio') {
+
+  //standard checks and radios
+  @each $s,$as in ('','-unchecked'),
+                  (':hover', '-unchecked-hover'),
+                  (':active', '-unchecked-active'),
+                  (':insensitive','-unchecked-insensitive'),
+                  (':backdrop', '-unchecked-backdrop'),
+                  (':backdrop:insensitive', '-unchecked-backdrop-insensitive'),
+                  (':inconsistent', '-mixed-active'),
+                  (':inconsistent:hover', '-mixed-hover'),
+                  (':inconsistent:selected', '-mixed-active'),
+                  (':inconsistent:backdrop', '-mixed-backdrop'),
+                  (':inconsistent:insensitive', '-mixed-insensitive'),
+                  (':inconsistent:insensitive:backdrop', '-mixed-backdrop-insensitive'),
+                  (':checked', '-checked-active'),
+                  (':checked:insensitive','-checked-insensitive'),
+                  (':checked:hover', '-checked-hover'),
+                  (':checked:active', '-checked-active'),
+                  (':backdrop:checked', '-checked-backdrop'),
+                  (':backdrop:checked:insensitive', '-checked-backdrop-insensitive') {
+    .#{$w}#{$s} {
+      -gtk-icon-source: -gtk-scaled(url("../assets/#{$a}#{$as}.png"), url("../assets/#{$a}#{$as}@2.png"));
+      icon-shadow: none;
+    }
+  }
+  @each $ms, $ma in ('', '-unchecked'),
+                    (':active', '-checked-active'),
+                    (':checked', '-checked-active'),
+                    (':inconsistent','-mixed-active') {
+
+    .menu .menuitem.#{$w}#{$ms},
+    .popover .button.flat.#{$w}#{$ms} {
+        &:hover {
+        -gtk-icon-source: -gtk-scaled(url("../assets/#{$a}#{$ma}.png"), url("../assets/#{$a}#{$ma}@2.png"));
+      }
+    }
+  }
+}
+
+//treeview and list-rows
+.view.check, .view.radio,
+.list-row .check, list-row .radio {
+  icon-shadow: none;
+  &:selected, &:hover { icon-shadow: none; }
+}
+
+//selection-mode
+@each $s,$as in ('','-unchecked'),
+                  (':hover', '-unchecked-hover'),
+                  (':active', '-unchecked-active'),
+                  (':backdrop', '-unchecked-backdrop'),
+                  (':checked', '-checked-active'),
+                  (':checked:hover', '-checked-hover'),
+                  (':checked:active', '-checked-active'),
+                  (':backdrop:checked', '-checked-backdrop') {
+  .view.content-view.check#{$s} {
+    icon-shadow: none;
+    -gtk-icon-source: -gtk-scaled(url("../assets/check-selectionmode#{$as}.png"),
+                                    url("../assets/check-selectionmode#{$as}@2.png"));
+    background-color: transparent;
+  }
+}
+
+GtkCheckButton.text-button, GtkRadioButton.text-button {
+  // this is for a nice focus on check and radios text
+  padding: 1px 2px 4px;
+  outline-offset: 0;
+  &:insensitive,
+  &:insensitive:active,
+  &:insensitive:inconsistent {
+    color: insensitive(b_color(text));
+    &:backdrop { color: backdrop(insensitive(b_color(text))); }
+  }
+}

@@ -1,0 +1,252 @@
+//
+// Theme color functions
+//
+
+
+// Button Color
+@function b_color($c: normal) {
+  @if $c == normal {
+    @return $ButtonBackgroundNormal;
+  }
+  @if $c == hover {
+    @return $ButtonDecorationHover;
+  }
+  @if $c == active {
+    @return $ButtonDecorationFocus;
+  }
+  @if $c == text {
+    @return $ButtonForegroundNormal;
+  }
+  @if $c == active-text {
+    @return $SelectionForegroundNormal;
+  }
+}
+
+// Selection Color
+@function s_color($c: normal) {
+  @if $c == normal {
+    @return $SelectionBackgroundNormal;
+  }
+  @if $c == hover {
+    @return $SelectionDecorationHover;
+  }
+  @if $c == text {
+    @return $SelectionForegroundNormal;
+  }
+  @if $c == backdrop {
+    @return transparentize($SelectionBackgroundNormal,0.5);
+  }
+}
+
+// View Color
+@function v_color($c: normal) {
+  @if $c == normal {
+    @return $ViewBackgroundNormal;
+  }
+  @if $c == hover {
+    @return $ViewDecorationHover;
+  }
+  @if $c == active {
+    @return $ViewDecorationFocus;
+  }
+  @if $c == text {
+    @return $ViewForegroundNormal;
+  }
+}
+
+// Window Color
+@function w_color($c: normal) {
+  @if $c == normal {
+    @return $WindowBackgroundNormal;
+  }
+  @if $c == text {
+    @return $WindowForegroundNormal;
+  }
+}
+
+// Titlebar color
+@function t_color($c: text) {
+  @if $c == text {
+    @return $WMactiveForeground;
+  }
+  @if $c == background {
+    @return $WMactiveBackground;
+  }
+  @if $c == backdrop-text {
+    @return $WMinactiveForeground;
+  }
+  @if $c == backdrop-background {
+    @return $WMinactiveBackground;
+  }
+}
+
+@function tooltip($c: text) {
+  @if $c == text {
+    @return $TooltipForegroundNormal;
+  }
+  @if $c == background {
+    @return $TooltipBackgroundNormal;
+  }
+}
+
+@function button_gradient($c, $state: normal) {
+  @if $state == normal {
+    @return linear-gradient(to bottom, change-color($c, $lightness: min(lightness($c)*1.01,100%)), change-color($c, $lightness:min(lightness($c)/1.03,100%)));
+  }
+  @else {
+    @return linear-gradient(to bottom, change-color($c, $lightness: min(lightness($c)*1.03,100%)), change-color($c, $lightness:min(lightness($c)/1.10,100%)));
+  }
+}
+
+$border_color: mix($WindowBackgroundNormal,$WindowForegroundNormal, 75%);
+$menu_color: w_color(normal);
+$link_color: $ViewForegroundLink;
+$link_visited_color: $ViewForegroundVisited;
+
+$warning_color: $ViewForegroundNeutral;
+$error_color: $ViewForegroundNegative;
+$success_color: $ViewForegroundPositive;
+$destructive_color: $error_color;
+
+$trough_color: mix(w_color(normal),w_color(text),70%);
+$scrollbar_color: mix($trough_color,v_color(text),50%);
+//
+// Color effects
+//
+//
+// Color maps for color effect functions
+//
+$Color: (
+  Disabled: $DisabledColor,
+  Inactive: $InactiveColor
+  );
+$ColorAmount: (
+  Disabled: $DisabledColorAmount,
+  Inactive: $InactiveColorAmount
+  );
+$ColorEffect: (
+  Disabled: $DisabledColorEffect,
+  Inactive: $InactiveColorEffect
+  );
+$ContrastAmount: (
+  Disabled: $DisabledContrastAmount,
+  Inactive: $InactiveContrastAmount
+  );
+$ContrastEffect: (
+  Disabled: $DisabledContrastEffect,
+  Inactive: $InactiveContrastEffect
+  );
+$IntensityAmount: (
+  Disabled: $DisabledIntensityAmount,
+  Inactive: $InactiveIntensityAmount
+  );
+$IntensityEffect: (
+  Disabled: $DisabledIntensityEffect,
+  Inactive: $InactiveIntensityEffect
+  );
+
+$r: 3px; // standard radius
+
+@function insensitive($c) {
+  @return Color(Intensity(Contrast($c, Disabled), Disabled), Disabled);
+}
+
+@function backdrop($c) {
+  @if $InactiveEnable == true {
+    @return Color(Intensity(Contrast($c, Inactive), Inactive), Inactive);
+  }
+  @else {
+    @return $c;
+  }
+}
+
+@function Contrast($c, $state) {
+
+  @if map-get($ContrastEffect, $state) == 0 {
+    @return $c;
+  }
+
+  @if map-get($ContrastEffect, $state) == 1 {
+    @if lightness(w_color()) > lightness(w_color(text)) {
+      @if lightness($c) < lightness(w_color()) or ($c == t_color(text) and lightness(t_color(background)) <= lightness(t_color(text))) {
+        @return transparentize($c, map-get($ContrastAmount, $state));
+      }
+      @else { @return $c; }
+    }
+    @if lightness(w_color()) <= lightness(w_color(text)) {
+      @if lightness($c) > lightness(w_color()) or ($c == t_color(text) and lightness(t_color(background)) > lightness(t_color(text))) {
+        @return transparentize($c, map-get($ContrastAmount, $state));
+      }
+      @else { @return $c; }
+    }
+  }
+
+  @if map-get($ContrastEffect, $state) == 2 {
+    @if lightness(w_color()) > lightness(w_color(text)) {  // don't know what a reasonable lightness treshhold is for Contrast
+      @if lightness($c) < lightness(w_color()) or ($c == t_color(text) and lightness(t_color(background)) <= lightness(t_color(text))) {
+        @return transparentize($c, map-get($ContrastAmount, $state));
+      }
+      @else { @return $c; }
+    }
+    @if lightness(w_color()) <= lightness(w_color(text)) {
+      @if lightness($c) > lightness(w_color()) or ($c == t_color(text) and lightness(t_color(background)) > lightness(t_color(text))){
+        @return transparentize($c, map-get($ContrastAmount, $state));
+      }
+      @else { @return $c; }
+    }
+  }
+}
+
+@function Color($c, $state) {
+
+  @if map-get($ColorEffect, $state) ==0 {
+    @return $c;
+  }
+
+  @if map-get($ColorEffect, $state) ==1 {
+    @if map-get($ColorAmount, $state) >=0 {
+      @return desaturate($c, percentage(map-get($ColorAmount, $state)));
+    }
+    @else {
+      @return saturate($c, percentage(abs(map-get($ColorAmount, $state))));
+    }
+  }
+
+  @if map-get($ColorEffect, $state)==2 or map-get($ColorEffect, $state)==3 { // 2 and 3 seem to do the same
+    @return mix(map-get($Color, $state),$c, percentage(map-get($ColorAmount, $state)));
+  }
+}
+
+@function Intensity($c, $state) {
+
+  @if map-get($IntensityEffect, $state) == 0 {
+    @return $c;
+  }
+  @if map-get($IntensityEffect, $state) == 1 {
+    @if map-get($IntensityAmount, $state) >= 0 {
+      @return mix(white, $c, percentage(map-get($IntensityAmount, $state)));
+    }
+    @else {
+      @return mix(black, $c, percentage(abs(map-get($IntensityAmount, $state))));
+    }
+  }
+
+  @if map-get($IntensityEffect, $state) == 2 {
+    @if map-get($IntensityAmount, $state) == -1 {
+      @return change-color($c, $lightness: 100%);
+    }
+    @else {
+      @return change-color($c, $lightness: min(lightness($c)/(1+map-get($IntensityAmount, $state)),100%));
+    }
+  }
+
+  @if map-get($IntensityEffect, $state) == 3 {
+    @return change-color($c, $lightness: min(lightness($c)*(1+map-get($IntensityAmount, $state)),100%));
+  }
+}
+
+@function alpha2solid($c,$background) {
+  $amount:alpha($c);
+  $c:rgb(red($c),green($c),blue($c));
+  @return mix($c,$background,$amount);
+}

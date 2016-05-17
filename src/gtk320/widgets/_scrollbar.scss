@@ -1,0 +1,106 @@
+/**************
+ * Scrollbars *
+ **************/
+
+scrollbar {
+
+  -GtkScrollbar-has-backward-stepper: true;
+  -GtkScrollbar-has-forward-stepper: true;
+
+  background-color: transparent;
+  margin: 0px;
+
+  button {
+  min-width: 8px;
+  min-height: 8px;
+  margin: 0px;
+	border: none;
+  border-radius: 0px;
+  background-image: none;
+  background-color: w_color(normal);
+  color: b_color(text);
+	&:hover {
+    border: none;
+    background-image: none;
+    background-color: w_color(normal);
+		color: b_color(hover);
+		}
+  &:active,
+  &:active:hover {
+    border: none;
+    background-image: none;
+    background-color: w_color(normal);
+		color: b_color(active);
+  }
+	&:disabled {
+    border: none;
+    background-color: w_color(normal);
+    background-image: none;
+    color: insensitive(b_color(text));
+    }
+  &:backdrop {
+    @extend %undecorated_button;
+    color: backdrop(b_color(text));
+    &:disabled {color: backdrop(insensitive(b_color(text)));}
+    @extend %undecorated_button;
+    }
+	}
+
+  // Overlay Scrollbars
+  &.dragging,                                                             // if this isn't set, the scrollbars don't update their size correctly
+  &.hovering { opacity: 0.9910; }                                          // probably a gtk bug
+  &.overlay-indicator:not(.dragging):not(.hovering) { opacity: 0.999; }     //
+
+
+  &.overlay-indicator:not(.dragging):not(.hovering) {
+   -GtkScrollbar-has-backward-stepper: false;
+   -GtkScrollbar-has-forward-stepper: false;
+
+    slider {
+      min-width: 4px;
+      margin: 2px;
+      border: none;
+      border-radius: 2px;
+      background-color: $scrollbar_color;
+      &:backdrop { background-color: backdrop($scrollbar_color); }
+    }
+
+    trough {
+      min-width: 4px;
+      min-height: 4px;
+      border: none;
+      background: none;
+    }
+
+    &.horizontal slider { min-height: 4px;}
+  }
+
+  // FIXME there should be a groove but this seems to be te only way to get
+  // decent looking scrollbars in firefox-gtk3 ans Libreoffice-gtk3
+  trough {
+    //margin: 0px;
+    min-width: 20px;
+    min-height: 20px;
+    border: none;
+    background-color: w_color(normal);
+
+  }
+  slider {
+    //margin: 0px;
+    min-width: 10px;
+    min-height: 30px;
+    border: 2px solid w_color(normal);
+    border-radius: 7px;
+    background-clip:padding-box;
+    background-color: $scrollbar_color;
+    &:hover { background-color: b_color(hover); }
+    &:active { background-color: b_color(active);}
+    &:disabled { background-color: insensitive($scrollbar_color); }
+    &:backdrop { background-color: backdrop($scrollbar_color); }
+    &:backdrop:disabled { background-color: backdrop(insensitive($scrollbar_color)); }
+  }
+  &.horizontal slider {
+    min-width: 30px;
+    min-height: 10px;
+  }
+}

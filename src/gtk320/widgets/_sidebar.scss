@@ -1,0 +1,122 @@
+/***********
+ * Sidebar *
+ ***********/
+
+.sidebar {
+  border: none;
+  background-color: w_color(normal);
+  &:selected {
+    @extend %selected_items;
+  }
+  &:backdrop { background-color: backdrop(w_color(normal))}
+}
+
+// Places sidebar is a special case, since the view here have to look like chrome not content, so we override text color
+placessidebar {
+  > viewport.frame { border-style: none; }
+
+  row {
+    // Needs overriding of the GtkListBoxRow padding
+    min-height: 36px;
+    padding: 0px;
+
+    // Using margins/padding directly in the SidebarRow
+    // will make the animation of the new bookmark row jump
+    > revealer { padding: 0 14px; }
+
+    &:selected { color: s_color(text); }
+
+    &:disabled { color: insensitive(w_color(text)); }
+
+    &:backdrop {
+      color: backdrop(w_color(text));
+
+      &:selected { color: backdrop(s_color(normal)); }
+
+      &:disabled { color: backdrop(insensitive(w_color(text))); }
+    }
+
+    image.sidebar-icon {
+
+      &:dir(ltr) { padding-right: 8px; }
+      &:dir(rtl) { padding-left: 8px; }
+    }
+
+    label.sidebar-label {
+      &:dir(ltr) { padding-right: 2px; }
+      &:dir(rtl) { padding-left: 2px; }
+    }
+
+    @at-root button.sidebar-button {
+      @extend %button_basic.flat;
+
+      @extend %undecorated_button;
+
+      min-height: 26px;
+      min-width: 26px;
+      margin-top: 3px;
+      margin-bottom: 3px;
+      padding: 0;
+
+    }
+
+    // in the sidebar case it makes no sense to click the selected row
+    &:selected:active { box-shadow: none; }
+
+    &.sidebar-placeholder-row {
+      padding: 0 8px;
+      min-height: 2px;
+      background-image: none;
+      background-clip: content-box;
+    }
+
+    &.sidebar-new-bookmark-row { color: s_color(normal); }
+
+    // &:drop(active):not(:disabled) {
+    //   color: $drop_target_color;
+    //   box-shadow: inset 0 1px $drop_target_color,
+    //               inset 0 -1px $drop_target_color;
+    //
+    //   &:selected {
+    //     color: $selected_fg_color;
+    //     background-color: $drop_target_color;
+    //   }
+    // }
+  }
+}
+
+placesview {
+  .server-list-button > image {
+    transition: 200ms $ease-out-quad;
+    -gtk-icon-transform: rotate(0turn);
+  }
+
+  .server-list-button:checked > image {
+    transition: 200ms $ease-out-quad;
+    -gtk-icon-transform: rotate(-0.5turn);
+  }
+
+  row.activatable:hover { background-color: transparent; }
+
+  // this selects the "connect to server" label
+  > actionbar > revealer > box > label {
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+}
+
+stacksidebar {
+  &.sidebar {
+    row {
+      padding: 10px 4px;
+      > label {
+        padding-left: 6px;
+        padding-right: 6px;
+      }
+      &.needs-attention > .label {
+        @extend %needs_attention;
+        background-size: 6px 6px, 0 0;
+      }
+    }
+  }
+}
