@@ -57,7 +57,7 @@ treeview.view {
   &.expander {
     -gtk-icon-source: -gtk-icontheme('pan-end-symbolic');
     color: v_color(text);
-    &:dir(rtl) { -gtk-icon-source: -gtk-icontheme('pan-end-symbolic-rtl');}
+    &:dir(rtl) { -gtk-icon-source: -gtk-icontheme('pan-start-symbolic'); };
     &:hover { color: b_color(hover); }
     &:selected { color: s_color(text); }
     &:checked {

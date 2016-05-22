@@ -40,4 +40,5 @@
     }
     &:backdrop { @include button(backdrop); }
   }
+  border {border: none;}
 }

@@ -40,37 +40,80 @@
 
      tabs {
       margin: 0px;
-      }
+    }
 
-      @each $_tab, $_border, $_radius in  (top,bottom,3px 3px 0px 0px),
-                                          (bottom,top,0px 0px 3px 3px),
-                                          (left,right, 3px 0px 0px 3px),
-                                          (right,left, 0px 3px 3px 0px) {
-        &.#{$_tab} {
-          > tabs {
-            > tab {
-              border: 1px solid transparentize(w_color(text), 0.8);
-              background-color: transparentize(w_color(text), 0.8);
-              border-radius: #{$_radius};
-              border-#{$_border}-color: transparent;
-              &:hover, &.prelight-page {
-                background-color: transparentize(s_color(normal), 0.8);
-                border-color: transparentize(s_color(normal), 0.8);
-              }
-              &:checked {
-                border-color: $border_color;
-                border-#{$_border}-color: $menu_color;
-                background-color: $menu_color;
-                &:backdrop {
-                  border-color: backdrop($border_color);
-                  border-#{$_border}-color: backdrop($menu_color);
-                  background-color: backdrop($menu_color);
-                }
+
+    @each $_tab, $_border, $_radius in  (top,bottom,3px 3px 0px 0px),
+                                        (bottom,top,0px 0px 3px 3px),
+                                        (left,right, 3px 0px 0px 3px),
+                                        (right,left, 0px 3px 3px 0px) {
+      &.#{$_tab} {
+        > tabs {
+          > tab {
+            padding: 4px 6px;
+            border: 1px solid transparentize(w_color(text), 0.8);
+            background-color: transparentize(w_color(text), 0.8);
+            border-radius: #{$_radius};
+            border-#{$_border}-color: transparent;
+            &:hover, &.prelight-page {
+              background-color: transparentize(s_color(normal), 0.8);
+              border-color: transparentize(s_color(normal), 0.8);
+            }
+            &:checked {
+              border-color: $border_color;
+              border-#{$_border}-color: $menu_color;
+              background-color: $menu_color;
+              &:backdrop {
+                border-color: backdrop($border_color);
+                border-#{$_border}-color: backdrop($menu_color);
+                background-color: backdrop($menu_color);
               }
             }
           }
         }
       }
+    }
+
+    @each $_tab, $_border, $_shadow1 in (top, right, -3px 0px 0px 0px),
+                             (bottom, right, -3px 0px 0px 0px),
+                             (left, bottom, 0px -3px 0px 0px),
+                             (right, bottom, 0px -3px 0px 0px) {
+      &.#{$_tab} {
+        > tabs {
+          > tab {
+            &.reorderable-page {
+            border-width: 3px;
+            border-style: solid;
+            border-color: transparent;
+            background-color: w_color(normal);
+            background-clip: padding-box;
+            border-#{$_border}-width: 1px;
+            border-#{$_border}-color: $border_color;
+            box-shadow: inset #{$_shadow1} w_color(normal);
+              &:hover, &.prelight-page {
+                box-shadow: inset 0px -3px 0px 0px transparentize(s_color(normal),0.8), inset $_shadow1 w_color(normal);
+              }
+              &:checked {
+                box-shadow: inset 0px -3px 0px 0px s_color(normal), inset $_shadow1 w_color(normal);
+                &:backdrop {
+                  background-color: backdrop(w_color(normal));
+                  border-color: transparent;
+                  border-#{$_border}-color: backdrop($border_color);
+                  box-shadow:none;
+                }
+              }
+              &:backdrop {
+                background-color: backdrop(w_color(normal));
+                border-#{$_border}-color: backdrop($border_color);
+                box-shadow:none;
+              }
+            }
+          }
+        }
+      }
+    }
+
+
 
      &.top > tabs > arrow {
        @extend %notebook_vert_arrows;
@@ -144,8 +187,8 @@
      padding: 0;
      margin: 4px;
      // FIXME: generalize .small-button?
-     min-width: 20px;
-     min-height: 20px;
+     min-width: 12px;
+     min-height: 12px;
      border: 0px solid;
      border-radius: 50%;
      color: w_color(normal);
@@ -156,7 +199,10 @@
     }
     &:active { background-color: $error_color;}
 
-    &:backdrop { background-color: backdrop($border_color)}
+    &:backdrop { 
+      background-color: backdrop($border_color);
+      color: backdrop(w_color(normal));
+    }
    }
  }
 

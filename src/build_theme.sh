@@ -1,8 +1,8 @@
-#! /bin/bash
+#!/bin/bash
 
 create_folders () {
-  folders=(gtk-2.0 gtk-3.0 gtk-3.16 gtk-3.18 gtk-3.20)
-  for j in "${folders[@]}"
+  FOLDERS=(gtk-2.0 gtk-3.0 gtk-3.16 gtk-3.18 gtk-3.20)
+  for j in "${FOLDERS[@]}"
     do
       if ! [ -d $1/$j ]
         then mkdir -p $1/$j;

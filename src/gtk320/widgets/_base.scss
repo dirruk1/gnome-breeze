@@ -221,9 +221,10 @@ assistant {
   }
 }
 
-%osd, .osd {
+%osd, 
+.osd {
   color: w_color(text);
-  border: 1px solid w_color(normal);
+  border: 1px solid $border_color;
   background-color: transparentize(w_color(normal),0.2);
   background-clip: padding-box;
   box-shadow: none;

@@ -11,9 +11,10 @@ scrollbar {
   margin: 0px;
 
   button {
-  min-width: 8px;
-  min-height: 8px;
+  min-width: 14px;
+  min-height: 14px;
   margin: 0px;
+  padding: 3px;
 	border: none;
   border-radius: 0px;
   background-image: none;
@@ -102,5 +103,22 @@ scrollbar {
   &.horizontal slider {
     min-width: 30px;
     min-height: 10px;
+  }
+
+  // button icons
+  &.vertical {
+    button {
+      &.down { -gtk-icon-source: -gtk-icontheme('pan-down-symbolic'); }
+
+      &.up { -gtk-icon-source: -gtk-icontheme('pan-up-symbolic'); }
+    }
+  }
+
+  &.horizontal {
+    button {
+      &.down { -gtk-icon-source: -gtk-icontheme('pan-end-symbolic'); }
+
+      &.up { -gtk-icon-source: -gtk-icontheme('pan-start-symbolic'); }
+    }
   }
 }

@@ -146,9 +146,12 @@ class Color(object):
         return linear
 
 class Assets(object):
-    def __init__(self,width,height,scl=1, rotation=0):
+    def __init__(self,width,height,scl=1, rotation=0, filename='png'):
         self.w = width; self.h = height
-        self.surface = cairo.ImageSurface(cairo.FORMAT_ARGB32, scl*width, scl*height)
+        if  filename == 'png':
+            self.surface = cairo.ImageSurface(cairo.FORMAT_ARGB32, scl*width, scl*height)
+        else:
+            self.surface = cairo.SVGSurface('assets/' + filename, scl*width, scl*height)
         cr = self.cr = cairo.Context(self.surface)
         if rotation != 0:
             cr.translate(scl*width/2,scl*height/2)
@@ -214,11 +217,11 @@ class Assets(object):
         self.cr.set_source_rgba(color[0],color[1],color[2],alpha)
         self.cr.fill()
 
-    def arrow(self, color, alpha=1.0):
+    def arrow(self, color, alpha=1.0, shiftx=0, shifty=0):
         self.cr.new_sub_path()
-        self.cr.move_to(1,8)
-        self.cr.line_to(6,3)
-        self.cr.line_to(11,8)
+        self.cr.move_to(shiftx + 1,shifty + 8)
+        self.cr.line_to(shiftx + 6,shifty + 3)
+        self.cr.line_to(shiftx + 11,shifty + 8)
         self.cr.set_source_rgba(color[0],color[1],color[2],alpha)
         self.cr.set_line_width(1.0)
         self.cr.stroke()

@@ -14,6 +14,7 @@ gtk-color-scheme = "tooltip_bg_color:#31363b"
 gtk-color-scheme = "insensitive_fg_color:#aaadaf"
 gtk-color-scheme = "insensitive_text_color:#b3b4b6"
 gtk-color-scheme = "button_insensitive_fg_color:#aaadaf"
+gtk-color-scheme = "button_active:#3daee9"
 gtk-color-scheme = "border_color:#bfc1c3"
 
 include "widgets/default"

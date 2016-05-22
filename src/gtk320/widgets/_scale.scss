@@ -34,7 +34,7 @@ scale {
       background-color: alpha2solid(insensitive(b_color(normal)),w_color(normal));
       border-color: insensitive($border_color);
       &:backdrop {
-        background-color: backdrop(insensitive(b_color(normal)));
+        background-color: alpha2solid(backdrop(insensitive(b_color(normal))),w_color(normal));
         border-color: backdrop(insensitive($border_color));
       }
     }

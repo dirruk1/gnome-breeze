@@ -164,7 +164,7 @@ $_dot_color: b_color(active);
 
     border: 1px solid;
     border-radius: $r;
-    padding: 6px;
+    padding: 4px 6px;
     background-clip: border-box;
     transition: $_button_transition;
     @include button(normal);
@@ -225,6 +225,11 @@ $_dot_color: b_color(active);
         @include button(insensitive-active);
       }
     }
+    separator {
+      background-color: transparent;
+      background-image: none;
+      color: transparent;
+    }
 }
 %button,
 button {
@@ -235,13 +240,12 @@ button {
     }
     //overlay / OSD style
     .osd & {
-      @extend %buttons;
+      //@extend %buttons;
     }
 
     &.image-button {
-      min-width:24px;
-      padding-left: 6px;
-      padding-right: 6px;
+      min-width:16px;
+      padding: 6px;
     }
 
     &.text-button {
@@ -250,11 +254,11 @@ button {
     }
 
     &.text-button.image-button {
-      padding-left: 8px;
-      padding-right: 8px;
+      padding-left: 6px;
+      padding-right: 6px;
       label {
-        padding-left: 8px;
-        padding-right: 8px;
+        padding-left: 6px;
+        padding-right: 6px;
       }
     }
     // FIXME

@@ -50,14 +50,15 @@ menu,
 
   border-radius: $r;
   .csd & {
-    background-color: transparent;
+    //background-color: transparent;
     border: 0px solid;
     border-radius: $r;
+    //box-shadow: 0px 0px 0px 1px $border_color, 2px 2px 2px 1px rgba(0, 0, 0, 0.1);
   }  // axes borders in a composited env
   separator {
     color: $border_color;
-    margin-left: 6px;
-    margin-right: 6px;
+    margin-top: 3px;
+    margin-bottom: 3px;
   }
   menuitem {
 	  text-shadow: none;
@@ -87,7 +88,7 @@ menu,
       }
 
       &:dir(rtl) {
-        -gtk-icon-source:-gtk-icontheme('pan-end-symbolic-rtl');
+        -gtk-icon-source:-gtk-icontheme('pan-start-symbolic');
         margin-right: 10px;
       }
     }
@@ -99,7 +100,7 @@ menu,
     min-height: 16px;
     min-width: 16px;
     padding: 4px;
-    background-color: $menu_color;
+    background-color: transparent;
     border-radius: 0;
 
     &.top {
@@ -189,11 +190,11 @@ modelbutton.flat arrow {
 }
 
 popover.background {
-  //margin: 10px;
+  margin: -10px;
   padding: 0px;
   border: 1px solid $border_color;
   border-radius: 3px;
-  background-color: $menu_color;
+  background-color: w_color(normal);
 
   box-shadow: 0 2px 3px transparentize(black, 0.1);
 

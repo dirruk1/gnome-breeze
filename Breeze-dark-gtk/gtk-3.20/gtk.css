@@ -207,15 +207,17 @@ assistant .sidebar label.highlight {
   background-color: #4c4e51; }
 
 .app-notification,
-.app-notification.frame, .csd popover.background.touch-selection, .csd popover.background.magnifier, popover.background.touch-selection, popover.background.magnifier, .csd popover.background.osd, popover.background.osd, .osd {
+.app-notification.frame, .csd popover.background.touch-selection, .csd popover.background.magnifier, popover.background.touch-selection, popover.background.magnifier, .csd popover.background.osd, popover.background.osd,
+.osd {
   color: #eff0f1;
-  border: 1px solid #31363b;
+  border: 1px solid #616569;
   background-color: rgba(49, 54, 59, 0.8);
   background-clip: padding-box;
   box-shadow: none;
   text-shadow: none;
   -gtk-icon-shadow: none; }
-  .app-notification:backdrop, popover.background.touch-selection:backdrop, popover.background.magnifier:backdrop, popover.background.osd:backdrop, .osd:backdrop {
+  .app-notification:backdrop, popover.background.touch-selection:backdrop, popover.background.magnifier:backdrop, popover.background.osd:backdrop,
+  .osd:backdrop {
     color: #eff0f1;
     background-color: rgba(49, 54, 59, 0.8);
     -gtk-icon-shadow: none; }
@@ -297,11 +299,10 @@ entry selection, row:selected, .sidebar:selected {
     background-image: -gtk-gradient(radial, center center, 0, center center, 0.5, to(#3daee9), to(transparent)); } }
 notebook > header > tabs > arrow, .csd popover.background.touch-selection button, .csd popover.background.magnifier button, popover.background.touch-selection button, popover.background.magnifier button,
 button, notebook > header > tabs > arrow.osd,
-button.osd, .osd notebook > header > tabs > arrow, .osd
-button {
+button.osd {
   border: 1px solid;
   border-radius: 3px;
-  padding: 6px;
+  padding: 4px 6px;
   background-clip: border-box;
   transition: all 200ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
   box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);
@@ -311,7 +312,7 @@ button {
   border-color: #616569;
   background-image: linear-gradient(to bottom, #31373c, #303439); }
   notebook > header > tabs > arrow, button.sidebar-button, popover.background.touch-selection button.flat, popover.background.magnifier button.flat,
-  button.flat, notebook > header > tabs > arrow.osd, button.osd.sidebar-button, .osd notebook > header > tabs > arrow, .osd button.sidebar-button {
+  button.flat, notebook > header > tabs > arrow.osd, button.osd.sidebar-button {
     border-color: rgba(255, 255, 255, 0);
     background-color: transparent;
     background-image: none;
@@ -321,23 +322,23 @@ button {
     -gtk-icon-shadow: none;
     transition: none; }
     notebook > header > tabs > arrow:hover, button.sidebar-button:hover, popover.background.touch-selection button.flat:hover, popover.background.magnifier button.flat:hover,
-    button.flat:hover, notebook > header > tabs > arrow.osd:hover, .osd notebook > header > tabs > arrow:hover {
+    button.flat:hover, notebook > header > tabs > arrow.osd:hover {
       transition: all 200ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
       transition-duration: 500ms; }
       notebook > header > tabs > arrow:hover:active, button.sidebar-button:hover:active,
       button.flat:hover:active {
         transition: all 200ms cubic-bezier(0.25, 0.46, 0.45, 0.94); }
     notebook > header > tabs > arrow:checked, button.sidebar-button:checked, popover.background.touch-selection button.flat:checked, popover.background.magnifier button.flat:checked,
-    button.flat:checked, notebook > header > tabs > arrow.osd:checked, .osd notebook > header > tabs > arrow:checked {
+    button.flat:checked, notebook > header > tabs > arrow.osd:checked {
       background-color: #616569; }
   notebook > header > tabs > arrow:hover, popover.background.touch-selection button:hover, popover.background.magnifier button:hover,
-  button:hover, notebook > header > tabs > arrow.osd:hover, .osd notebook > header > tabs > arrow:hover {
+  button:hover, notebook > header > tabs > arrow.osd:hover {
     color: #eff0f1;
     border-color: #3daee9;
     -gtk-icon-effect: none; }
   notebook > header > tabs > arrow:active, popover.background.touch-selection button:active, popover.background.magnifier button:active,
-  button:active, notebook > header > tabs > arrow.osd:active, .osd notebook > header > tabs > arrow:active, notebook > header > tabs > arrow:checked, popover.background.touch-selection button:checked, popover.background.magnifier button:checked,
-  button:checked, notebook > header > tabs > arrow.osd:checked, .osd notebook > header > tabs > arrow:checked {
+  button:active, notebook > header > tabs > arrow.osd:active, notebook > header > tabs > arrow:checked, popover.background.touch-selection button:checked, popover.background.magnifier button:checked,
+  button:checked, notebook > header > tabs > arrow.osd:checked {
     color: #eff0f1;
     border-color: #3daee9;
     background-image: linear-gradient(to bottom, #45b1ea, #25a4e6);
@@ -349,7 +350,7 @@ button {
       border-color: #3daee9;
       background-image: linear-gradient(to bottom, #45b1ea, #25a4e6); }
   notebook > header > tabs > arrow:backdrop, popover.background.touch-selection button:backdrop, popover.background.magnifier button:backdrop,
-  button:backdrop, notebook > header > tabs > arrow.osd:backdrop, .osd notebook > header > tabs > arrow:backdrop {
+  button:backdrop, notebook > header > tabs > arrow.osd:backdrop {
     color: #eff0f1;
     border-color: #616569;
     background-image: linear-gradient(to bottom, #31373c, #303439);
@@ -366,7 +367,6 @@ button {
       border-color: rgba(88, 92, 95, 0.35);
       background-image: linear-gradient(to bottom, #2d3236, #2b3034); }
       notebook > header > tabs > arrow:backdrop:disabled > .label, popover.background.touch-selection button:backdrop:disabled > .label, popover.background.magnifier button:backdrop:disabled > .label,
-      button:backdrop:disabled > .label, .osd
       button:backdrop:disabled > .label {
         color: inherit; }
     notebook > header > tabs > arrow:backdrop:disabled:active,
@@ -376,13 +376,11 @@ button {
       border-color: rgba(37, 164, 230, 0.35);
       background-image: linear-gradient(to bottom, rgba(44, 167, 231, 0.35), rgba(25, 152, 218, 0.35)); }
       notebook > header > tabs > arrow:backdrop:disabled:active > .label, popover.background.touch-selection button:backdrop:disabled:active > .label, popover.background.magnifier button:backdrop:disabled:active > .label,
-      button:backdrop:disabled:active > .label, .osd
       button:backdrop:disabled:active > .label, notebook > header > tabs > arrow:backdrop:disabled:checked > .label, popover.background.touch-selection button:backdrop:disabled:checked > .label, popover.background.magnifier button:backdrop:disabled:checked > .label,
-      button:backdrop:disabled:checked > .label, .osd
       button:backdrop:disabled:checked > .label {
         color: inherit; }
   notebook > header > tabs > arrow:backdrop, button.sidebar-button:backdrop, popover.background.touch-selection button.flat:backdrop, popover.background.magnifier button.flat:backdrop,
-  button.flat:backdrop, notebook > header > tabs > arrow.osd:backdrop, .osd notebook > header > tabs > arrow:backdrop {
+  button.flat:backdrop, notebook > header > tabs > arrow.osd:backdrop {
     -gtk-icon-effect: none;
     border-color: rgba(255, 255, 255, 0);
     background-color: transparent;
@@ -393,7 +391,7 @@ button {
     -gtk-icon-shadow: none;
     color: #eff0f1; }
   notebook > header > tabs > arrow:disabled, button.sidebar-button:disabled, popover.background.touch-selection button.flat:disabled, popover.background.magnifier button.flat:disabled,
-  button.flat:disabled, notebook > header > tabs > arrow.osd:disabled, .osd notebook > header > tabs > arrow:disabled {
+  button.flat:disabled, notebook > header > tabs > arrow.osd:disabled {
     border-color: rgba(255, 255, 255, 0);
     background-color: transparent;
     background-image: none;
@@ -413,12 +411,11 @@ button {
     -gtk-icon-shadow: none;
     color: rgba(216, 218, 221, 0.35); }
   notebook > header > tabs > arrow:disabled, popover.background.touch-selection button:disabled, popover.background.magnifier button:disabled,
-  button:disabled, notebook > header > tabs > arrow.osd:disabled, .osd notebook > header > tabs > arrow:disabled {
+  button:disabled, notebook > header > tabs > arrow.osd:disabled {
     color: rgba(216, 218, 221, 0.35);
     border-color: rgba(88, 92, 95, 0.35);
     background-image: linear-gradient(to bottom, #2d3236, #2b3034); }
     notebook > header > tabs > arrow:disabled > .label, popover.background.touch-selection button:disabled > .label, popover.background.magnifier button:disabled > .label,
-    button:disabled > .label, .osd
     button:disabled > .label {
       color: inherit; }
     notebook > header > tabs > arrow:disabled:active, popover.background.touch-selection button:disabled:active, popover.background.magnifier button:disabled:active,
@@ -428,29 +425,32 @@ button {
       border-color: rgba(37, 164, 230, 0.35);
       background-image: linear-gradient(to bottom, rgba(44, 167, 231, 0.35), rgba(25, 152, 218, 0.35)); }
       notebook > header > tabs > arrow:disabled:active > .label, popover.background.touch-selection button:disabled:active > .label, popover.background.magnifier button:disabled:active > .label,
-      button:disabled:active > .label, .osd
       button:disabled:active > .label, notebook > header > tabs > arrow:disabled:checked > .label, popover.background.touch-selection button:disabled:checked > .label, popover.background.magnifier button:disabled:checked > .label,
-      button:disabled:checked > .label, .osd
       button:disabled:checked > .label {
         color: inherit; }
+  notebook > header > tabs > arrow separator, .csd popover.background.touch-selection button separator, .csd popover.background.magnifier button separator, popover.background.touch-selection button separator, popover.background.magnifier button separator,
+  button separator, notebook > header > tabs > arrow.osd separator,
+  button.osd separator {
+    background-color: transparent;
+    background-image: none;
+    color: transparent; }
 
 notebook > header > tabs > arrow.image-button, popover.background.touch-selection button.image-button, popover.background.magnifier button.image-button,
 button.image-button {
-  min-width: 24px;
-  padding-left: 6px;
-  padding-right: 6px; }
+  min-width: 16px;
+  padding: 6px; }
 notebook > header > tabs > arrow.text-button, popover.background.touch-selection button.text-button, popover.background.magnifier button.text-button,
 button.text-button {
   padding-left: 6px;
   padding-right: 6px; }
 notebook > header > tabs > arrow.text-button.image-button, popover.background.touch-selection button.text-button.image-button, popover.background.magnifier button.text-button.image-button,
 button.text-button.image-button {
-  padding-left: 8px;
-  padding-right: 8px; }
+  padding-left: 6px;
+  padding-right: 6px; }
   notebook > header > tabs > arrow.text-button.image-button label, popover.background.touch-selection button.text-button.image-button label, popover.background.magnifier button.text-button.image-button label,
   button.text-button.image-button label {
-    padding-left: 8px;
-    padding-right: 8px; }
+    padding-left: 6px;
+    padding-right: 6px; }
 row:selected popover.background.touch-selection button, popover.background.touch-selection row:selected button, row:selected popover.background.magnifier button, popover.background.magnifier row:selected button, row:selected
 button {
   border-color: #3daee9; }
@@ -1312,7 +1312,7 @@ popover.background radiobutton:backdrop:hover,
  ****************/
 spinbutton:not(.vertical),
 entry {
-  min-height: 32px;
+  min-height: 30px;
   padding-left: 8px;
   padding-right: 8px;
   border: 1px solid;
@@ -1486,6 +1486,9 @@ treeview entry.flat, treeview entry {
       color: #eff0f1;
       border-color: #616569;
       background-image: linear-gradient(to bottom, #31373c, #303439); }
+  .app-notification border,
+  .app-notification.frame border {
+    border: none; }
 
 /************
  * Calendar *
@@ -1932,12 +1935,11 @@ headerbar {
     background-image: none;
     border-color: transparent; }
   headerbar.selection-mode .selection-menu {
-    padding-left: 10px;
-    padding-right: 10px; }
+    padding: 4px 6px; }
     headerbar.selection-mode .selection-menu GtkArrow {
       -GtkArrow-arrow-scaling: 1; }
     headerbar.selection-mode .selection-menu .arrow {
-      -gtk-icon-source: -gtk-icontheme("arrow-down");
+      -gtk-icon-source: -gtk-icontheme("pan-down-symbolic");
       -gtk-icon-shadow: none; }
   .tiled
   headerbar, .maximized
@@ -2212,9 +2214,7 @@ menubar,
   -GtkWidget-window-dragging: true;
   padding: 0px;
   box-shadow: none;
-  border-style: solid;
-  border-color: #616569;
-  border-bottom-width: 1px;
+  border-style: none;
   background-color: #31363b; }
   menubar:backdrop,
   .menubar:backdrop {
@@ -2253,14 +2253,13 @@ menu,
   border-radius: 3px; }
   .csd menu, .csd
   .menu {
-    background-color: transparent;
     border: 0px solid;
     border-radius: 3px; }
   menu separator,
   .menu separator {
     color: #616569;
-    margin-left: 6px;
-    margin-right: 6px; }
+    margin-top: 3px;
+    margin-bottom: 3px; }
   menu menuitem,
   .menu menuitem {
     text-shadow: none;
@@ -2292,7 +2291,7 @@ menu,
         margin-left: 10px; }
       menu menuitem arrow:dir(rtl),
       .menu menuitem arrow:dir(rtl) {
-        -gtk-icon-source: -gtk-icontheme("pan-end-symbolic-rtl");
+        -gtk-icon-source: -gtk-icontheme("pan-start-symbolic");
         margin-right: 10px; }
   menu > arrow,
   .menu > arrow {
@@ -2306,7 +2305,7 @@ menu,
     min-height: 16px;
     min-width: 16px;
     padding: 4px;
-    background-color: #31363b;
+    background-color: transparent;
     border-radius: 0; }
     menu > arrow.top,
     .menu > arrow.top {
@@ -2427,6 +2426,7 @@ popover.background radiobutton arrow {
     -gtk-icon-source: -gtk-icontheme("pan-end-symbolic"); }
 
 popover.background {
+  margin: -10px;
   padding: 0px;
   border: 1px solid #616569;
   border-radius: 3px;
@@ -2509,7 +2509,7 @@ expander arrow {
   min-height: 16px;
   -gtk-icon-source: -gtk-icontheme("pan-end-symbolic"); }
   expander arrow:dir(rtl) {
-    -gtk-icon-source: -gtk-icontheme("pan-end-symbolic-rtl"); }
+    -gtk-icon-source: -gtk-icontheme("pan-start-symbolic"); }
   expander arrow:hover {
     color: white; }
   expander arrow:checked {
@@ -2615,6 +2615,7 @@ notebook > header {
   notebook > header tabs {
     margin: 0px; }
   notebook > header.top > tabs > tab {
+    padding: 4px 6px;
     border: 1px solid rgba(239, 240, 241, 0.2);
     background-color: rgba(239, 240, 241, 0.2);
     border-radius: 3px 3px 0px 0px;
@@ -2631,6 +2632,7 @@ notebook > header {
         border-bottom-color: #31363b;
         background-color: #31363b; }
   notebook > header.bottom > tabs > tab {
+    padding: 4px 6px;
     border: 1px solid rgba(239, 240, 241, 0.2);
     background-color: rgba(239, 240, 241, 0.2);
     border-radius: 0px 0px 3px 3px;
@@ -2647,6 +2649,7 @@ notebook > header {
         border-top-color: #31363b;
         background-color: #31363b; }
   notebook > header.left > tabs > tab {
+    padding: 4px 6px;
     border: 1px solid rgba(239, 240, 241, 0.2);
     background-color: rgba(239, 240, 241, 0.2);
     border-radius: 3px 0px 0px 3px;
@@ -2663,6 +2666,7 @@ notebook > header {
         border-right-color: #31363b;
         background-color: #31363b; }
   notebook > header.right > tabs > tab {
+    padding: 4px 6px;
     border: 1px solid rgba(239, 240, 241, 0.2);
     background-color: rgba(239, 240, 241, 0.2);
     border-radius: 0px 3px 3px 0px;
@@ -2678,6 +2682,94 @@ notebook > header {
         border-color: #616569;
         border-left-color: #31363b;
         background-color: #31363b; }
+  notebook > header.top > tabs > tab.reorderable-page {
+    border-width: 3px;
+    border-style: solid;
+    border-color: transparent;
+    background-color: #31363b;
+    background-clip: padding-box;
+    border-right-width: 1px;
+    border-right-color: #616569;
+    box-shadow: inset -3px 0px 0px 0px #31363b; }
+    notebook > header.top > tabs > tab.reorderable-page:hover, notebook > header.top > tabs > tab.reorderable-page.prelight-page {
+      box-shadow: inset 0px -3px 0px 0px rgba(61, 174, 233, 0.2), inset -3px 0px 0px 0px #31363b; }
+    notebook > header.top > tabs > tab.reorderable-page:checked {
+      box-shadow: inset 0px -3px 0px 0px #3daee9, inset -3px 0px 0px 0px #31363b; }
+      notebook > header.top > tabs > tab.reorderable-page:checked:backdrop {
+        background-color: #31363b;
+        border-color: transparent;
+        border-right-color: #616569;
+        box-shadow: none; }
+    notebook > header.top > tabs > tab.reorderable-page:backdrop {
+      background-color: #31363b;
+      border-right-color: #616569;
+      box-shadow: none; }
+  notebook > header.bottom > tabs > tab.reorderable-page {
+    border-width: 3px;
+    border-style: solid;
+    border-color: transparent;
+    background-color: #31363b;
+    background-clip: padding-box;
+    border-right-width: 1px;
+    border-right-color: #616569;
+    box-shadow: inset -3px 0px 0px 0px #31363b; }
+    notebook > header.bottom > tabs > tab.reorderable-page:hover, notebook > header.bottom > tabs > tab.reorderable-page.prelight-page {
+      box-shadow: inset 0px -3px 0px 0px rgba(61, 174, 233, 0.2), inset -3px 0px 0px 0px #31363b; }
+    notebook > header.bottom > tabs > tab.reorderable-page:checked {
+      box-shadow: inset 0px -3px 0px 0px #3daee9, inset -3px 0px 0px 0px #31363b; }
+      notebook > header.bottom > tabs > tab.reorderable-page:checked:backdrop {
+        background-color: #31363b;
+        border-color: transparent;
+        border-right-color: #616569;
+        box-shadow: none; }
+    notebook > header.bottom > tabs > tab.reorderable-page:backdrop {
+      background-color: #31363b;
+      border-right-color: #616569;
+      box-shadow: none; }
+  notebook > header.left > tabs > tab.reorderable-page {
+    border-width: 3px;
+    border-style: solid;
+    border-color: transparent;
+    background-color: #31363b;
+    background-clip: padding-box;
+    border-bottom-width: 1px;
+    border-bottom-color: #616569;
+    box-shadow: inset 0px -3px 0px 0px #31363b; }
+    notebook > header.left > tabs > tab.reorderable-page:hover, notebook > header.left > tabs > tab.reorderable-page.prelight-page {
+      box-shadow: inset 0px -3px 0px 0px rgba(61, 174, 233, 0.2), inset 0px -3px 0px 0px #31363b; }
+    notebook > header.left > tabs > tab.reorderable-page:checked {
+      box-shadow: inset 0px -3px 0px 0px #3daee9, inset 0px -3px 0px 0px #31363b; }
+      notebook > header.left > tabs > tab.reorderable-page:checked:backdrop {
+        background-color: #31363b;
+        border-color: transparent;
+        border-bottom-color: #616569;
+        box-shadow: none; }
+    notebook > header.left > tabs > tab.reorderable-page:backdrop {
+      background-color: #31363b;
+      border-bottom-color: #616569;
+      box-shadow: none; }
+  notebook > header.right > tabs > tab.reorderable-page {
+    border-width: 3px;
+    border-style: solid;
+    border-color: transparent;
+    background-color: #31363b;
+    background-clip: padding-box;
+    border-bottom-width: 1px;
+    border-bottom-color: #616569;
+    box-shadow: inset 0px -3px 0px 0px #31363b; }
+    notebook > header.right > tabs > tab.reorderable-page:hover, notebook > header.right > tabs > tab.reorderable-page.prelight-page {
+      box-shadow: inset 0px -3px 0px 0px rgba(61, 174, 233, 0.2), inset 0px -3px 0px 0px #31363b; }
+    notebook > header.right > tabs > tab.reorderable-page:checked {
+      box-shadow: inset 0px -3px 0px 0px #3daee9, inset 0px -3px 0px 0px #31363b; }
+      notebook > header.right > tabs > tab.reorderable-page:checked:backdrop {
+        background-color: #31363b;
+        border-color: transparent;
+        border-bottom-color: #616569;
+        box-shadow: none; }
+    notebook > header.right > tabs > tab.reorderable-page:backdrop {
+      background-color: #31363b;
+      border-bottom-color: #616569;
+      box-shadow: none; }
   notebook > header.top > tabs > arrow {
     border-top-style: none; }
   notebook > header.bottom > tabs > arrow {
@@ -2725,8 +2817,8 @@ notebook > header {
   notebook > header button.flat {
     padding: 0;
     margin: 4px;
-    min-width: 20px;
-    min-height: 20px;
+    min-width: 12px;
+    min-height: 12px;
     border: 0px solid;
     border-radius: 50%;
     color: #31363b;
@@ -2737,7 +2829,8 @@ notebook > header {
     notebook > header button.flat:active {
       background-color: #da4453; }
     notebook > header button.flat:backdrop {
-      background-color: #616569; }
+      background-color: #616569;
+      color: #31363b; }
 notebook > stack:not(:only-child) {
   background-color: transparent;
   border-style: solid;
@@ -2982,7 +3075,7 @@ scale slider {
     background-color: #31363b;
     border-color: rgba(88, 92, 95, 0.35); }
     scale slider:disabled:backdrop {
-      background-color: #2d3136;
+      background-color: #31363b;
       border-color: rgba(88, 92, 95, 0.35); }
   scale slider:active {
     border: 2px solid #3daee9; }
@@ -3035,9 +3128,10 @@ scrollbar {
   background-color: transparent;
   margin: 0px; }
   scrollbar button {
-    min-width: 8px;
-    min-height: 8px;
+    min-width: 14px;
+    min-height: 14px;
     margin: 0px;
+    padding: 3px;
     border: none;
     border-radius: 0px;
     background-image: none;
@@ -3109,6 +3203,14 @@ scrollbar {
   scrollbar.horizontal slider {
     min-width: 30px;
     min-height: 10px; }
+  scrollbar.vertical button.down {
+    -gtk-icon-source: -gtk-icontheme("pan-down-symbolic"); }
+  scrollbar.vertical button.up {
+    -gtk-icon-source: -gtk-icontheme("pan-up-symbolic"); }
+  scrollbar.horizontal button.down {
+    -gtk-icon-source: -gtk-icontheme("pan-end-symbolic"); }
+  scrollbar.horizontal button.up {
+    -gtk-icon-source: -gtk-icontheme("pan-start-symbolic"); }
 
 /***********
  * Sidebar *
@@ -3231,8 +3333,9 @@ spinbutton.vertical:drop(active) {
   border-color: transparent;
   box-shadow: none; }
 spinbutton.vertical entry {
-  min-height: 32px;
-  min-width: 32px;
+  margin: 0px;
+  min-height: 26px;
+  min-width: 26px;
   border-style: none solid none solid;
   border-color: #616569;
   padding: 0;
@@ -3246,8 +3349,8 @@ spinbutton.vertical entry {
     background-color: #202325;
     border-color: rgba(88, 92, 95, 0.35); }
 spinbutton.vertical button {
-  min-height: 32px;
-  min-width: 32px;
+  min-height: 26px;
+  min-width: 26px;
   padding: 0;
   box-shadow: none;
   background-image: none;
@@ -3320,7 +3423,7 @@ switch {
 /************
  * Toolbars *
  ************/
-toolbar, .inline-toolbar, search-bar,
+toolbar, .inline-toolbar, searchbar,
 .location-bar {
   -GtkWidget-window-dragging: true;
   padding: 4px;
@@ -3331,6 +3434,16 @@ toolbar {
   toolbar:backdrop {
     background-color: #31363b;
     box-shadow: none; }
+  toolbar button {
+    margin: 2px;
+    padding: 3px; }
+    toolbar button.image-button, toolbar button.text-button.image-button {
+      padding: 3px; }
+  toolbar separator {
+    margin-left: 3px;
+    margin-right: 3px; }
+  toolbar entry {
+    margin: 3px; }
   .osd toolbar {
     background-color: transparent; }
   toolbar.osd {
@@ -3350,12 +3463,12 @@ toolbar {
   padding: 3px;
   border-radius: 0; }
 
-search-bar,
+searchbar,
 .location-bar {
   border-width: 0px 0px 1px 0px;
   padding: 3px; }
 
-.inline-toolbar, search-bar,
+.inline-toolbar, searchbar,
 .location-bar {
   border-style: solid;
   border-color: #616569;
@@ -3430,7 +3543,7 @@ treeview.view {
     -gtk-icon-source: -gtk-icontheme("pan-end-symbolic");
     color: #eff0f1; }
     treeview.view.expander:dir(rtl) {
-      -gtk-icon-source: -gtk-icontheme("pan-end-symbolic-rtl"); }
+      -gtk-icon-source: -gtk-icontheme("pan-start-symbolic"); }
     treeview.view.expander:hover {
       color: #3daee9; }
     treeview.view.expander:selected {
@@ -3532,7 +3645,7 @@ decoration {
 
 headerbar.default-decoration button.titlebutton,
 .titlebar.default-decoration button.titlebutton {
-  padding: 6px;
+  padding: 6px 1px;
   min-height: 18px;
   min-width: 18px;
   margin: 0; }

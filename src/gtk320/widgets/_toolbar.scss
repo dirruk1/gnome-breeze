@@ -13,6 +13,20 @@ toolbar {
     background-color: backdrop(w_color(normal));
     box-shadow: none;
   }
+  button {
+    margin: 2px;
+    padding: 3px;
+    &.image-button, &.text-button.image-button {
+      padding: 3px;
+    }
+  }
+  separator {
+    margin-left: 3px;
+    margin-right: 3px;
+  }
+  entry {
+    margin: 3px;
+  }
   // on OSD
   .osd & { background-color: transparent; }
   &.osd {
@@ -40,7 +54,7 @@ toolbar {
   padding: 3px;
   border-radius: 0;
 }
-search-bar,
+searchbar,
 .location-bar {
   @extend %toolbar;
   @extend %inset-bar;

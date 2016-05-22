@@ -495,7 +495,7 @@ style "default"
     {
         function            = EXPANDER
         expander_style    = COLLAPSED
-        file                  = "../assets/arrow-up.png"
+        file                  = "../assets/arrow-right.png"
     }
 
     image
@@ -516,7 +516,7 @@ style "default"
     {
         function            = EXPANDER
         expander_style    = SEMI_COLLAPSED
-        file                  = "../assets/arrow-up.png"
+        file                  = "../assets/arrow-right.png"
     }
 
     image

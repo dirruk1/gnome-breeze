@@ -82,8 +82,9 @@
      }
 
      entry {
-       min-height: 32px;
-       min-width: 32px;
+       margin: 0px;
+       min-height: 26px;
+       min-width: 26px;
        border-style: none solid none solid;
        border-color: $border_color;
        padding: 0;
@@ -101,8 +102,8 @@
      }
 
      button {
-       min-height: 32px;
-       min-width: 32px;
+       min-height: 26px;
+       min-width: 26px;
        padding: 0;
        box-shadow: none;
        background-image: none;
