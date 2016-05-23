@@ -151,8 +151,8 @@ modelbutton.flat,
  @extend %undecorated_button;
  color: w_color(text);
  &:hover {
-    background-color: s_color(normal);
-    color: s_color(text)
+    background-color: b_color(active);
+    color: b_color(active-text)
   }
  &:selected {
     background-color: b_color(active);
