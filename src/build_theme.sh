@@ -1,7 +1,7 @@
 #!/bin/bash
 
 create_folders () {
-  FOLDERS=(gtk-2.0 gtk-3.0 gtk-3.16 gtk-3.18 gtk-3.20)
+  FOLDERS=(gtk-2.0 gtk-3.0 gtk-3.18 gtk-3.20)
   for j in "${FOLDERS[@]}"
     do
       if ! [ -d $1/$j ]
@@ -13,10 +13,10 @@ create_folders () {
 render_theme () {
   python render_assets.py $1
   create_folders $2
-  sass --cache-location /tmp/sass-cache gtk316/gtk.scss $2/gtk-3.16/gtk.css
+  sass --cache-location /tmp/sass-cache gtk316/gtk.scss $2/gtk-3.0/gtk.css
   sass --cache-location /tmp/sass-cache gtk318/gtk.scss $2/gtk-3.18/gtk.css
   sass --cache-location /tmp/sass-cache gtk320/gtk.scss $2/gtk-3.20/gtk.css
-  cp -R assets $2/
+  mv assets $2/
   cp -R gtk2/* $2/gtk-2.0/
   if [ -d $HOME/.themes/$2 ]
     then rm -rf $HOME/.themes/$2;
@@ -26,7 +26,13 @@ render_theme () {
 
 if [ -z "$1" ]
 then
-  render_theme "$HOME/.config/kdeglobals" Breeze
+  if [ -f "$HOME/.config/kdeglobals" ]
+  then
+    render_theme "$HOME/.config/kdeglobals" Breeze
+  else
+    echo "$HOME/.config/kdeglobals not found, using defaults"
+    render_theme schemes/Breeze.colors Breeze
+  fi
 else
   if [ -f "schemes/$1.colors" ]
   then 

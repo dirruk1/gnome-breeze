@@ -2494,7 +2494,8 @@ scrolledwindow viewport.frame {
   border-style: none; }
 scrolledwindow junction {
   border-color: transparent;
-  background-color: transparent; }
+  background-color: transparent;
+  background-image: none; }
 
 separator {
   background: #616569;
@@ -2837,15 +2838,7 @@ notebook > stack:not(:only-child) {
   border-color: #616569;
   border-width: 0px; }
 
-/* Decouple the font of context menus from their entry/textview */
-.touch-selection,
-.context-menu {
-  font: initial; }
-
-.monospace {
-  font: Monospace; }
-
-.overshoot.top {
+scrolledwindow overshoot.top {
   background-image: -gtk-gradient(radial, center top, 0, center top, 0.5, to(#494c4e), to(rgba(73, 76, 78, 0))), -gtk-gradient(radial, center top, 0, center top, 0.6, from(rgba(239, 240, 241, 0.07)), to(rgba(239, 240, 241, 0)));
   background-size: 100% 5%, 100% 100%;
   background-repeat: no-repeat;
@@ -2853,7 +2846,7 @@ notebook > stack:not(:only-child) {
   background-color: transparent;
   border: none;
   box-shadow: none; }
-  .overshoot.top:backdrop {
+  scrolledwindow overshoot.top:backdrop {
     background-image: -gtk-gradient(radial, center top, 0, center top, 0.5, to(#616569), to(rgba(97, 101, 105, 0)));
     background-size: 100% 5%;
     background-repeat: no-repeat;
@@ -2861,7 +2854,7 @@ notebook > stack:not(:only-child) {
     background-color: transparent;
     border: none;
     box-shadow: none; }
-.overshoot.bottom {
+scrolledwindow overshoot.bottom {
   background-image: -gtk-gradient(radial, center bottom, 0, center bottom, 0.5, to(#494c4e), to(rgba(73, 76, 78, 0))), -gtk-gradient(radial, center bottom, 0, center bottom, 0.6, from(rgba(239, 240, 241, 0.07)), to(rgba(239, 240, 241, 0)));
   background-size: 100% 5%, 100% 100%;
   background-repeat: no-repeat;
@@ -2869,7 +2862,7 @@ notebook > stack:not(:only-child) {
   background-color: transparent;
   border: none;
   box-shadow: none; }
-  .overshoot.bottom:backdrop {
+  scrolledwindow overshoot.bottom:backdrop {
     background-image: -gtk-gradient(radial, center bottom, 0, center bottom, 0.5, to(#616569), to(rgba(97, 101, 105, 0)));
     background-size: 100% 5%;
     background-repeat: no-repeat;
@@ -2877,7 +2870,7 @@ notebook > stack:not(:only-child) {
     background-color: transparent;
     border: none;
     box-shadow: none; }
-.overshoot.left {
+scrolledwindow overshoot.left {
   background-image: -gtk-gradient(radial, left center, 0, left center, 0.5, to(#494c4e), to(rgba(73, 76, 78, 0))), -gtk-gradient(radial, left center, 0, left center, 0.6, from(rgba(239, 240, 241, 0.07)), to(rgba(239, 240, 241, 0)));
   background-size: 5% 100%, 100% 100%;
   background-repeat: no-repeat;
@@ -2885,7 +2878,7 @@ notebook > stack:not(:only-child) {
   background-color: transparent;
   border: none;
   box-shadow: none; }
-  .overshoot.left:backdrop {
+  scrolledwindow overshoot.left:backdrop {
     background-image: -gtk-gradient(radial, left center, 0, left center, 0.5, to(#616569), to(rgba(97, 101, 105, 0)));
     background-size: 5% 100%;
     background-repeat: no-repeat;
@@ -2893,7 +2886,7 @@ notebook > stack:not(:only-child) {
     background-color: transparent;
     border: none;
     box-shadow: none; }
-.overshoot.right {
+scrolledwindow overshoot.right {
   background-image: -gtk-gradient(radial, right center, 0, right center, 0.5, to(#494c4e), to(rgba(73, 76, 78, 0))), -gtk-gradient(radial, right center, 0, right center, 0.6, from(rgba(239, 240, 241, 0.07)), to(rgba(239, 240, 241, 0)));
   background-size: 5% 100%, 100% 100%;
   background-repeat: no-repeat;
@@ -2901,7 +2894,7 @@ notebook > stack:not(:only-child) {
   background-color: transparent;
   border: none;
   box-shadow: none; }
-  .overshoot.right:backdrop {
+  scrolledwindow overshoot.right:backdrop {
     background-image: -gtk-gradient(radial, right center, 0, right center, 0.5, to(#616569), to(rgba(97, 101, 105, 0)));
     background-size: 5% 100%;
     background-repeat: no-repeat;
@@ -2909,6 +2902,9 @@ notebook > stack:not(:only-child) {
     background-color: transparent;
     border: none;
     box-shadow: none; }
+scrolledwindow undershoot {
+  background-image: none;
+  border: none; }
 
 /************
  * Pathbars *
