@@ -44,10 +44,11 @@ treeview.view {
     border: 0px solid transparent;
     border-radius: $r;
     background-color: s_color(normal);
+    color: s_color(text);
     background-image: none;
     &:selected {
       &:focus, & {
-        background-color: s_color(text);
+        background-color: transparentize(s_color(text),0.75);
       }
     }
   }

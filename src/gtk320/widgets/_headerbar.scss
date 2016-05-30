@@ -19,6 +19,10 @@ headerbar {
     color: t_color(backdrop-text);
     box-shadow: none;
   }
+  label {
+    font-weight: normal;
+    &:backdrop { color: t_color(backdrop-text); }
+  }
   .path-bar button {
     color: t_color(text);
     font-weight: normal;

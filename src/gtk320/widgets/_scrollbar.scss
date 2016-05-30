@@ -7,19 +7,22 @@ scrollbar {
   -GtkScrollbar-has-backward-stepper: true;
   -GtkScrollbar-has-forward-stepper: true;
 
-  background-color: transparent;
+  background-color: w_color(normal);
+  border-width: 3px 0px;
+  border-color: w_color(normal);
   margin: 0px;
 
   button {
   min-width: 14px;
   min-height: 14px;
   margin: 0px;
-  padding: 3px;
+  padding: 0px 3px;
 	border: none;
   border-radius: 0px;
   background-image: none;
   background-color: w_color(normal);
   color: b_color(text);
+  box-shadow: none;
 	&:hover {
     border: none;
     background-image: none;
@@ -56,6 +59,7 @@ scrollbar {
   &.overlay-indicator:not(.dragging):not(.hovering) {
    -GtkScrollbar-has-backward-stepper: false;
    -GtkScrollbar-has-forward-stepper: false;
+   background: none;
 
     slider {
       min-width: 4px;
@@ -71,27 +75,29 @@ scrollbar {
       min-height: 4px;
       border: none;
       background: none;
+      box-shadow: none;
     }
 
     &.horizontal slider { min-height: 4px;}
   }
 
-  // FIXME there should be a groove but this seems to be te only way to get
-  // decent looking scrollbars in firefox-gtk3 ans Libreoffice-gtk3
+  // FIXME firefox and libreoffice
   trough {
     //margin: 0px;
-    min-width: 20px;
-    min-height: 20px;
-    border: none;
-    background-color: w_color(normal);
+    min-width: 16px;
+    min-height: 16px;
+    border: 0px solid transparent;
+    border-radius: 8px;
+    background-color: $trough_color;
+    box-shadow: inset 0px 0px 0px 3px w_color(normal);
 
   }
   slider {
     //margin: 0px;
     min-width: 10px;
     min-height: 30px;
-    border: 2px solid w_color(normal);
-    border-radius: 7px;
+    border: 2px solid transparent;
+    border-radius: 8px;
     background-clip:padding-box;
     background-color: $scrollbar_color;
     &:hover { background-color: b_color(hover); }

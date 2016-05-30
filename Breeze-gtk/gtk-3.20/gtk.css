@@ -257,8 +257,9 @@ textview text selection:focus,
 textview text selection, flowbox flowboxchild:selected, spinbutton:not(.vertical) selection:focus, spinbutton:not(.vertical) selection,
 entry selection:focus,
 entry selection, row:selected, .sidebar:selected {
-  background-color: #3daee9; }
-  row:selected label, label:selected, .view text:selected:focus,
+  background-color: #3daee9;
+  border-radius: 0px; }
+  .view text:selected:focus,
   textview text:selected:focus, .view text:selected,
   textview text:selected,
   .view:selected:focus,
@@ -268,21 +269,19 @@ entry selection, row:selected, .sidebar:selected {
   entry selection:focus,
   entry selection, row:selected, .sidebar:selected {
     color: #eff0f1; }
-    row:selected label:disabled, label:disabled:selected,
     textview text:disabled:selected:focus, .view text:disabled:selected,
     textview text:disabled:selected,
     .view:disabled:selected, .view text selection:disabled,
     textview text selection:disabled, flowbox flowboxchild:disabled:selected, label:disabled selection, spinbutton:not(.vertical) selection:disabled,
     entry selection:disabled, row:disabled:selected, .sidebar:disabled:selected {
       color: rgba(216, 218, 221, 0.35); }
-    row:selected label:backdrop, label:backdrop:selected,
     textview text:backdrop:selected:focus, .view text:backdrop:selected,
     textview text:backdrop:selected,
     .view:backdrop:selected, .view text selection:backdrop,
     textview text selection:backdrop, flowbox flowboxchild:backdrop:selected, label:backdrop selction, spinbutton:not(.vertical) selection:backdrop,
     entry selection:backdrop, row:backdrop:selected, .sidebar:backdrop:selected {
       color: #eff0f1; }
-      row:selected label:backdrop:disabled, label:backdrop:disabled:selected, .view text:backdrop:disabled:selected,
+      .view text:backdrop:disabled:selected,
       textview text:backdrop:disabled:selected,
       .view:backdrop:disabled:selected, .view text selection:backdrop:disabled,
       textview text selection:backdrop:disabled, flowbox flowboxchild:backdrop:disabled:selected, label:disabled selection:backdrop, label:backdrop selction:disabled, spinbutton:not(.vertical) selection:backdrop:disabled,
@@ -1849,6 +1848,10 @@ headerbar {
     background-color: #eff0f1;
     color: #bdc3c7;
     box-shadow: none; }
+  headerbar label {
+    font-weight: normal; }
+    headerbar label:backdrop {
+      color: #bdc3c7; }
   headerbar .path-bar button {
     color: #eff0f1;
     font-weight: normal; }
@@ -2977,9 +2980,10 @@ treeview.view.progressbar {
   border: 0px solid transparent;
   border-radius: 3px;
   background-color: #3daee9;
+  color: #eff0f1;
   background-image: none; }
   treeview.view.progressbar:selected:focus, treeview.view.progressbar:selected {
-    background-color: #eff0f1; }
+    background-color: rgba(239, 240, 241, 0.25); }
 treeview.view.trough {
   background-color: #b6b8ba; }
   treeview.view.trough:selected:focus, treeview.view.trough:selected {
@@ -3121,18 +3125,21 @@ scale highlight {
 scrollbar {
   -GtkScrollbar-has-backward-stepper: true;
   -GtkScrollbar-has-forward-stepper: true;
-  background-color: transparent;
+  background-color: #eff0f1;
+  border-width: 3px 0px;
+  border-color: #eff0f1;
   margin: 0px; }
   scrollbar button {
     min-width: 14px;
     min-height: 14px;
     margin: 0px;
-    padding: 3px;
+    padding: 0px 3px;
     border: none;
     border-radius: 0px;
     background-image: none;
     background-color: #eff0f1;
-    color: #31363b; }
+    color: #31363b;
+    box-shadow: none; }
     scrollbar button:hover {
       border: none;
       background-image: none;
@@ -3158,7 +3165,8 @@ scrollbar {
     opacity: 0.999; }
   scrollbar.overlay-indicator:not(.dragging):not(.hovering) {
     -GtkScrollbar-has-backward-stepper: false;
-    -GtkScrollbar-has-forward-stepper: false; }
+    -GtkScrollbar-has-forward-stepper: false;
+    background: none; }
     scrollbar.overlay-indicator:not(.dragging):not(.hovering) slider {
       min-width: 4px;
       margin: 2px;
@@ -3171,19 +3179,22 @@ scrollbar {
       min-width: 4px;
       min-height: 4px;
       border: none;
-      background: none; }
+      background: none;
+      box-shadow: none; }
     scrollbar.overlay-indicator:not(.dragging):not(.hovering).horizontal slider {
       min-height: 4px; }
   scrollbar trough {
-    min-width: 20px;
-    min-height: 20px;
-    border: none;
-    background-color: #eff0f1; }
+    min-width: 16px;
+    min-height: 16px;
+    border: 0px solid transparent;
+    border-radius: 8px;
+    background-color: #b6b8ba;
+    box-shadow: inset 0px 0px 0px 3px #eff0f1; }
   scrollbar slider {
     min-width: 10px;
     min-height: 30px;
-    border: 2px solid #eff0f1;
-    border-radius: 7px;
+    border: 2px solid transparent;
+    border-radius: 8px;
     background-clip: padding-box;
     background-color: #74777b; }
     scrollbar slider:hover {

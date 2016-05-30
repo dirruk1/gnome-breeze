@@ -177,8 +177,6 @@ label {
     @extend .dim-label;
     &:backdrop { color: backdrop(w_color(text)); }
   }
-  row:selected &,
-  &:selected { @extend %nobg_selected_items; }
 
   selection {
     background-color: s_color(normal);
@@ -252,6 +250,7 @@ assistant {
 
 %selected_items {
   background-color: s_color(normal);
+  border-radius: 0px;
 
   @at-root %nobg_selected_items, & {
     color: s_color(text);
