@@ -1,0 +1,173 @@
+/********
+ * Misc *
+ ********/
+
+/****************
+* Print dialog *
+*****************/
+printdialog {
+ paper {
+   color: window_color(fg);
+   border: 1px solid border_color();
+   background: white;
+   padding: 0;
+
+   &:backdrop {
+     color: window_color(backdrop_fg);
+     border-color: border_color(backdrop);
+     background: window_color(backdrop_bg);
+   }
+ }
+
+ .dialog-action-box { margin: 12px; }
+}
+
+/**********
+* Frames *
+**********/
+frame > border,
+.frame {
+  box-shadow: none;
+  margin: 0;
+  padding: 0;
+  border-radius: 0;
+  border: 1px solid border_color();
+
+  &.flat { border-style: none; }
+
+  &:backdrop { border-color: border_color(backdrop); }
+}
+
+actionbar > revealer >  box {
+  padding: 6px;
+  border-top: 1px solid border_color();
+
+  &:backdrop { border-color: border_color(backdrop); }
+}
+
+scrolledwindow {
+  viewport.frame { // avoid double borders when viewport inside scrolled window
+    border-style: none;
+  }
+
+  junction { // the small square between two scrollbars
+    border-color: transparent;
+    background-color: transparent;
+    background-image: none;
+  }
+}
+
+//vbox and hbox separators
+separator {
+  background: border_color();
+  min-width: 1px;
+  min-height: 1px;
+}
+
+/*************
+* Expanders *
+*************/
+
+expander {
+  arrow {
+    min-width: 16px;
+    min-height: 16px;
+    -gtk-icon-source: -gtk-icontheme('pan-end-symbolic');
+    &:dir(rtl) { -gtk-icon-source: -gtk-icontheme('pan-start-symbolic');}
+    &:hover { color: button_color(hover); } 
+    &:active { color: button_color(active); }
+    &:checked { -gtk-icon-source: -gtk-icontheme('pan-down-symbolic'); }
+  }
+}
+
+/*********
+* Paned *
+*********/
+
+paned {
+  > separator {
+    min-width: 1px;
+    min-height: 1px;
+    -gtk-icon-source: none; // defeats the ugly default handle decoration
+    border-style: none; // just to be sure
+    background-color: transparent;
+    // workaround, using background istead of a border since the border will get rendered twice (?)
+    background-image: image(border_color());
+    background-size: 1px 1px;
+
+    //&:selected { background-image: image($selected_bg_color); } // FIXME is this needed?
+
+    &:backdrop { background-image: image(border_color(backdrop)); }
+
+    &.wide {
+      min-width: 5px;
+      min-height: 5px;
+      background-color: window_color(bg);
+      background-image: image(border_color()), image(border_color());
+      background-size: 1px 1px, 1px 1px;
+
+      &:backdrop {
+        background-color: window_color(backdrop_bg);
+        background-image: image(border_color(backdrop)),
+                          image(border_color(backdrop));
+      }
+    }
+  }
+
+  &.horizontal > separator {
+    background-repeat: repeat-y;
+
+    &:dir(ltr) {
+      margin: 0 -8px 0 0;
+      padding: 0 8px 0 0;
+      background-position: left;
+    }
+    &:dir(rtl) {
+      margin: 0 0 0 -8px;
+      padding: 0 0 0 8px;
+      background-position: right;
+    }
+
+    &.wide {
+      margin: 0;
+      padding: 0;
+      background-repeat: repeat-y, repeat-y;
+      background-position: left, right;
+    }
+  }
+
+  &.vertical > separator {
+    margin: 0 0 -8px 0;
+    padding: 0 0 8px 0;
+    background-repeat: repeat-x;
+    background-position: top;
+
+    &.wide {
+      margin: 0;
+      padding: 0;
+      background-repeat: repeat-x, repeat-x;
+      background-position: bottom, top;
+    }
+  }
+}
+
+/*********************
+* Spinner Animation *
+*********************/
+
+@keyframes spin {
+ to { -gtk-icon-transform: rotate(1turn); }
+}
+
+spinner {
+ background-image: none;
+ opacity: 0; // non spinning spinner makes no sense
+ -gtk-icon-source: -gtk-icontheme('process-working-symbolic');
+ &:checked {
+   opacity: 1;
+   animation: spin 1s linear infinite;
+   &:disabled {
+     opacity: 0.5;
+   }
+ }
+}

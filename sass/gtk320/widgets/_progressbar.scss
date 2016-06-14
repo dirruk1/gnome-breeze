@@ -1,0 +1,139 @@
+/*****************
+ * Progress bars *
+ *****************/
+progressbar {
+ // sizing
+ &.horizontal {
+   trough,
+   progress { min-height: 6px; }
+ }
+
+ &.vertical {
+   trough,
+   progress { min-width: 6px; }
+ }
+
+ // FIXME: insensitive state missing and some other state should be set probably
+ font-size: smaller;
+ color: gtkalpha(button_color(fg), 0.7);
+
+ trough {
+   border: 0px solid transparent;
+   border-radius: $r;
+   background-color: gtkalpha(button_color(fg),0.7);
+  }
+
+ &:backdrop trough { background-color: gtkalpha(button_color(backdrop_fg),0.7); } // looks like states are not passed to the trough component here
+
+ progress {
+   background-color: selection_color(bg);
+   border: 0px solid transparent;
+   border-radius: 3px;
+   box-shadow: none; //needed for clipping
+ }
+
+ &:backdrop progress { background-color: selection_color(backdrop_bg); } // states not passed here as well
+
+ &.osd { // progressbar.osd used for epiphany page loading progress
+   background-color: transparent;
+ }
+}
+
+treeview.view {
+  &.progressbar {
+    border: 0px solid transparent;
+    border-radius: $r;
+    background-color: selection_color(bg);
+    color: selection_color(fg);
+    background-image: none;
+    &:selected {
+      &:focus, & {
+        background-color: gtkalpha(selection_color(fg),0.75);
+      }
+    }
+  }
+  &.trough {
+    background-color: other_colors(trough);
+    &:selected {
+      &:focus, & {
+        background-color: gtkalpha(selection_color(fg),0.7);
+      }
+    }
+  }
+}
+
+/*************
+ * Level Bar *
+ *************/
+levelbar {
+ block {
+   min-width: 32px;
+   min-height: 6px;
+ }
+
+ &.vertical block {
+   min-width: 6px;
+   min-height: 32px;
+ }
+
+ trough {
+   border: 1px solid;
+   padding: 2px;
+   border-radius: 3px;
+   @include entry(normal);
+
+   &:backdrop { @include entry(backdrop); }
+ }
+
+ &.horizontal.discrete block { margin: 0 1px; }
+
+ &.vertical.discrete block { margin: 1px 0; }
+
+ block:not(.empty) {
+   border: 1px solid selection_color(bg);
+   background-color: selection_color(bg);
+   box-shadow: none;
+   border-radius: 1px;
+
+   &:backdrop {
+     border-color: selection_color(backdrop_bg);
+     background-color: selection_color(backdrop_bg);
+   }
+ }
+
+ block {
+   &.low {
+     border-color: other_colors(warning);
+     background-color: other_colors(warning);
+     &:backdrop {
+       background-color: other_colors(backdrop_warning);
+       border-color: other_colors(backdrop_warning);
+     }
+   }
+
+   &.high {
+     border-color: other_colors(success);
+     background-color: other_colors(success);
+     &:backdrop {
+       background-color: other_colors(backdrop_success);
+       border-color: other_colors(backdrop_success);
+     }
+   }
+
+   &.full {
+     border-color: other_colors(success);
+     background-color: other_colors(success);
+     &:backdrop {
+       background-color: other_colors(backdrop_success);
+       border-color: other_colors(backdrop_success);
+     }
+   }
+
+   &.empty {
+     background-color: gtkalpha(button_color(fg),0.7);
+     border-color: transparent;
+     box-shadow: none;
+     &:backdrop { background-color: gtkalpha(button_color(backdrop_fg),0.7); }
+   }
+ }
+}

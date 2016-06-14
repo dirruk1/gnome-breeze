@@ -1,0 +1,255 @@
+$ease-out-quad: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+
+* {
+  padding: 0;
+  -GtkToolButton-icon-spacing: 4;
+  -GtkTextView-error-underline-color: other_colors(error);
+
+  -GtkCheckButton-indicator-size: 18;
+
+  // The size for scrollbars. The slider is 2px smaller, but we keep it
+  // up so that the whole area is sensitive to button presses for the
+  // slider. The stepper button is larger in both directions, the slider
+  // only in the width
+
+  -GtkScrolledWindow-scrollbar-spacing: 0;
+
+  -GtkScrolled-window-overlay-scrolling: FALSE;
+
+  -GtkToolItemGroup-expander-size: 11;
+
+  -GtkTreeView-horizontal-separator: 4;
+
+  -GtkWidget-text-handle-width: 20;
+  -GtkWidget-text-handle-height: 20;
+
+  -GtkDialog-button-spacing: 4;
+  -GtkDialog-action-area-border: 0;
+
+  -GtkStatusbar-shadow-type: none;
+
+  outline-width: 0px;
+}
+
+
+/***************
+ * Base States *
+ ***************/
+
+.background {
+  color: window_color(fg);
+  background-color: window_color(bg);
+
+  &:backdrop {
+    text-shadow: none;
+    -gtk-icon-shadow: none;
+    color: window_color(backdrop_fg);
+    background-color: window_color(backdrop_bg);
+  }
+}
+
+/*
+   These wildcard seems unavoidable, need to investigate.
+   Wildcards are bad and troublesome, use them with care,
+   or better, just don't.
+   Everytime a wildcard is used a kitten dies, painfully.
+*/
+
+*:disabled {
+  -gtk-icon-effect: dim;
+}
+
+.gtkstyle-fallback {
+  background-color: window_color(bg);
+  color: window_color(fg);
+  &:hover {
+    background-color: selection_color(hover);
+    color: window_color(fg);
+  }
+  &:active {
+    background-color: selection_color(bg);
+    color: selection_color(fg);
+  }
+  &:disabled {
+    background-color: window_color(disabled_bg);
+    color: window_color(disabled_fg);
+  }
+  &:selected {
+    background-color: selection_color(bg);
+    color: selection_color(fg);
+  }
+}
+
+%view,
+.view {
+  color: view_color(fg);
+  background-color: view_color(bg);
+
+  &:backdrop {
+    color: view_color(backdrop_fg);
+    background-color: view_color(backdrop_bg);
+  }
+
+  &:selected {
+    &:focus, & {
+    border-radius: $r;
+    @extend %selected_items;
+    }
+  }
+}
+
+.view,
+textview {
+  text {
+    @extend %view;
+
+    selection { &:focus, & { @extend %selected_items; }}
+  }
+}
+
+textview border {
+  background-color: view_color(bg);
+  background-image: image(border_color()); // HACK: the border node just draws background so,
+  background-repeat: no-repeat;                        // using a background-image to draw the border
+
+  &:backdrop { background-color: view_color(backdrop_bg); }
+
+  &.bottom {
+    background-size: 100% 1px;
+    background-position: top;
+  }
+
+  &.top {
+    background-size: 100% 1px;
+    background-position: bottom;
+  }
+
+  &.left {
+    background-size: 1px 100%;
+    background-position: right;
+  }
+
+  &.right {
+    background-size: 1px 100%;
+    background-position: left;
+  }
+}
+
+.rubberband,
+rubberband {
+  border: 1px solid selection_color(bg);
+  background-color: selection_color(hover);
+  &:backdrop {
+    border-color: selection_color(backdrop_bg);
+    background-color: selection_color(backdrop_bg);
+  }
+}
+
+flowbox {
+  rubberband { @extend rubberband; }
+
+  flowboxchild {
+    padding: 3px;
+    border-radius: $r;
+
+    &:selected {
+      @extend %selected_items;
+
+      outline-offset: 0px;
+    }
+  }
+}
+
+label {
+  &.separator {
+    color: border_color();
+    @extend .dim-label;
+    &:backdrop { color: border_color(backdrop); }
+  }
+
+  selection {
+    background-color: selection_color(bg);
+    color: selection_color(fg)
+  }
+  &:disabled {
+    color: window_color(disabled_fg);
+    selection { @extend %selected_items:disabled; }
+
+    &:backdrop { color: window_color(backdrop_disabled_fg); }
+  }
+  &:backdrop {
+    color: window_color(backdrop_fg);
+
+    selction {@extend %selected_items:backdrop;}
+  }
+}
+
+.dim-label {
+  opacity: 0.5;
+  text-shadow: none;
+}
+
+assistant {
+  .sidebar {
+    background-color: view_color(fg);
+    border-top: 1px solid border_color();
+
+    &:backdrop {
+      background-color: view_color(backdrop_fg);
+      border-color: border_color(backdrop);
+    }
+  }
+  &.csd .sidebar { border-top-style: none; }
+  .sidebar label {
+    padding: 6px 12px;
+  }
+  .sidebar label.highlight {
+    background-color: selection_color(bg);
+  }
+}
+
+%osd, 
+.osd {
+  color: window_color(fg);
+  border: 1px solid border_color();
+  background-color: window_color(bg);
+  background-clip: padding-box;
+  box-shadow: none;
+  text-shadow: none;
+  -gtk-icon-shadow: none;
+  &:backdrop {
+    color: window_color(backdrop_fg);
+    background-color: window_color(backdrop_bg);
+    -gtk-icon-shadow: none;
+  }
+}
+
+%selected_items {
+  background-color: selection_color(bg);
+  color: selection_color(fg);
+  &:hover {
+    background-color: selection_color(hover);
+    color: window_color(fg);
+  }
+  &:backdrop {
+    background-color: selection_color(hover);
+    color: window_color(backdrop_fg);
+  }
+}
+
+%selected_items {
+  background-color: selection_color(bg);
+  border-radius: 0px;
+
+  @at-root %nobg_selected_items, & {
+    color: selection_color(fg);
+
+    &:disabled { color: selection_color(disabled_fg); }
+
+    &:backdrop {
+      color: selection_color(backdrop_fg);
+
+      &:disabled { color: selection_color(backdrop_disabled_fg); }
+    }
+  }
+}

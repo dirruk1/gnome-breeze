@@ -1,0 +1,59 @@
+//apps rely on some named colors to be exported
+/* GTK NAMED COLORS
+   ----------------
+   use responsibly! */
+
+
+/* widget text/foreground color */
+@define-color theme_fg_color #{window_color(fg)};
+
+/* text color for entries, views and content in general */
+@define-color theme_text_color #{view_color(fg)};
+
+/* widget base background color */
+@define-color theme_bg_color #{window_color(bg)};
+
+/* text widgets and the like base background color */
+@define-color theme_base_color #{view_color(bg)};
+
+/* base background color of selections */
+@define-color theme_selected_bg_color #{selection_color(bg)};
+
+/* text/foreground color of selection_colors */
+@define-color theme_selected_fg_color #{selection_color(fg)};
+
+/* base background color of insensitive widgets */
+@define-color insensitive_bg_color #{window_color(disabled_bg)};
+
+/* text foreground color of insensitive widgets */
+@define-color insensitive_fg_color #{window_color(disabled_fg)};
+
+/* insensitive text widgets and the like base background color */
+@define-color insensitive_base_color #{view_color(disabled_bg)};
+
+/* insensitive text widgets and the like base background color */
+@define-color insensitive_text_color #{view_color(disabled_fg)};
+
+/* widget text/foreground color on backdrop windows */
+@define-color theme_unfocused_fg_color #{window_color(backdrop_fg)};
+
+/* text color for entries, views and content in general on backdrop windows */
+@define-color theme_unfocused_text_color #{view_color(backdrop_fg)};
+
+/* widget base background color on backdrop windows */
+@define-color theme_unfocused_bg_color #{window_color(backdrop_bg)};
+
+/* text widgets and the like base background color on backdrop windows */
+@define-color theme_unfocused_base_color #{view_color(backdrop_bg)};
+
+/* base background color of selection_colors on backdrop windows */
+@define-color theme_unfocused_selected_bg_color #{selection_color(backdrop_bg)};
+
+/* text/foreground color of selection_colors on backdrop windows */
+@define-color theme_unfocused_selected_fg_color #{selection_color(backdrop_fg)};
+
+/* widgets main borders color on backdrop windows */
+@define-color unfocused_borders #{border_color(backdrop)};
+
+@define-color content_view_bg #{view_color(bg)};
+

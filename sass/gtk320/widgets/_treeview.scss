@@ -1,0 +1,135 @@
+
+
+/**************
+ * Tree Views *
+ **************/
+treeview.view {
+  -GtkTreeView-grid-line-width: 0;
+  -GtkTreeView-grid-line-pattern: '';
+  -GtkTreeView-tree-line-width: 1;
+  -GtkTreeView-tree-line-pattern: '';
+  -GtkTreeView-expander-size: 16;
+
+  border-left-color: border_color(); // this is actually the tree lines color,
+  border-top-color: transparent;                    // while this is the grid lines color, better then nothing
+
+  rubberband { @extend rubberband; } // to avoid borders being overridden by the previously set props
+
+  &:selected { border-radius: 0; } // rest border radius in lists
+
+  &:selected  {
+    background-color: selection_color(bg);
+    border-left-color: selection_color(fg);
+    border-top-color: selection_color(fg); // doesn't work unfortunatelly
+  }
+  &:backdrop:selected {
+    background-color: selection_color(backdrop_bg);
+    border-left-color: selection_color(backdrop_fg);
+    border-top-color: selection_color(backdrop_fg);
+  }
+
+  &:disabled {
+    color: border_color(disabled);
+    &:selected {
+      color: selection_color(disabled_fg);
+      &:backdrop { color: selection_color(backdrop_disabled_fg); }
+    }
+    &:backdrop { color: border_color(backdrop_disabled); }
+  }
+  &.seperator {
+    min-height: 2px;
+    color: border_color();
+  }
+  &.separator:backdrop {
+    color: border_color(backdrop);
+  }
+
+  &:backdrop {
+    border-left-color: border_color(backdrop);
+  }
+
+  &:drop(active) {
+    border-style: solid none;
+    border-width: 1px;
+    border-color: button_color(hover);
+  }
+
+  &.expander {
+    -gtk-icon-source: -gtk-icontheme('pan-end-symbolic');
+    color: view_color(fg);
+    &:dir(rtl) { -gtk-icon-source: -gtk-icontheme('pan-start-symbolic'); };
+    &:hover { color: button_color(hover); }
+    &:selected { color: selection_color(fg); }
+    &:checked {
+       -gtk-icon-source: -gtk-icontheme('pan-down-symbolic');
+      &:selected { color: selection_color(fg); }
+      &:backdrop { color: view_color(backdrop_fg); }
+    }
+    &:backdrop { color: view_color(backdrop_fg); }
+  }
+  header {
+    button {
+      @extend %column_header_button;
+      color: button_color(fg);
+      background-color: button_color(bg_color);
+      text-shadow: none;
+      box-shadow: none;
+      &:hover {
+        @extend %column_header_button;
+        color: button_color(fg);
+        background-color: gtkalpha(button_color(hover), 0.5);
+        box-shadow: none;
+        transition: none; //I shouldn't need this
+      }
+      &:active {
+        @extend %column_header_button;
+        color: button_color(fg);
+        background-color: gtkalpha(button_color(hover), 0.5);
+        transition: none; //I shouldn't need this
+      }
+    }
+    button:last-child { &:backdrop, & { border-right-style: none; }}
+    }
+    button.dnd,
+    header.button.dnd { // for treeview-like derive widgets
+      &:active, &:selected, &:hover, & {
+        padding: 0 6px;
+        color: selection_color(fg);
+        background-image: none;
+        background-color: selection_color(bg);
+        border-style: none;
+        border-radius: 0;
+        box-shadow: none;
+        text-shadow: none;
+        transition: none;
+      }
+    }
+}
+
+%column_header_button {
+  padding: 6px;
+  border-style: none solid solid none;
+  border-radius: 0;
+  background-image: none;
+  border-color: border_color();
+  text-shadow: none;
+  &:disabled {
+    border-color: border_color(disabled);
+    color: button_color(disabled_fg);
+    background-color: button_color(bg_color);
+    background-image: none;
+  }
+  &:backdrop {
+    border-color: border_color(backdrop);
+    border-style: none solid solid none;
+    color: button_color(backdrop_fg);
+    background-image: none;
+    background-color: button_color(backdrop_bg_color);
+    &:disabled {
+      border-color: border_color(backdrop_disabled);
+      background-image: none;
+      background-color: button_color(backdrop_bg_color);
+      color: button_color(backdrop_disabled_fg);
+    }
+  }
+}

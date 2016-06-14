@@ -1,0 +1,88 @@
+/************
+ * GtkScale *
+ ************/
+scale {
+
+  &.fine-tune {
+    &.trough {
+      margin: 8px;
+      border-radius: $r;
+    }
+  }
+
+  slider {
+    min-width: 18px;
+    min-height: 18px;
+    background-image: button_color(bg);
+    border: 1px solid border_color();
+    border-radius: 50%;
+    box-shadow: none;
+    margin: -9px;
+    &:hover {
+      border-style: solid;
+  	  border-width: 2px;
+      border-color: button_color(hover);
+      border-radius: 50%; // needed for double marks scales
+    }
+    &:disabled {
+      border-style: solid; // needed for double marks scales or they'll get
+      border-radius: 50%;  // overridden
+      background-image: button_color(disabled_bg);
+      border-color: border_color(disabled);
+      &:backdrop {
+        background-image: button_color(backdrop_disabled_bg);
+        border-color: border_color(backdrop_disabled);
+      }
+    }
+    &:active {
+      border: 2px solid button_color(active);
+      &:backdrop {
+        background-image: button_color(backdrop_bg);
+        border-color: button_color(backdrop_active);
+      }
+    }
+    &:backdrop {
+      background-image: button_color(backdrop_bg);
+      border-color: border_color(backdrop);
+    }
+  }
+  trough {
+    min-width: 6px;
+    min-height: 6px;
+    margin: 9px;
+    border: 0px solid;
+    border-radius: $r;
+    background-color: other_colors(trough);
+    box-shadow: none;
+
+    &:disabled, &.vertical:disabled {
+      border-color: other_colors(disabled_trough);
+      background-color: other_colors(disabled_trough);
+      box-shadow: none;
+      &:backdrop {
+        background-color: other_colors(backdrop_disabled_trough);
+        border-color: other_colors(backdrop_disabled_trough);
+      }
+    }
+    &:backdrop {
+      background-color: other_colors(backdrop_trough);
+      border-color: other_colors(backdrop_trough);
+    }
+  }
+  highlight {
+    border: 0px solid;
+    border-radius: 3px;
+    background-color: selection_color(bg);
+    border-color: selection_color(bg);
+    &.vertical {
+      background-color: selection_color(bg);
+      border-color: selection_color(bg);
+    }
+    &:disabled { background-color: selection_color(disabled_bg);}
+    &:backdrop {
+      background-color: selection_color(backdrop_bg);
+      border-color: selection_color(backdrop_bg);
+      &:disabled {background-color: selection_color(backdrop_disabled_bg);}
+    }
+  }
+}

@@ -1,0 +1,101 @@
+
+/* Button Colors */
+@define-color button_bg_a rgb(241,242,243);
+@define-color button_bg_b rgb(232,233,233);
+@define-color button_bg_color rgb(239,240,241);
+@define-color button_dis_bg_color rgba(217,218,219,0.35);
+@define-color button_bd_bg_color rgb(239,240,241);
+@define-color button_fg rgb(49,54,59);
+@define-color button_hover rgb(147,206,233);
+@define-color button_active rgb(61,174,233);
+@define-color button_bd_active rgb(61,174,233);
+@define-color button_active_bg_a rgb(62,179,239);
+@define-color button_active_bg_b rgb(55,158,211);
+@define-color button_active_hover_a rgb(151,212,239);
+@define-color button_active_hover_b rgb(133,187,211);
+@define-color button_dis_active_bg_a rgba(57,162,218,0.35);
+@define-color button_dis_active_bg_b rgba(50,143,192,0.35);
+@define-color button_dis_fg rgba(44,49,53,0.35);
+@define-color button_dis_bg_a rgba(219,220,221,0.35);
+@define-color button_dis_bg_b rgba(210,211,212,0.35);
+@define-color button_bd_bg_a rgb(241,242,243);
+@define-color button_bd_bg_b rgb(232,233,233);
+@define-color button_bd_active_bg_a rgb(62,179,239);
+@define-color button_bd_active_bg_b rgb(55,158,211);
+@define-color button_bd_fg rgb(49,54,59);
+@define-color button_bd_dis_fg rgba(44,49,53,0.35);
+@define-color button_bd_dis_bg_a rgba(219,220,221,0.35);
+@define-color button_bd_dis_bg_b rgba(210,211,212,0.35);
+@define-color button_bd_dis_active_bg_a rgba(57,162,218,0.35);
+@define-color button_bd_dis_active_bg_b rgba(50,143,192,0.35);
+
+/* Selection Colors */
+@define-color selection_bg rgb(61,174,233);
+@define-color selection_fg rgb(239,240,241);
+@define-color selection_hover rgb(147,206,233);
+@define-color selection_bd_bg rgba(61,174,233,0.5);
+@define-color selection_bd_fg rgb(239,240,241);
+@define-color selection_dis_fg rgba(217,218,219,0.35);
+@define-color selection_dis_bg rgba(55,158,211,0.35);
+@define-color selection_bd_dis_fg rgba(217,218,219,0.35);
+@define-color selection_bd_dis_bg rgba(55,158,211,0.35);
+
+/* View Colors */
+@define-color view_bg rgb(252,252,252);
+@define-color view_fg rgb(49,54,59);
+@define-color view_hover rgb(147,206,233);
+@define-color view_active rgb(61,174,233);
+@define-color view_dis_bg rgba(229,229,229,0.35);
+@define-color view_dis_fg rgba(44,49,53,0.35);
+@define-color view_bd_bg rgb(252,252,252);
+@define-color view_bd_fg rgb(49,54,59);
+@define-color view_bd_dis_bg rgba(229,229,229,0.35);
+@define-color view_bd_dis_fg rgba(44,49,53,0.35);
+
+/* Window Colors */
+@define-color window_bg rgb(239,240,241);
+@define-color window_fg rgb(49,54,59);
+@define-color window_dis_bg rgba(217,218,219,0.35);
+@define-color window_dis_fg rgba(44,49,53,0.35);
+@define-color window_bd_bg rgb(239,240,241);
+@define-color window_bd_fg rgb(49,54,59);
+@define-color window_bd_dis_bg rgba(217,218,219,0.35);
+@define-color window_bd_dis_fg rgba(44,49,53,0.35);
+
+/* Titlebar Colors */
+@define-color titlebar_bg_a rgb(85,96,104);
+@define-color titlebar_bg_b rgb(71,80,87);
+@define-color titlebar_fg rgb(239,240,241);
+@define-color titlebar_bd_bg rgb(239,240,241);
+@define-color titlebar_bd_fg rgb(189,195,199);
+@define-color titlebar_dis_bg rgba(64,72,79,0.35);
+@define-color titlebar_dis_fg rgba(217,218,219,0.35);
+
+/* Tooltip Colors */
+@define-color tooltip_bg rgb(49,54,59);
+@define-color tooltip_fg rgb(239,240,241);
+
+/* Border Colors */
+@define-color borders rgb(191,193,195);
+@define-color borders_dis rgba(174,175,177,0.35);
+@define-color borders_bd rgb(191,193,195);
+@define-color borders_bd_dis rgba(174,175,177,0.35);
+
+/* Other Colors */
+@define-color menu_color rgb(239,240,241);
+@define-color menu_bd_color rgb(239,240,241);
+@define-color link_color rgb(41,128,185);
+@define-color link_visited rgb(127,140,141);
+@define-color warning_color rgb(246,116,0);
+@define-color warning_bd_color rgb(246,116,0);
+@define-color error_color rgb(218,68,83);
+@define-color error_bd_color rgb(218,68,83);
+@define-color success_color rgb(39,174,96);
+@define-color success_bd_color rgb(39,174,96);
+@define-color trough_color rgb(181,184,186);
+@define-color trough_dis_color rgba(165,167,169,0.35);
+@define-color trough_bd_color rgb(181,184,186);
+@define-color trough_bd_dis_color rgba(165,167,169,0.35);
+@define-color scrollbar_color rgb(115,119,122);
+
+@import url("gtk-main.css");
