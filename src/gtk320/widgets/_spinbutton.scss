@@ -1,0 +1,167 @@
+/*****************
+ * GtkSpinButton *
+ *****************/
+ spinbutton {
+   &:not(.vertical) {
+     // in this horizontal configuration, the whole spinbutton
+     // behaves as the entry, so we extend the entry styling
+     // and nuke the style on the internal entry
+     @extend %entry;
+
+     padding: 0;
+
+     entry {
+       min-width: 28px;
+       // reset all the other props since the spinbutton node is styled here
+       margin: 0;
+       background: none;
+       background-color: transparent;
+       border: none;
+       border-radius: 0;
+       box-shadow: none;
+
+       &:backdrop:disabled { background-color: view_color(backdrop_disabled_bg); }
+     }
+
+     button {
+       min-height: 16px;
+       margin: 0;
+       padding-bottom: 0;
+       padding-top: 0;
+       color: view_color(fg);
+       background-image: none;
+       background-color: transparent;
+       border-style: none;
+       box-shadow: none;
+
+       &:hover {
+         color: view_color(hover);
+       }
+
+       &:disabled {
+         color: view_color(disabled_fg);
+         background-image: none;
+       }
+
+       &:active {
+         color: view_color(active);
+         box-shadow: none;
+         background-image: none;
+       }
+
+       &:backdrop {
+         color: view_color(backdrop_fg);
+         background-color: transparent;
+         background-image: none;
+       }
+
+       &:backdrop:disabled {
+         color: view_color(backdrop_disabled_fg);
+         background-color: transparent;
+         background-image: none;
+         border-style: none; // It is needed or it gets overridden
+       }
+
+       &:dir(ltr):last-child { border-radius: 0 3px 3px 0; }
+
+       &:dir(rtl):first-child { border-radius: 3px 0 0 3px; }
+
+       &.down { -gtk-icon-source: -gtk-icontheme('pan-down-symbolic'); }
+
+       &.up { -gtk-icon-source: -gtk-icontheme('pan-up-symbolic'); }
+     }
+   }
+
+   // Vertical
+   &.vertical {
+     // in the vertical configuration, we treat the spinbutton
+     // as a box, and tweak the style of the entry in the middle
+     // so that it's linked
+
+     // FIXME: this should not be set at all, but otherwise it gets the wrong
+     // color
+     &:disabled { color: view_color(disabled_fg); }
+
+     &:backdrop:disabled { color: view_color(backdrop_disabled_fg); }
+
+     &:drop(active) {
+       border-color: transparent;
+       box-shadow: none;
+     }
+
+     entry {
+       margin: 0px;
+       min-height: 26px;
+       min-width: 26px;
+       border-style: none solid none solid;
+       border-color: border_color();
+       padding: 0;
+       border-radius: 0;
+       &:disabled {
+        color: view_color(disabled_fg);
+        background-color: view_color(disabled_bg);
+        border-color: border_color(disabled);
+        }
+       &:backdrop:disabled {
+         color: view_color(backdrop_disabled_fg);
+         background-color: view_color(backdrop_disabled_bg);
+         border-color: border_color(backdrop_disabled);
+        }
+     }
+
+     button {
+       min-height: 26px;
+       min-width: 26px;
+       padding: 0;
+       box-shadow: none;
+       background-image: none;
+       background-color: view_color(bg);
+       color: view_color(fg);
+       border-color: border_color();
+       &:hover { color: view_color(hover);}
+       &:active { color: view_color(active);}
+       &:disabled {
+        color: view_color(disabled_fg);
+        background-color: view_color(disabled_bg);
+        border-color: border_color(disabled);
+        background-image: none;
+        }
+       &:backdrop:disabled {
+         color: view_color(backdrop_disabled_fg);
+         background-color: view_color(backdrop_disabled_bg);
+         border-color: border_color(backdrop_disabled);
+         background-image: none;
+        }
+
+       &.up {
+         @extend %top_button;
+        }
+
+       &.down {
+         @extend %bottom_button;
+        }
+     }
+
+     %top_button {
+       border-radius: 3px 3px 0 0;
+       border-style: solid solid none solid;
+     }
+
+     %bottom_button {
+       border-radius: 0 0 3px 3px;
+       border-style: none solid solid solid;
+     }
+   }
+
+   // Misc
+   treeview &:not(.vertical) {
+     min-height: 0;
+     border-style: none;
+     border-radius: 0;
+
+     entry {
+       min-height: 0;
+       padding: 1px 2px;
+     }
+   }
+ }

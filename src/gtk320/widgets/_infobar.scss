@@ -1,0 +1,64 @@
+/**************
+ * GtkInfoBar *
+ **************/
+infobar {
+  border-style: none;
+  border-bottom: 1px solid border_color();
+  background-color: window_color(bg);
+  background-image: none;
+  &:backdrop {border-bottom: 1px solid border_color(backdrop);}
+}
+
+.info,
+.question,
+.warning,
+.error {
+  background-color: window_color(bg);
+  background-image: none;
+  color: other_colors(warning);
+  text-shadow: none;
+  &:backdrop {
+    background-color: window_color(backdrop_bg);
+    color: window_color(backdrop_fg);
+  }
+  button {
+    box-shadow: none;
+    background-image:none;
+    background-color: gtkalpha(other_colors(warning), 0.5);
+    border-color: gtkalpha(other_colors(warning), 0.5);
+    color: button_color(fg);
+    &:hover {
+      background-color: gtkalpha(other_colors(warning), 0.75);
+      border-color: other_colors(warning);
+    }
+    &:active, &:checked, &:active:hover {
+      background-color: other_colors(warning);
+      color: window_color(fg);
+      border-color: other_colors(warning);
+      background-image: none;
+    }
+    &:disabled {
+      background-color: window_color(bg);
+      border-color: window_color(bg);
+      color: window_color(disabled_fg);
+    }
+    &:backdrop {
+      background-color: window_color(backdrop_bg);
+      border-color: window_color(backdrop_bg);
+      color: window_color(backdrop_fg);
+      &:active, &:checked {
+      background-color: window_color(backdrop_bg);
+      border-color: window_color(backdrop_fg);
+      color: window_color(backdrop_fg);
+      }
+      &:disabled {
+        color: window_color(backdrop_disabled_fg);
+      }
+      &:disabled:active,
+      &:disabled:checked {
+        border-color: window_color(backdrop_disabled_fg);
+        color: window_color(backdrop_disabled_fg);
+      }
+    }
+  }
+}

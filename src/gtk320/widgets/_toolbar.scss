@@ -1,0 +1,71 @@
+/************
+ * Toolbars *
+ ************/
+ %toolbar {
+  -GtkWidget-window-dragging: true;
+  padding: 4px;
+  background-color: window_color(bg);
+}
+toolbar {
+  @extend %toolbar;
+  padding: 4px 3px 3px 4px;
+  &:backdrop {
+    background-color: window_color(backdrop_bg);
+    box-shadow: none;
+  }
+  button {
+    margin: 2px;
+    padding: 3px;
+    &.image-button, &.text-button.image-button {
+      padding: 3px;
+    }
+  }
+  separator {
+    margin-left: 3px;
+    margin-right: 3px;
+  }
+  entry {
+    margin: 3px;
+  }
+  // on OSD
+  .osd & { background-color: transparent; }
+  &.osd {
+    padding: 13px;
+    border: none;
+    border-radius: $r;
+    background-color: window_color(bg);
+    &:backdrop {
+      border-color: border_color(backdrop);
+      background-color: window_color(backdrop_bg);
+      box-shadow: none;
+    }
+    &.left,
+    &.right,
+    &.top,
+    &.bottom { border-radius: 0; } // positional classes for `attached` osd toolbars
+  }
+}
+
+//searchbar, location-bar & inline-toolbar
+.inline-toolbar {
+  @extend %toolbar;
+  @extend %inset-bar;
+  border-width: 0px 0px 1px 0px;
+  padding: 3px;
+  border-radius: 0;
+}
+searchbar,
+.location-bar {
+  @extend %toolbar;
+  @extend %inset-bar;
+  border-width: 0px 0px 1px 0px;
+  padding: 3px;
+}
+
+%inset-bar {
+  border-style: solid;
+  border-color: border_color();
+  text-shadow: none;
+  background-color: window_color(bg);
+}
+

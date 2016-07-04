@@ -1,0 +1,70 @@
+/**********
+ * Switch *
+ **********/
+
+GtkSwitch {
+  -GtkSwitch-slider-width: 24px;
+  -GtkSwitch-slider-height: 24px;
+  font-weight: bold;
+  font-size: smaller;
+  outline-offset: 0px;
+  color: transparent;
+  box-shadow: none; // needs to be set here
+                                                    // otherwise it gets
+                                                    // clipped
+  &.trough {
+    // similar to the .scale
+    border: 0px solid;
+    border-radius: 12px;
+    background-image: none;
+    background-color: other_colors(trough);
+    text-shadow: none;
+    &:active {
+      background-color: selection_color(bg);
+      box-shadow: none;
+      text-shadow: none;
+      &:backdrop { background-color: selection_color(backdrop_bg); }
+    }
+    &:backdrop {
+      background-color: other_colors(backdrop_trough);
+    }
+
+  }
+
+  &.slider {
+    border: 1px solid;
+    border-radius: 11px;
+    background-color: window_color(bg);
+    border-color: border_color();
+    &:hover {
+      box-shadow: none;
+      border-color: button_color(hover);
+      background-color: window_color(bg);
+    }
+    &:active {
+    border-color: button_color(active);
+      &:hover { border-color: button_color(hover)}
+      &:backdrop { border-color: selection_color(backdrop_bg); }
+    }
+    &:insensitive { background-color: window_color(disabled_bg); }
+    &:backdrop {
+      background-color: window_color(backdrop_bg);
+      &:insensitive {
+        background-color: window_color(backdrop_disabled_bg);
+      }
+    }
+  }
+  .header-bar & {
+    &.trough {
+      &:backdrop {
+        background-color:transparent;
+      }
+    }
+    &.slider {
+      &:backdrop {
+        background-color: transparent;
+        border-color: transparent;
+      }
+    }
+  }
+}

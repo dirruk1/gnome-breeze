@@ -1,0 +1,57 @@
+
+    ##########
+    # Scales #
+    ##########
+
+    # Troughs
+    # They are overrided later on
+    # We set them here too because some widgets don't specify their orientation
+
+
+style "scale_horz" {
+
+  engine "pixmap" {
+
+    image {
+      function    = BOX
+      detail      = "trough-upper"
+      file        = "../assets/scale-trough-horizontal.png"
+      border      = {4, 4, 0, 0}
+      stretch     = TRUE
+    }
+
+    image {
+      function    = BOX
+      detail      = "trough-lower"
+      file        = "../assets/scale-trough-active-horizontal.png"
+      border      = {4, 4, 0, 0}
+      stretch     = TRUE
+    }
+
+  }
+
+}
+
+style "scale_vert" {
+
+  engine "pixmap" {
+
+    image {
+      function    = BOX
+      detail      = "trough-upper"
+      file        = "../assets/scale-trough-vertical.png"
+      border      = {0, 0, 4, 4}
+      stretch     = TRUE
+    }
+
+    image {
+      function    = BOX
+      detail      = "trough-lower"
+      file        = "../assets/scale-trough-active-vertical.png"
+      border      = {0, 0, 4, 4}
+      stretch     = TRUE
+    }
+
+  }
+
+}

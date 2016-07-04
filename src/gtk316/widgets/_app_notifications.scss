@@ -1,0 +1,44 @@
+/*********************
+ * App Notifications *
+ *********************/
+
+.app-notification,
+.app-notification.frame {
+  @extend %osd;
+  padding: 10px;
+  border-top-width: 0px;
+  border-radius: 0px 0px 3px 3px;
+  &:backdrop { background-image: none; }
+  .button {
+    @include button(normal);
+    &.flat {
+      @extend %undecorated_button;
+      icon-shadow: none;
+      text-shadow: none;
+      color: border_color();
+      &:hover {
+        @extend %undecorated_button;
+        color: other_colors(error);
+      }
+      &:active {
+        @extend %undecorated_button;
+        color: other_colors(error);
+      }
+      &:backdrop,
+      &:insensitive,
+      &:backdrop:insensitive { @extend %undecorated_button; }
+    }
+    &:hover { @include button(hover); }
+    &:active,
+    &:checked,
+    &:backdrop:active,
+    &:backdrop:checked {
+      @include button(active);
+    }
+    &:insensitive,
+    &:backdrop:insensitive {
+      @include button(insensitive);
+    }
+    &:backdrop { @include button(backdrop); }
+  }
+}

@@ -1,0 +1,142 @@
+/*****************
+ * Progress bars *
+ *****************/
+
+GtkProgressBar {
+  padding: 0;
+  font-size: smaller;
+  color: gtkalpha(button_color(fg),0.7);
+  box-shadow: none;                           // here ot it gets
+  &:backdrop { color: gtkalpha(button_color(backdrop_fg),0.7);}                                          // clipped
+
+  &.osd {
+    -GtkProgressBar-xspacing: 0;
+    -GtkProgressBar-yspacing: 0;
+    -GtkProgressBar-min-horizontal-bar-height: 3;
+  }
+  &.trough {  // background
+    border: 1px solid transparent;
+    border-radius: $r;
+    background-color: gtkalpha(button_color(fg),0.7);
+    &.osd {
+      border: 1px solid transparent;
+      border-radius: $r;
+      background-color: gtkalpha(button_color(fg),0.7);
+      &:backdrop {
+        background-color: gtkalpha(button_color(backdrop_fg),0.7);
+      }
+    }
+    &:backdrop {
+      background-color: gtkalpha(button_color(backdrop_fg),0.7);
+    }
+  }
+}
+
+// moving bit
+.progressbar {
+  background-color: selection_color(bg);
+  border: 1px solid selection_color(bg);
+  border-radius: 0px;
+  box-shadow: none; //needed for clipping
+  &.left {
+    border-top-left-radius: $r;
+    border-bottom-left-radius: $r;
+  }
+  &.right {
+    border-top-right-radius: $r;
+    border-bottom-right-radius: $r;
+  }
+  &.left.right {
+    box-shadow: none;
+  }
+  &.vertical {
+
+    &.bottom {
+      border-bottom-left-radius: $r;
+      border-bottom-right-radius: $r;
+      box-shadow: none;
+    }
+    &.top {
+      border-top-left-radius: $r;
+      border-top-right-radius: $r;
+    }
+  }
+
+  &.osd {
+    background-image: none;
+    background-color: selection_color(bg);
+    border: 1px solid selection_color(bg);
+    border-radius: $r;
+    &:backdrop {
+      background-color: selection_color(backdrop_bg);
+      border-color: selection_color(backdrop_bg);
+    }
+  }
+  &:backdrop {
+    background-color: selection_color(backdrop_bg);
+    border-color: selection_color(backdrop_bg);
+  }
+}
+
+/*************
+ * Level Bar *
+ *************/
+
+.level-bar.vertical {
+  -GtkLevelBar-min-block-width: 6;
+  -GtkLevelBar-min-block-height: 34;
+}
+
+.level-bar {
+  box-shadow: none; // needs to be set here to avoid clipping
+  -GtkLevelBar-min-block-width: 34;
+  -GtkLevelBar-min-block-height: 6;
+  &.vertical {
+    -GtkLevelBar-min-block-width: 6;
+    -GtkLevelBar-min-block-height: 34;
+  }
+  &.trough {
+    border: 1px solid transparent;
+    padding: 3px;
+    border-radius: $r;
+    background-color: transparent;;
+  }
+  &.fill-block {
+    // FIXME: it would be nice to set make fill blocks bigger, but we'd need
+    // :nth-child working on discrete indicators
+    border: 1px solid selection_color(bg);
+    background-color: selection_color(bg);
+    box-shadow: none;
+    border-radius: $r;
+
+    &.indicator-discrete {
+      &.horizontal { margin: 0 1px; }
+      &.vertical { margin: 1px 0; }
+    }
+    &.level-high {
+      border-color: other_colors(success);
+      background-color: other_colors(success);
+      &:backdrop {
+        background-color: other_colors(backdrop_success);
+        border-color: other_colors(backdrop_success);
+      }
+    }
+    &.level-low {
+      border-color: other_colors(warning);
+      background-color: other_colors(warning);
+      &:backdrop {
+        background-color: other_colors(backdrop_warning);
+        border-color: other_colors(backdrop_warning);
+      };
+    }
+    &.empty-fill-block {
+      background-color: gtkalpha(button_color(fg),0.7);
+      border-color: transparent;
+      box-shadow: none;
+    }
+    &:backdrop {
+      border-color: selection_color(backdrop_bg);
+      background-color: selection_color(backdrop_bg);
+    }
+  }
+}

@@ -1,0 +1,49 @@
+/*********
+ * Links *
+ *********/
+%link,
+*:link {
+  color: other_colors(link);
+  &:visited {
+    color: other_colors(link_visited);
+    *:selected & { color: gtkmix(selection_color(fg), selection_color(bg), 0.6); }
+  }
+  &:hover {
+    color: selection_color(hover);
+    *:selected & { color: gtkmix(selection_color(fg), selection_color(bg), 0.9); }
+  }
+  &:active {
+    color: other_colors(link);
+    *:selected & { color: gtkmix(selection_color(fg), selection_color(bg), 0.8); }
+  }
+  &:backdrop, &:backdrop:hover, &:backdrop:hover:selected {
+    color: other_colors(backdrop_link);
+  }
+  @at-root %link_selected,
+  &:selected, *:selected & {
+    color: gtkmix(selection_color(fg), selection_color(bg), 0.8);
+  }
+}
+
+button:link,
+button:visited {
+  @extend %undecorated_button;
+
+  @extend *:link;
+
+  text-shadow: none;
+
+  &:hover,
+  &:active,
+  &:checked {
+    @extend %undecorated_button;
+
+    text-shadow: none;
+  }
+
+  > label {
+    @extend %link;
+
+    text-decoration-line: underline;
+  }
+}

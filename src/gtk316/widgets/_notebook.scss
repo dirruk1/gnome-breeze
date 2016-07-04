@@ -1,0 +1,189 @@
+/*****************
+ * Notebooks and *
+ * Tabs          *
+ *****************/
+
+.notebook {
+  // Through me you go to the grief wracked city;
+  // Through me you go to everlasting pain;
+  // Through me you go a pass among lost souls.
+  // ...
+  // Abandon all hope — Ye Who Enter Here
+
+  -GtkNotebook-initial-gap: 0;
+  -GtkNotebook-arrow-spacing: 5;
+  -GtkNotebook-tab-curvature: 0;
+  -GtkNotebook-tab-overlap: 1;
+  -GtkNotebook-has-tab-gap: false;
+  -GtkWidget-focus-padding: 0;
+  -GtkWidget-focus-line-width: 0;
+  transition: all 200ms $ease-out-quad;
+  background-color: other_colors(menu);
+  &:backdrop {background-color: other_colors(backdrop_menu)}
+
+  &.frame {
+    border: 1px solid border_color();
+    // FIXME doesn't work
+    &.top { border-top-width: 0; }
+    &.bottom { border-bottom-width: 0; }
+    &.right { border-right-width: 0; }
+    &.left { border-left-width: 0; }
+    &:backdrop { border-color: border_color(backdrop); }
+  }
+  &.header {
+    background-color: window_color(bg);
+    padding-top: 4px;
+
+    //this is the shading of the header behind the tabs
+    &.frame {
+      border-style: none;
+    }
+    &.top {
+      box-shadow: inset 0 -1px border_color(); // border
+      &:backdrop { box-shadow: inset 0 -1px border_color(backdrop); }
+    }
+    &.bottom {
+      box-shadow: inset 0 1px border_color();
+      &:backdrop { box-shadow: inset 0 1px border_color(backdrop); }
+    }
+    &.right {
+      box-shadow: inset 1px 0 border_color();
+      &:backdrop { box-shadow: inset 1px 0 border_color(backdrop); }
+    }
+    &.left {
+      box-shadow: inset -1px 0 border_color();
+      &:backdrop { box-shadow: inset -1px 0 border_color(backdrop); }
+    }
+    &:backdrop {
+      background-color: window_color(backdrop_bg);
+    }
+  }
+
+  tab {
+    border: 1px solid gtkalpha(window_color(fg), 0.8);
+    background-color: gtkalpha(window_color(fg), 0.8);
+    background-clip: padding-box;
+    &:backdrop {background-color: gtkalpha(window_color(backdrop_fg), 0.8);}
+    //FIXME: we get double border in some cases, not considering the broken
+    //notebook content frame...
+    padding: 8px;
+    &.reorderable-page {
+		    background-color: window_color(bg);
+      &.top, &.bottom {
+        padding-left: 12px;  // for a nicer close button
+        padding-right: 6px; // placement
+        padding-bottom: 8px;
+      }
+    }
+
+    @each $_tab, $_border, $_radius in  (top,bottom,3px 3px 0px 0px),
+                                        (bottom,top,0px 0px 3px 3px),
+                                        (left,right, 3px 0px 0px 3px),
+                                        (right,left, 0px 3px 3px 0px) {
+      &.#{$_tab} {
+        border-radius: #{$_radius};
+        border-#{$_border}-color: transparent;
+        &:active, &.active-page {
+          border-color: border_color();
+          border-#{$_border}-color: other_colors(menu);
+          background-color: other_colors(menu);
+          &:backdrop {
+            border-color: border_color(backdrop);
+            border-#{$_border}-color: other_colors(backdrop_menu);
+            background-color: other_colors(backdrop_menu);
+          }
+        }
+      }
+    }
+
+    //here's the interesting stuff
+    &:hover, &.prelight-page {
+      background-color: gtkalpha(selection_color(bg), 0.8);
+      border-color: gtkalpha(selection_color(bg), 0.8);
+    }
+
+    @each $_tab, $_border, $_shadow1 in (top, right, -3px 0px 0px 0px),
+                             (bottom, right, -3px 0px 0px 0px),
+                             (left, bottom, 0px -3px 0px 0px),
+                             (right, bottom, 0px -3px 0px 0px) {
+      &.reorderable-page.#{$_tab} {
+      border-width: 3px;
+      border-style: solid;
+      border-color: transparent;
+      background-color: window_color(bg);
+      background-clip: padding-box;
+      border-#{$_border}-width: 1px;
+      border-#{$_border}-color: border_color();
+      box-shadow: inset #{$_shadow1} window_color(bg);
+        &:hover, &.prelight-page {
+          box-shadow: inset 0px -3px 0px 0px gtkalpha(selection_color(bg),0.8), inset $_shadow1 window_color(bg);
+        }
+        &:active, &.active-page {
+          box-shadow: inset 0px -3px 0px 0px selection_color(bg), inset $_shadow1 window_color(bg);
+          &:backdrop {
+            background-color: window_color(backdrop_bg);
+            border-color: transparent;
+		        border-#{$_border}-color: border_color(backdrop);
+            box-shadow:none;
+          }
+        }
+        &:backdrop {
+			    background-color: window_color(backdrop_bg);
+		      border-#{$_border}-color: border_color(backdrop);
+          box-shadow:none;
+        }
+      }
+    }
+    .label { //tab text
+      padding: 0 2px; // needed for a nicer focus ring
+      color: window_color(fg);
+      &:backdrop { color: window_color(backdrop_fg); }
+    }
+    .button { //tab close button
+      padding: 0px;
+      border: none;
+      background-image: none;
+      background-color: transparent;
+      box-shadow: none;
+      icon-shadow: none;
+      transition: none;
+      color: border_color();
+      &:hover {
+        color:  other_colors(error);
+        border-color: transparent;
+        background-image: none;
+        box-shadow: none;
+      }
+      &:active {
+        color: other_colors(error);
+        border-color: transparent;
+        background-image: none;
+        box-shadow: none;
+      }
+      &:backdrop {
+        color: other_colors(backdrop_error);
+        background-color: transparent;
+      }
+      & > GtkImage {
+        padding: 0px;
+      }
+    }
+    .button .active-page, .button.active-page { //not working
+		background-color: other_colors(error);
+    }
+  }
+  &.arrow {
+    color: window_color(fg);
+    &:hover { color: button_color(hover); }
+    &:active { color: button_color(active); }
+    &:insensitive {
+      color: window_color(disabled_fg);
+    }
+    &:backdrop {
+      color: window_color(backdrop_fg);
+      &:insensitive {
+        color: window_color(backdrop_disabled_fg);
+      }
+    }
+  }
+}

@@ -1,0 +1,57 @@
+/************
+ * Calendar *
+ ***********/
+GtkCalendar {
+  color: view_color(fg);
+  border: 1px solid border_color();
+  background-color: view_color(bg);
+  &:selected {
+    background-color: border_color();
+  }
+
+  &.header {
+    border: 1px solid border_color();
+    border-radius: 0;
+    color: view_color(fg);
+
+    &:backdrop {
+      color: view_color(backdrop_fg);
+      border-color: border_color(backdrop);
+    }
+  }
+
+  &.button {
+    @extend %undecorated_button;
+    color: button_color(fg);
+
+    &:hover {
+      @extend %undecorated_button;
+      color: button_color(hover);
+    }
+    &:active {
+      @extend %undecorated_button;
+      color: button_color(active);
+    }
+    &:backdrop {
+      @extend %undecorated_button;
+      color: button_color(backdrop_fg);
+    }
+  }
+
+  &:inconsistent,
+  &.highlight {
+    color: gtkalpha(view_color(fg),0.5);
+  }
+
+  &:inconsistent:backdrop,
+  &.highlight:backdrop {
+    color: gtkalpha(view_color(backdrop_fg),0.5);
+  }
+
+
+  &:backdrop {
+    color: view_color(backdrop_fg);
+    border-color: border_color(backdrop);
+    background-color: view_color(backdrop_bg);
+  }
+}

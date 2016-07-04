@@ -1,0 +1,198 @@
+
+$ease-out-quad: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+
+* {
+  padding: 0;
+  -GtkToolButton-icon-spacing: 4;
+  -GtkTextView-error-underline-color: other_colors(error);
+
+  -GtkButton-child-displacement-x: 0;
+  -GtkButton-child-displacement-y: 0;
+
+  -GtkCheckButton-indicator-size: 18;
+  -GtkCheckMenuItem-indicator-size: 18;
+
+  // The size for scrollbars. The slider is 2px smaller, but we keep it
+  // up so that the whole area is sensitive to button presses for the
+  // slider. The stepper button is larger in both directions, the slider
+  // only in the width
+
+  -GtkScrolledWindow-scrollbar-spacing: 0;
+  -GtkScrolledWindow-scrollbars-within-bevel: 1;
+
+  -GtkToolItemGroup-expander-size: 11;
+  -GtkExpander-expander-size: 16;
+  -GtkTreeView-expander-size: 11;
+
+  -GtkTreeView-horizontal-separator: 4;
+
+  -GtkMenu-horizontal-padding: 0;
+  -GtkMenu-vertical-padding: 0;
+
+  -GtkWidget-link-color: other_colors(link);
+  -GtkWidget-visited-link-color: other_colors(link_visited);
+
+  -GtkWidget-focus-padding: 2;    // FIXME: do we still need these?
+  -GtkWidget-focus-line-width: 1; //
+
+  -GtkWidget-text-handle-width: 20;
+  -GtkWidget-text-handle-height: 20;
+
+  -GtkDialog-button-spacing: 4;
+  -GtkDialog-action-area-border: 0;
+
+  -GtkStatusbar-shadow-type: none;
+
+  outline-width: 0px;
+}
+
+
+/***************
+ * Base States *
+ ***************/
+
+.background {
+  color: window_color(fg);
+  background-color: window_color(bg);
+
+  &:backdrop {
+    text-shadow: none;
+    icon-shadow: none;
+    color: window_color(backdrop_fg);
+    background-color: window_color(backdrop_bg);
+  }
+}
+
+/*
+   These wildcard seems unavoidable, need to investigate.
+   Wildcards are bad and troublesome, use them with care,
+   or better, just don't.
+   Everytime a wildcard is used a kitten dies, painfully.
+*/
+
+*:insensitive {
+  -gtk-image-effect: dim;
+}
+
+.gtkstyle-fallback {
+  background-color: window_color(bg);
+  color: window_color(fg);
+  &:prelight {
+    background-color: selection_color(hover);
+    color: window_color(fg);
+  }
+  &:active {
+    background-color: selection_color(bg);
+    color: window_color(fg);
+  }
+  &:insensitive {
+    background-color: window_color(disabled_bg);
+    color: window_color(disabled_fg);
+  }
+  &:selected {
+    background-color: selection_color(bg);
+    color: selection_color(fg);
+  }
+}
+
+.view {
+  color: view_color(fg);
+  background-color: view_color(bg);
+
+  &:backdrop {
+    color: view_color(backdrop_fg);
+    background-color: view_color(backdrop_bg);
+  }
+
+  &:selected {
+    border-radius: $r;
+    @extend %selected_items;
+  }
+}
+
+.rubberband {
+  border: 1px solid selection_color(bg);
+  background-color: gtkalpha(selection_color(bg),0.8);
+  &:backdrop {
+    border-color: selection_color(backdrop_bg);
+    background-color: gtkalpha(selection_color(backdrop_bg),0.8);
+  }
+}
+
+.label {
+  &.separator {
+    color: window_color(fg);
+    @extend .dim-label;
+    &:backdrop { color: window_color(backdrop_fg); }
+  }
+  &:selected,
+  &:selected:focus,
+  &:selected:hover {
+    @extend %selected_items;
+  }
+  &:insensitive {
+    color: window_color(disabled_fg);
+    &:backdrop { color: window_color(backdrop_disabled_fg); }
+  }
+}
+
+.dim-label {
+  opacity: 0.5;
+  text-shadow: none;
+}
+
+GtkAssistant {
+  .sidebar {
+    background-color: view_color(fg);
+    border-top: 1px solid border_color();
+    &:dir(ltr) { border-right: 1px solid border_color(); }
+    &:dir(rtl) { border-left: 1px solid border_color(); }
+    &:backdrop {
+      background-color: view_color(backdrop_fg);
+      border-color: border_color(backdrop);
+    }
+  }
+  &.csd .sidebar { border-top-style: none; }
+  .sidebar .label {
+    padding: 6px 12px;
+  }
+  .sidebar .label.highlight {
+    background-color: selection_color(bg);
+  }
+}
+
+GtkTextView { // This will get overridden by .view, needed by gedit line numbers
+  background-color: gtkalpha(view_color(bg), 0.5);
+  &:backdrop { background-color: view_color(bg); }
+}
+
+.grid-child {
+  padding: 3px;
+  border-radius: $r;
+  &:selected {
+    @extend %selected_items;
+  }
+}
+
+%osd, .osd {
+  color: window_color(fg);
+  border: 1px solid window_color(bg);
+  background-color: gtkalpha(window_color(bg),0.2);
+  background-clip: padding-box;
+  box-shadow: none;
+  text-shadow: none;
+  icon-shadow: none;
+  &:backdrop {
+    color: window_color(backdrop_fg);
+    background-color: gtkalpha(window_color(backdrop_bg),0.2);
+  }
+}
+
+%selected_items {
+  background-color: selection_color(bg);
+  color: selection_color(fg);
+  &:backdrop {
+    background-color: selection_color(backdrop_bg);
+    color: window_color(backdrop_fg);
+  }
+}

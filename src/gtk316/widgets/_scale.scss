@@ -1,0 +1,87 @@
+/************
+ * GtkScale *
+ ************/
+.scale,
+.scale.scale-has-marks-above.scale-has-marks-below,
+.scale.vertical.scale-has-marks-above.scale-has-marks-below {
+  -GtkScale-slider-length: 18;
+  -GtkRange-slider-width: 18;
+  -GtkRange-trough-border: 2;
+
+  &.fine-tune {
+    &.trough {
+      margin: 8px;
+      border-radius: $r;
+    }
+  }
+
+  &.slider {
+    background-image: button_color(bg);
+    border: 1px solid border_color();
+    border-radius: 50%;
+    box-shadow: none;
+    &:hover {
+      border-style: solid;
+  	  border-width: 2px;
+      border-color: button_color(hover);
+      border-radius: 50%; // needed for double marks scales
+      &:backdrop {
+        background-image: button_color(backdrop_bg);
+        border-color: border_color(backdrop);
+      }
+    }
+    &:insensitive {
+      border-style: solid; // needed for double marks scales or they'll get
+      border-radius: 50%;  // overridden
+      background-image: button_color(disabled_bg);
+      border-color: border_color(disabled);
+      &:backdrop {
+        background-image: button_color(backdrop_disabled_bg);
+        border-color: border_color(backdrop_disabled);
+      }
+    }
+    &:active {
+      border: 2px solid button_color(active);
+      &:backdrop {
+        background-image: button_color(backdrop_bg);
+        border-color: button_color(backdrop_active);
+      }
+    }
+    &:backdrop {
+      background-image: button_color(backdrop_bg);
+      border-color: border_color(backdrop);
+    }
+  }
+  &.trough {
+    margin: 9px;
+    border: 1px solid gtkalpha(button_color(fg),0.7);
+    border-radius: $r;
+    background-color: gtkalpha(button_color(fg),0.7);
+    box-shadow: none;
+    &.highlight {
+      background-color: selection_color(bg);
+      border-color: selection_color(bg);
+      &.vertical {
+        background-color: selection_color(bg);
+        border-color: selection_color(bg);
+      }
+      &:backdrop {
+        background-color: selection_color(backdrop_bg);
+        border-color: selection_color(backdrop_bg);
+      }
+    }
+    &:insensitive, &.vertical:insensitive {
+      border-color: gtkalpha(button_color(disabled_fg),0.7);
+      background-color: gtkalpha(button_color(disabled_fg),0.7);
+      box-shadow: none;
+      &:backdrop {
+        background-color: gtkalpha(button_color(backdrop_disabled_fg),0.7);
+        border-color: gtkalpha(button_color(backdrop_disabled_fg),0.7);
+      }
+    }
+    &:backdrop {
+      background-color: gtkalpha(button_color(backdrop_fg),0.7);
+      border-color: gtkalpha(button_color(backdrop_fg),0.7);
+    }
+  }
+}

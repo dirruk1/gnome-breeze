@@ -1,0 +1,164 @@
+/*********
+ * Menus *
+ *********/
+ /* menu buttons */
+ .menuitem.button.flat {
+   @extend %undecorated_button;
+   color: window_color(fg);
+   &:hover { background-color: button_color(hover); }
+   &:selected {
+     background-color: button_color(active);
+     color: button_color(active_fg)
+   }
+   &:backdrop, &:backdrop:hover {
+     @extend %undecorated_button;
+     color: window_color(backdrop_fg);
+   }
+ }
+
+.menubar {
+  -GtkWidget-window-dragging: true;
+  padding: 0px;
+  box-shadow: none;
+  border-style: none;
+  background-color: window_color(bg);
+  &:backdrop {
+    background-color: window_color(backdrop_bg);
+  }
+  & > .menuitem {
+    padding: 4px 6px;
+    border-style: solid;
+    border-width: 1px 0px;
+    border-color: window_color(bg);
+    &:hover { //Seems like it :hover even with keyboard focus
+      background-color: button_color(active);
+      color: button_color(active_fg);
+    }
+    &:insensitive {
+      color: window_color(disabled_fg);
+      box-shadow: none;
+      &:backdrop {
+        background-color: window_color(backdrop_bg);
+        color: window_color(backdrop_disabled_bg);
+      }
+    }
+    &:backdrop {
+      background-color: window_color(backdrop_bg);
+      border-color: window_color(backdrop_bg);
+      color: window_color(backdrop_fg);
+    }
+  }
+}
+
+.menu {
+  padding: 0px;
+  background-color: other_colors(menu);
+  border: 1px solid border_color(); // adds borders in a non composited env
+  border-radius: $r;
+  .csd & { border: 1px solid border_color(); }  // axes borders in a composited env
+  .separator {color: border_color();}
+  .menuitem {
+	text-shadow: none;
+    padding: 4px 4px;
+    &:hover {
+      color: button_color(active_fg);
+      background-color: button_color(active);
+    }
+    &:insensitive {
+      color: window_color(disabled_fg);
+      &:backdrop { color: window_color(backdrop_disabled_fg); }
+    }
+    &:backdrop, &:backdrop:hover {
+      color: window_color(backdrop_fg);
+      background-color: window_color(backdrop_bg);
+    }
+    //submenu indicators
+    &.arrow { -gtk-icon-source: -gtk-icontheme('pan-end-symbolic');}
+    &.arrow:dir(rtl) { -gtk-icon-source: -gtk-icontheme('pan-end-symbolic-rtl'); }
+  }
+}
+
+.menuitem .accelerator { color: gtkalpha(currentColor,0.5); }
+/***************
+ * Popovers   *
+ ***************/
+
+.popover {
+  margin: 10px;
+  padding: 0px;
+  border: 1px solid border_color();
+  border-radius: 3px;
+  background-color: other_colors(menu);
+
+  box-shadow: 0 2px 3px transparentize(black, 0.2);
+
+  &:backdrop {
+    box-shadow: none;
+  }
+
+  > .list,
+  > .view,
+  > .toolbar,
+  &.osd > .toolbar {
+    border-style: none;
+    background-color: transparent;
+  }
+  .button.flat {
+    border-radius: 0px;
+	  color: window_color(fg);
+    padding-right: 3px;
+    .label { padding: 4px 0px; }
+    &:hover,
+    &:checked:hover {
+      background-image: none;
+      background-color: button_color(active);
+    	color: button_color(active_fg);
+      transition: none;
+    }
+
+    &:backdrop {
+      background-color: transparent;
+    	color: window_color(backdrop_fg);
+    }
+  }
+
+  &.osd { @extend %osd; }
+
+}
+
+//touch selection handlebars for the Popover.osd above
+.entry.cursor-handle,
+.cursor-handle {
+  background-color: transparent;
+  background-image: none;
+  box-shadow: none;
+  border-style: none;
+  &.top { -gtk-icon-source: -gtk-icontheme('selection-start-symbolic'); }
+  &.bottom { -gtk-icon-source: -gtk-icontheme('selection-end-symbolic'); }
+}
+
+.scale-popup .button,
+.scale-popup .button.flat { // +/- buttons on GtkVolumeButton popup
+  @extend %undecorated_button;
+  background-color: transparent;
+  padding: 5px;
+  color: window_color(fg);
+  &:hover {
+    @extend %undecorated_button;
+    color: button_color(hover);
+  }
+  &:active {
+    color: button_color(active);
+  }
+  &:insensitive {
+    color: window_color(disabled_fg);
+  }
+  &:backdrop {
+    color: window_color(backdrop_fg);
+    &:insensitive {
+      color: window_color(backdrop_disabled_fg);
+    }
+  }
+}
+
+GtkVolumeButton.button { padding: 5px; }

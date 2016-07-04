@@ -1,0 +1,100 @@
+/*****************
+ * GtkSpinButton *
+ *****************/
+
+.spinbutton {
+  .button {
+    @extend %spinbutton;
+  }
+  .osd & {
+    .button {
+      @extend %spinbutton;
+      &:last-child { border-radius: 0 3px 3px 0; }
+      &:dir(rtl):first-child { border-radius: 3px 0 0 3px; }
+    }
+  }
+  &.vertical, &.vertical:dir(rtl) { //FIXME: try using linking templates for vertically linked stuff
+    .button {
+      padding-top: 5px;    //  Same vertical padding as image-buttons
+      padding-bottom: 5px; //
+      background-color: view_color(bg);
+      border-width: 1px;
+      border-color: border_color();
+      color: button_color(fg);
+      &:active {
+        color: button_color(active);
+      }
+      &:hover {
+        color: button_color(hover);
+      }
+      &:insensitive {
+        background-color: view_color(disabled_bg);
+        border-color: border_color(disabled);
+        color: button_color(disabled_fg);
+      }
+      &:backdrop {
+        background-color: view_color(backdrop_bg);
+        border-color: border_color(backdrop);
+        color: button_color(backdrop_fg);
+      }
+      &:backdrop:insensitive {
+        background-color: view_color(backdrop_disabled_bg);
+        border-color: border_color(backdrop_disabled);
+        color: button_color(backdrop_disabled_fg);
+      }
+      &:first-child {
+        border-radius: 3px 3px 0 0;
+        border-style: solid solid none solid;
+      }
+      &:last-child {
+        border-radius: 0 0 3px 3px;
+        border-style: none solid solid solid;
+      }
+    }
+    &.entry {
+      // we should remove the bottom edge hilight here, but seems
+      // like buttons are on top of it so it doesn't show up
+      border-radius: 0px;
+      padding-left: 0px;
+      padding-right: 0px;
+      border-style: none solid none solid;
+      border-color: border_color();
+      //&:insensitive { background-color: insensitive(v_color(normal));}
+    }
+  }
+  GtkTreeView & {
+    &.entry, &.entry:focus {
+      padding: 1px;
+      border-width: 1px 0;
+      border-color: view_color(active);
+      border-radius: 0;
+      box-shadow: none;
+
+    }
+  }
+}
+
+%spinbutton {
+  background-image: none;
+  background-color: transparent;
+  border: none;
+  color: button_color(fg);
+  box-shadow: none;
+  &:dir(rtl) { border-style: none solid none none; }
+  &:hover {
+    color: button_color(hover);
+  }
+  &:insensitive {
+    color: button_color(disabled_fg);
+  }
+  &:active {
+    color: button_color(active);
+  }
+  &:backdrop {
+    color: button_color(backdrop_fg);
+  }
+  &:backdrop:insensitive {
+    background-image: none;
+    color: button_color(backdrop_disabled_fg);
+  }
+}
