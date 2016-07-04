@@ -14,6 +14,7 @@ fi
 
 sudo mkdir $INSTALL_DIR
 sudo cp -R $THEME_DIR/gtk-2.0  $INSTALL_DIR/gtk-2.0
+sudo cp -R $THEME_DIR/assets  $INSTALL_DIR/assets
 case "$1" in
     3.16)   sudo cp -R $THEME_DIR/gtk-3.16 $INSTALL_DIR/gtk-3.0
             ;;

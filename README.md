@@ -24,9 +24,10 @@ Make sure breeze-gtk-colors is executable and move it to whereever you like.
 
 or you can run the instal script:
 ```
-git clone https://github.com/dirruk1/gnome-breeze --depth 1 && cd gnome-breeze;
-bash install.sh your_gtk_version
+git clone https://github.com/dirruk1/gnome-breeze && cd gnome-breeze;
+bash install.sh "your_gtk_version"
 ```
+Don't forget to replace "your_gtk_version" with 3.16,3.18 or 3.20
 
 To change the colors, select a color scheme in System Settings and run breeze-gtk-colors to apply the colors.
 If you don't have Plasma installed you can specify a colorfile by using breeze-gtk-colors -i {path_to_file}.
